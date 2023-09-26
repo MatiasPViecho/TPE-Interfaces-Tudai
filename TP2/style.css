@@ -1,0 +1,202 @@
+:root {
+  --bg: #222;
+  --main: #5233cc;
+  --main-lighter: #9785e0;
+  --main-lighter-2: #dcd6f5;
+  --main-darker: #311f7a;
+  --main-darker-2: #100a29;
+  --secondary: #fb6376;
+  --secondary-lighter: #ff7f8d;
+  --secondary-lighter-2: #ffa5b2;
+  --secondary-darker: #d93e50;
+  --secondary-darker-2: #b82b3c;
+  --accent: #f8c630;
+  --accent-lighter: #fad66b;
+  --accent-lighter-2: #fdf1ce;
+  --accent-darker: #947005;
+  --accent-darker-2: #312502;
+  --white: #e9e6f6;
+  --black: #0f0d16;
+  --success: #0b822a;
+  --warning: #ffee56;
+  --danger: #b81c1c;
+}
+/* Reset all margins, paddings, and borders */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Apply a consistent box-sizing model to all elements */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Remove list styles (bullet points and numbering) */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default hyperlink styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Set default styles for common HTML elements */
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+  background: var(--bg, #222);
+}
+
+/* Reset headings to have consistent margin and font-weight */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: inherit;
+}
+
+/* Remove default styling for form elements */
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Additional reset styles can be added as needed */
+
+/* Add your custom styles below this section */
+
+.hero-image-carousel {
+  overflow: scroll;
+  display: flex;
+}
+.hero-image-carousel * + * {
+  margin-left: 50px;
+}
+
+.games-container {
+  background: var(--main-darker-2, #fff);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 18px 12px 12px;
+  gap: 8px;
+  border-radius: 4px;
+}
+
+.img-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.img-container img {
+  height: 100%;
+  width: 100%;
+}
+.img-container,
+.img-container img {
+  border-radius: 2px;
+}
+.games-container .info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  gap: 16px;
+}
+.info-container .title,
+.info-container .description {
+  color: var(--white, #fff);
+}
+.info-container .title {
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 500;
+}
+.info-container .description {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  height: 100%;
+}
+
+/* Buttons */
+.accent-button {
+  padding: 12px 16px;
+  background: var(--accent, #f8c630);
+  border: 1px solid var(--accent, #f8c630);
+  border-radius: 4px;
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 500;
+  color: var(--black, #000);
+  text-align: center;
+  cursor: pointer;
+}
+.accent-button:hover {
+  background: var(--white, #fff);
+  border: 1px solid var(--main-darker-2, #100a29);
+}
+.small-button {
+  max-width: 170px;
+}
+.container {
+  padding: 0 8px;
+}
+.container > * {
+  margin: 0 auto;
+}
+@media only screen and (min-width: 400px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+@media only screen and (min-width: 577px) {
+  .games-container {
+    max-width: 500px;
+  }
+  .container {
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .games-container {
+    max-width: 976px;
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    gap: 16px;
+  }
+  .games-container .info-container {
+    padding: 36px 0;
+    gap: 0;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .games-container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 44px;
+  }
+  .img-container {
+    width: 726px;
+    height: 426px;
+  }
+}
