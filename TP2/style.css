@@ -94,10 +94,15 @@ main {
   justify-content: space-between;
   padding: 0 16px;
 }
+
 .header-container .flex {
   display: flex;
-  gap: 30px;
   padding: 16px 0;
+  align-items: center;
+}
+.header-container .logo-img {
+  width: 202px;
+  height: 45px;
 }
 
 .hero-image-carousel {
@@ -118,9 +123,14 @@ main {
   border-radius: 4px;
 }
 .icon-button {
-  background-color: transparent;
+  background: rgba(0, 0, 0, 0);
   padding: 0;
   margin: 0;
+}
+.icon-button,
+.icon-button img {
+  max-width: 24px;
+  max-height: 24px;
 }
 .img-container {
   width: 100%;
@@ -188,14 +198,22 @@ main {
   .container {
     padding: 0 12px;
   }
+  .header-container .flex {
+    gap: 30px;
+  }
 }
 @media only screen and (min-width: 577px) {
   .games-container,
   .header-container {
     max-width: 500px;
   }
+
   .container {
     padding: 0;
+  }
+  .logo-img {
+    width: 270px;
+    height: 60px;
   }
 }
 @media only screen and (min-width: 992px) {
