@@ -89,6 +89,26 @@ main {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.flex {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.gap-8 {
+  gap: 8px;
+}
+.gap-16 {
+  gap: 16px;
+}
+.gap-24 {
+  gap: 24px;
+}
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -168,6 +188,21 @@ main {
   height: 100%;
 }
 
+/* Game card category container  */
+.category-cards-container {
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.category-cards-container .category-title {
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* End of Game Card category container */
 /* Buttons */
 .accent-button {
   padding: 12px 16px;
@@ -288,13 +323,19 @@ main {
   .header-container .flex {
     gap: 30px;
   }
+  .category-cards-container {
+    padding: 0 16px;
+  }
 }
 @media only screen and (min-width: 577px) {
   .games-container,
-  .header-container {
+  .header-container,
+  .category-cards-container {
     max-width: 500px;
   }
-
+  .category-cards-container {
+    padding: 16px 0;
+  }
   .container {
     padding: 0;
   }
@@ -304,7 +345,8 @@ main {
   }
 }
 @media only screen and (min-width: 992px) {
-  .header-container {
+  .header-container,
+  .category-cards-container {
     max-width: 976px;
   }
   .games-container {
@@ -320,11 +362,12 @@ main {
 }
 
 @media only screen and (min-width: 1280px) {
-  .header-container {
-    max-width: 1100px;
+  .header-container,
+  .category-cards-container {
+    max-width: 1200px;
   }
   .games-container {
-    max-width: 1100px;
+    max-width: 1200px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 44px;
