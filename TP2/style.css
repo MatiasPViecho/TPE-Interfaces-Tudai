@@ -52,7 +52,6 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  overflow: hidden;
   background: var(--bg, #222);
 }
 
@@ -83,8 +82,11 @@ select {
 
 /* Add your custom styles below this section */
 header {
-  color: var(--white, #E9E6F6);
+  color: var(--white, #e9e6f6);
   background-color: var(--main-darker, #311f7a);
+}
+main {
+  min-height: 100vh;
 }
 .header-container {
   display: flex;
@@ -93,7 +95,7 @@ header {
 }
 .header-container .flex {
   display: flex;
-  gap:30px;
+  gap: 30px;
   padding: 16px 0;
 }
 
@@ -187,7 +189,8 @@ header {
   }
 }
 @media only screen and (min-width: 577px) {
-  .games-container, .header-container {
+  .games-container,
+  .header-container {
     max-width: 500px;
   }
   .container {
