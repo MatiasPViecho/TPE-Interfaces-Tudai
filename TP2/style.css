@@ -91,7 +91,27 @@ main {
 }
 
 .overflow-scroll {
-  overflow: scroll;
+  overflow-x: scroll;
+}
+
+.overflow-scroll {
+  /* Hide the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 1px;
+    height: 1px;
+  }
 }
 
 .flex {
