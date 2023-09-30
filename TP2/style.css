@@ -87,6 +87,7 @@ header {
 }
 main {
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 .header-container {
   display: flex;
