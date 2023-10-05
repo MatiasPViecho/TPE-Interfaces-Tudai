@@ -253,12 +253,19 @@ main {
 /*  START OF GAME CARD STYLES  */
 .game-card {
   position: relative;
+  cursor: pointer;
   max-width: 292px;
   height: 350px;
   background: var(--main-darker, purple);
   border-radius: 4px;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease-in-out;
+  min-width: 280px;
 }
+.game-card:hover {
+  transform: perspective(240px) scale(0.95) rotateY(-2deg) rotateX(1deg);
+}
+
 .game-card.free::after {
   content: 'Gratis';
   padding: 3px 15px;
@@ -300,6 +307,10 @@ main {
   display: flex;
   flex-direction: column;
   padding: 0 12px;
+}
+.game-card img {
+  width: 100%;
+  max-height: 231px;
 }
 /*  END OF GAME CARD STYLES  */
 .button {
