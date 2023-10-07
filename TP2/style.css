@@ -215,6 +215,10 @@ main {
   flex-direction: column;
   gap: 8px;
 }
+.category-cards-container ul {
+  overflow-y: visible;
+  padding: 15px;
+}
 .category-cards-container .category-title {
   font-size: 22px;
   line-height: 33px;
@@ -253,11 +257,13 @@ main {
 /*  START OF GAME CARD STYLES  */
 .game-card {
   position: relative;
-  max-width: 292px;
+  width: 292px;
   height: 350px;
   background: var(--main-darker, purple);
   border-radius: 4px;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: all  300ms ease-in-out;
 }
 .game-card.free::after {
   content: 'Gratis';
@@ -295,11 +301,20 @@ main {
 .game-card .card-top {
   height: 241px;
 }
+.game-card .card-top img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 .game-card .card-bottom {
   margin-top: 16px;
   display: flex;
   flex-direction: column;
   padding: 0 12px;
+}
+.game-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
 }
 /*  END OF GAME CARD STYLES  */
 .button {
@@ -321,7 +336,7 @@ main {
   border: var(--main-darker-2, #100a29);
   background: var(--main-lighter-2, #dcd6f5);
 }
-.button.card:active > svg {
+.button.card:active:not(.added) > svg {
   transform: scale(0.81);
 }
 .button.card.added {
@@ -340,6 +355,7 @@ main {
 /* Category Cards Styles */
 .category-finder-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 16px;
   padding: 0 16px;
@@ -479,9 +495,9 @@ main {
   .category-finder-container {
     max-width: 1200px;
   }
-  .category-finder-container {
+  /* .category-finder-container {
     gap: 57px;
-  }
+  } */
   .games-container {
     max-width: 1200px;
     display: grid;
