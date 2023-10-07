@@ -1,19 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Ubuntu;
 }
-.container {
+body {
+  background-color: #222;
+}
+.form-container {
+  margin: 48px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
-  background-color: #222;
 }
-.container form {
+.form-container form {
   padding: 32px 16px;
   background: white;
   display: flex;
@@ -24,32 +27,32 @@
   gap: 24px;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.12);
 }
-.container form h1 {
+.form-container form h1 {
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
   text-align: center;
 }
-.container form .form-inputs-container {
+.form-container form .form-inputs-container {
   display: flex;
   flex-direction: column;
   padding: 0px 16px;
   gap: 16px;
 }
-.container form .input-container {
+.form-container form .input-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-bottom: 16px;
 }
 
-.container form .input-container label {
+.form-container form .input-container label {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   margin-left: 5px;
 }
-.container form .input-container input {
+.form-container form .input-container input {
   display: flex;
   padding: 16px;
   align-items: center;
@@ -58,17 +61,44 @@
   border: 2px solid #0f0d16;
   box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.12);
 }
-.container form .doble-input {
+.form-container form .input-captcha {
+  border-radius: 4px;
+  border: 1px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  max-width: 238px;
+  gap: 8px;
+}
+.form-container form .input-captcha .checkbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--Fondo, #222);
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.form-container form .input-captcha span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  max-width: 146px;
+  width: 100%;
+}
+.form-container form .doble-input {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
 }
-.container form .doble-input .input-age {
+.form-container form .doble-input .input-age {
   width: 35%;
 }
 
-.container form .btn-register {
+.form-container form .btn-register {
   display: flex;
   padding: 12px 16px;
   justify-content: center;
@@ -84,7 +114,7 @@
   text-transform: uppercase;
 }
 
-.container form .buttons-container {
+.form-container form .buttons-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -92,7 +122,7 @@
   padding: 16px;
   padding-bottom: 0px;
 }
-.container form .buttons-container .auto-register {
+.form-container form .buttons-container .auto-register {
   display: flex;
   align-items: center;
   padding: 16px;
@@ -103,14 +133,14 @@
   border: 1px solid var(--Primario-S2, #100a29);
   background: #fff;
 }
-.container form .buttons-container .auto-register span {
+.form-container form .buttons-container .auto-register span {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   flex-grow: 1;
 }
 
-.container form .sign-in-text span {
+.form-container form .sign-in-text span {
   font-size: 12px;
   font-weight: 300;
   line-height: 16px;
