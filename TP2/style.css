@@ -559,6 +559,290 @@ main {
   content: '';
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* FOOTEEEEER */
+.footer-container {
+  padding: 20px 0;
+  color: var(--white, #fff);
+  background: var(--main-darker-2, #000);
+  scroll-behavior: smooth;
+}
+.content-container {
+  padding: 0 16px;
+}
+
+.top-footer-content .logo {
+  display: flex;
+  justify-content: center;
+}
+.top-footer-content > * + *,
+.links-container > * + * {
+  margin-top: 16px;
+}
+.list-container h3 {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
+.list-container * + * {
+  margin-top: 4px;
+}
+.list-container ul li {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
+.legals-text {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.social-media-list {
+  display: flex;
+}
+.social-media-list > * + * {
+  margin-left: 10px;
+}
+
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+@media only screen and (min-width: 577px) {
+  .content-container {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  #categories {
+    grid-area: categories;
+  }
+  #support {
+    grid-area: support;
+  }
+  #bussiness {
+    grid-area: contact;
+  }
+  .links-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'categories support'
+      'categories contact';
+    margin: 0 auto;
+    gap: 16px;
+    width: 100%;
+  }
+  .links-container > * + * {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .footer-container {
+    padding: 40px 0;
+  }
+  .content-container {
+    max-width: 976px;
+  }
+  .links-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'categories support contact';
+  }
+  .links-container h3 {
+    margin-bottom: 14px;
+  }
+  .bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social-media-list {
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .content-container {
+    max-width: 1200px;
+  }
+  .top-footer-content {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    max-height: 165px;
+    gap: 32px;
+  }
+  .logo {
+    justify-content: center;
+    align-items: center;
+  }
+  .links-container {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+  .links-container:first-child {
+    margin-right: 32px;
+  }
+  .list-container {
+    width: 100%;
+  }
+  .list-container ul {
+    display: flex;
+    max-height: 134px;
+    max-width: 272px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+/* FIN FOOTEEEEER */
+
+/* REGISTERRR AND LOGINNN */
+
+.form-container {
+  margin: 48px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+.form-container form {
+  padding: 32px 16px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  width: 100%;
+  border-radius: 8px;
+  gap: 24px;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.12);
+}
+.form-container form h1 {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+  text-align: center;
+}
+.form-container form .form-inputs-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px;
+  gap: 16px;
+}
+.form-container form .input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.form-container form .input-container label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-left: 5px;
+}
+.form-container form .input-container input {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 16px;
+  border: 2px solid #0f0d16;
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+.form-container form .input-captcha {
+  border-radius: 4px;
+  border: 1px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  max-width: 238px;
+  gap: 8px;
+}
+.form-container form .input-captcha .checkbox {
+  width: 25px;
+  height: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--Fondo, #222);
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.form-container form .input-captcha span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  max-width: 146px;
+  width: 100%;
+}
+.form-container form .doble-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.form-container form .doble-input .input-age {
+  width: 35%;
+}
+
+.form-container form .btn-register {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #f8c630;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  border: 1px solid #100a29;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.form-container form .buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  padding-bottom: 0px;
+}
+.form-container form .buttons-container .auto-register {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+  justify-content: flex-start;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid var(--Primario-S2, #100a29);
+  background: #fff;
+}
+.form-container form .buttons-container .auto-register span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  flex-grow: 1;
+}
+
+.form-container form .sign-in-text span {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+  padding: 8px 16px;
+}
+
+/* FIN REGISTER AND LOGIN */
+
 @media only screen and (min-width: 400px) {
   .container {
     padding: 0 12px;
