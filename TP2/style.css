@@ -89,7 +89,35 @@ main {
   min-height: 100vh;
   scroll-behavior: smooth;
 }
-
+.cards {
+  scroll-behavior: smooth;
+}
+.nav-btn {
+  top: 33%;
+  font-size: 24px;
+  background: var(--white);
+  padding: 12px 18px;
+  border-radius: 36px;
+  z-index: 9999;
+  cursor: pointer;
+  transition: filter 150ms ease-in-out;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+.nav-btn:hover {
+  filter: brightness(1.1);
+}
+.nav-btn:active {
+  filter: brightness(0.9);
+}
+.btn-left {
+  left: 0;
+}
+.btn-right {
+  right: 0;
+}
+.absolute {
+  position: absolute;
+}
 .overflow-scroll {
   overflow-x: scroll;
 }
@@ -186,8 +214,8 @@ main {
 .hero-image-carousel * + * {
   margin-left: 50px;
 }
-.container>.games-container  {
-  margin-top:16px;
+.container > .games-container {
+  margin-top: 16px;
 }
 .games-container {
   background: var(--main-darker-2, #fff);
@@ -215,6 +243,9 @@ main {
   padding: 0;
   margin: 0;
 }
+.icon-button svg {
+  fill: white;
+}
 svg.color-white {
   color: var(--white);
 }
@@ -241,7 +272,7 @@ svg.color-white {
 .info-container .title,
 .info-container .description {
   color: var(--white, #fff);
-  display:none;
+  display: none;
 }
 .info-container .title {
   font-size: 30px;
@@ -318,14 +349,14 @@ svg.color-white {
   background: var(--main-darker, purple);
   border-radius: 4px;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.25);
-  transition: transform 150ms ease-in-out, box-shadow .4s;
+  transition: transform 150ms ease-in-out, box-shadow 0.4s;
   min-width: 280px;
-  transform: perspective(240px) scale(.98) rotateY(-4deg) rotateX(1deg);
+  transform: perspective(240px) scale(0.98) rotateY(-4deg) rotateX(1deg);
 }
 .game-card:hover {
   transform: scale(1.05) translateX(5px);
   z-index: 1;
-  box-shadow: 3px 3px 5px 0px rgba(151, 133, 224, .15);
+  box-shadow: 3px 3px 5px 0px rgba(151, 133, 224, 0.15);
 }
 
 .game-card.free::after {
@@ -403,13 +434,13 @@ svg.color-white {
   background: rgba(0, 0, 0, 0);
   border: none;
   color: var(--success, green);
-  text-shadow: 0px 2px 2px rgba(16, 10, 41, .7);
+  text-shadow: 0px 2px 2px rgba(16, 10, 41, 0.7);
   box-shadow: none;
 }
 .button.card.added svg,
 .button.card.added path {
   fill: var(--success, green);
-  filter: drop-shadow(0px 2px 2px rgba(16, 10, 41, .5));
+  filter: drop-shadow(0px 2px 2px rgba(16, 10, 41, 0.5));
 }
 
 /* Category Cards Styles */
@@ -496,10 +527,12 @@ svg.color-white {
 .relative {
   position: relative;
 }
-.icon-button, .avatar-button {
+.icon-button,
+.avatar-button {
   cursor: pointer;
 }
-.icon-button.active + .active-element, .avatar-button.active + .active-element {
+.icon-button.active + .active-element,
+.avatar-button.active + .active-element {
   transform: scaleY(100%);
 }
 .active-element {
@@ -537,7 +570,8 @@ svg.color-white {
   height: 100%;
   width: 100%;
 }
-.category-list .header-categories li, .category-list .header-categories li a {
+.category-list .header-categories li,
+.category-list .header-categories li a {
   padding: 8px 16px;
   display: flex;
   gap: 8px;
@@ -930,7 +964,7 @@ svg.color-white {
   .header-container,
   .category-cards-container {
     max-width: 780px;
-  }  
+  }
   .category-finder-container {
     max-width: 480px;
   }
@@ -956,6 +990,12 @@ svg.color-white {
   }
 }
 @media only screen and (min-width: 992px) {
+  .btn-left {
+    left: -80px;
+  }
+  .btn-right {
+    right: -80px;
+  }
   .header-container,
   .category-cards-container,
   .category-finder-container {
@@ -999,4 +1039,8 @@ svg.color-white {
     width: 726px;
     height: 426px;
   }
+}
+
+.cards {
+  width: 100%;
 }
