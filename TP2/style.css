@@ -314,7 +314,7 @@ main {
 .game-card:hover {
   transform: scale(1.05) translateX(5px);
   z-index: 1;
-  box-shadow: 4px 4px 12px 0px rgba(100, 100, 100, 0.4);
+  box-shadow: 3px 3px 5px 0px rgba(151, 133, 224, .15);
 }
 
 .game-card.free::after {
@@ -324,7 +324,7 @@ main {
   line-height: 16px;
   font-weight: 300;
   border-radius: 4px 0 12px 0;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px 0px rgba(16, 10, 41, 0.4);
   background: var(--accent, #f8c630);
   height: 22px;
   top: 0;
@@ -489,9 +489,12 @@ main {
 }
 .icon-button.active + .active-element {
   display: flex;
+  transform: scaleY(100%);
 }
 .active-element {
-  display: none;
+  transition: transform 100ms ease-in-out;
+  transform: scaleY(0%);
+  transform-origin: top;
   position: absolute;
   z-index: 1000;
 }
