@@ -774,7 +774,7 @@ svg.color-white {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  min-height: 85vh;
 }
 .form-container form {
   padding: 32px 16px;
@@ -873,6 +873,12 @@ svg.color-white {
   cursor: pointer;
   text-transform: uppercase;
 }
+.form-container form .btn-register:hover{
+  border-radius: 4px;
+  border: 1px solid var(--Acento, #F8C630);
+  background: var(--Primario-S2, #100A29);
+  color: var(--Acento, #F8C630);
+}
 
 .form-container form .buttons-container {
   width: 100%;
@@ -900,11 +906,14 @@ svg.color-white {
   flex-grow: 1;
 }
 
-.form-container form .sign-in-text span {
+.form-container form .sign-in-text p  {
   font-size: 12px;
   font-weight: 300;
   line-height: 16px;
   padding: 8px 16px;
+}
+.form-container form .sign-in-text a span{
+  cursor: pointer;
 }
 
 /* FIN REGISTER AND LOGIN */

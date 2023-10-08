@@ -11,8 +11,23 @@
     />
   </head>
   <body>
+    <header id="top">
+      <div class="container">
+        <div class="header-container relative">
+          <div class="flex">
+            <a href="./">
+              <img
+                class="logo-img"
+                src="./resources/Logo.png"
+                alt="Minijuegos"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
     <main class="form-container">
-      <form>
+      <form id="login-form">
         <h1>Registro</h1>
         <div class="form-inputs-container">
           <div class="input-container">
@@ -43,7 +58,6 @@
                 id="nickname"
                 name="nickname"
                 placeholder="Nickname"
-                required
               />
             </div>
             <div class="input-container input-age">
@@ -184,7 +198,7 @@
           </button>
         </div>
         <div class="sign-in-text">
-          <span>¿Ya tenés cuenta? Iniciá sesión!</span>
+          <p>¿Ya tenés cuenta? <a href="login.html">Iniciá sesión!</a></p>
         </div>
       </form>
     </main>
@@ -314,5 +328,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="form.js"></script>
   </body>
 </html>
