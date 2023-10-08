@@ -171,6 +171,7 @@ main {
 .header-container .flex {
   display: flex;
   padding: 16px 0;
+  gap: 16px;
   align-items: center;
 }
 .header-container .logo-img {
@@ -196,6 +197,18 @@ main {
   padding: 12px 18px 12px 12px;
   gap: 8px;
   border-radius: 4px;
+}
+.avatar-button {
+  height: 36px;
+  width: 36px;
+  border-radius: 50px;
+  border: 2px var(--white) solid;
+  overflow: hidden;
+}
+.avatar-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .icon-button {
   background: rgba(0, 0, 0, 0);
@@ -484,11 +497,10 @@ main {
 .relative {
   position: relative;
 }
-.icon-button {
+.icon-button, .avatar-button {
   cursor: pointer;
 }
-.icon-button.active + .active-element {
-  display: flex;
+.icon-button.active + .active-element, .avatar-button.active + .active-element {
   transform: scaleY(100%);
 }
 .active-element {
@@ -496,11 +508,16 @@ main {
   transform: scaleY(0%);
   transform-origin: top;
   position: absolute;
+  top: 100%;
   z-index: 1000;
 }
+.active-element.absolute-left {
+  left: 0;
+}
+.active-element.absolute-right {
+  right: 0;
+}
 .category-list {
-  top: 54px;
-  left: -15px;
   background: var(--main-darker, #311f7a);
   flex-direction: column;
   padding: 16px 0;
@@ -521,13 +538,16 @@ main {
   height: 100%;
   width: 100%;
 }
-.category-list .header-categories li {
+.category-list .header-categories li, .category-list .header-categories li a {
   padding: 8px 16px;
   display: flex;
   gap: 8px;
   font-size: 14px;
   line-height: 21px;
   cursor: pointer;
+}
+.category-list .header-categories li a {
+  padding: 0;
 }
 .header-socials {
   padding: 0 16px;
