@@ -1,63 +1,278 @@
 .my-32 {
-    margin-top: 32px;
-    margin-bottom: 32px;
-  }
-  .py-32 {
-    padding-top: 32px;
-    padding-bottom: 32px;
-  }
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
 
+body.hide-scroll {
+  overflow: hidden;
+}
 .play-game-page-container {
-    width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 .breadcumbs {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--white);
 }
 .breadcumbs .breadcumb {
-    display: flex;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .play-game-container {
-    display: flex;
-    padding: 16px 0px;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    color: var(--white)
+  display: flex;
+  padding: 16px 0px;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  color: var(--white);
 }
 .play-game-title {
-    padding: 16px;
-    border-radius: 4px;
-    background: var(--black, #0F0D16);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    display: flex;
-    /* box-sizing: content-box; */
-    display: flex;
-    /* height: 45px; */
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  background: var(--black, #0f0d16);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 .play-game-row {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 8px;
-    border-radius: 4px;
-    background: var(--black, #0F0D16);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 8px;
+  border-radius: 4px;
+  background: var(--black, #0f0d16);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .play-game-content {
-    padding: 8px;
-    width: 100%;
-    object-fit: cover;
+  padding: 8px;
+  width: 100%;
+  object-fit: cover;
+}
+.play-game-row .video {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.play-game-row aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+.play-game-row .video img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.btn-favourite {
+  cursor: pointer;
+}
+.btn-favourite.not-like path {
+  fill: none;
+}
+
+.game-play-buttom {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  padding: 8px;
+  border-top: 1px solid var(--main-lighter-2, #dcd6f5);
+}
+.share-card {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.share-card .share-card-background {
+  position: relative;
+  /* TODO: OSCURECER FONDO CON EL MISMO FILTRO QUE SE OSCURECE EN LOS MENUES */
+  background-color: rgba(50, 200, 75, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.share-card-popup {
+  padding: 32px;
+  position: absolute;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: var(--white, #e9e6f6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.share-card-popup .close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+.share-card.show {
+  display: block;
+  z-index: 1000;
+}
+
+/* PLAY VIDEO BUTTON */
+.button-play-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.circle {
+  display: block;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 120px;
+  height: 120px;
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 0;
+  transform-origin: 50% 50%;
+  transition: all 0.8s linear 0.2s, opacity 0s linear 0s;
+}
+
+.button-play {
+  display: block;
+  position: relative;
+  border: 8px solid white;
+  box-shadow: 0 4px 6px -3px rgba(0, 0, 0, 0.3),
+    inset 0 3px 4px -2px rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: 112px;
+  height: 112px;
+  transform: scale(0.6);
+  opacity: 0.9;
+  background: grey;
+  background-image: linear-gradient(
+    120deg,
+    rgba(166, 166, 166, 0.3) 50%,
+    grey 51%
+  );
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.465, 1.55) 0.2s,
+    border-width 0.4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
+}
+.button-play:before {
+  display: block;
+  position: absolute;
+  content: "";
+  bottom: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-width: 25px 0px 25px 40px;
+  border-radius: 0;
+  border-left-color: white;
+  transform: translate(-13px, 50%);
+}
+.video:hover .button-play,
+.button-play:hover,
+.button-play.active {
+  border: 4px solid white;
+}
+.button-play:hover .circle,
+.button-play.active .circle {
+  stroke-dasharray: -1000px;
+  stroke-dashoffset: -500px;
+  opacity: 0;
+  transition: all 2s linear 0.3s, opacity 0.1s linear 2s;
+}
+.video:hover .button-play:before,
+.button-play:hover:before,
+.button-play.active:before {
+  -webkit-animation: playJump 0.5s linear infinite;
+  animation: playJump 0.5s linear infinite;
+}
+
+@-webkit-keyframes playJump {
+  0% {
+    transform: translate(-13px, 60%) scale(1.1, 0.7);
+  }
+  10% {
+    transform: translate(-13px, 30%) scale(0.9, 1.2);
+  }
+  20% {
+    transform: translate(-13px, 15%);
+  }
+  40% {
+    transform: translate(-13px, 10%);
+  }
+  50% {
+    transform: translate(-13px, 10%);
+  }
+  55% {
+    transform: translate(-13px, 18%);
+  }
+  60% {
+    transform: translate(-13px, 20%);
+  }
+  65% {
+    transform: translate(-13px, 25%);
+  }
+  70% {
+    transform: translate(-13px, 30%);
+  }
+  90% {
+    transform: translate(-13px, 60%) scale(1.2, 0.7);
+  }
+  100% {
+    transform: translate(-13px, 60%) scale(1.4, 0.7);
+  }
+}
+
+@keyframes playJump {
+  0% {
+    transform: translate(-13px, 60%) scale(1.1, 0.7);
+  }
+  10% {
+    transform: translate(-13px, 30%) scale(0.9, 1.2);
+  }
+  20% {
+    transform: translate(-13px, 15%);
+  }
+  40% {
+    transform: translate(-13px, 10%);
+  }
+  50% {
+    transform: translate(-13px, 10%);
+  }
+  55% {
+    transform: translate(-13px, 18%);
+  }
+  60% {
+    transform: translate(-13px, 20%);
+  }
+  65% {
+    transform: translate(-13px, 25%);
+  }
+  70% {
+    transform: translate(-13px, 30%);
+  }
+  90% {
+    transform: translate(-13px, 60%) scale(1.2, 0.7);
+  }
+  100% {
+    transform: translate(-13px, 60%) scale(1.4, 0.7);
+  }
 }
