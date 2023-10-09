@@ -98,7 +98,7 @@ main {
   background: var(--white);
   padding: 12px 18px;
   border-radius: 36px;
-  z-index: 9999;
+  z-index: 995;
   cursor: pointer;
   transition: filter 150ms ease-in-out;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
@@ -907,11 +907,11 @@ svg.color-white {
   cursor: pointer;
   text-transform: uppercase;
 }
-.form-container form .btn-register:hover{
+.form-container form .btn-register:hover {
   border-radius: 4px;
-  border: 1px solid var(--Acento, #F8C630);
-  background: var(--Primario-S2, #100A29);
-  color: var(--Acento, #F8C630);
+  border: 1px solid var(--Acento, #f8c630);
+  background: var(--Primario-S2, #100a29);
+  color: var(--Acento, #f8c630);
 }
 
 .form-container form .buttons-container {
@@ -940,17 +940,72 @@ svg.color-white {
   flex-grow: 1;
 }
 
-.form-container form .sign-in-text p  {
+.form-container form .sign-in-text p {
   font-size: 12px;
   font-weight: 300;
   line-height: 16px;
   padding: 8px 16px;
 }
-.form-container form .sign-in-text a span{
+.form-container form .sign-in-text a span {
   cursor: pointer;
 }
 
 /* FIN REGISTER AND LOGIN */
+
+.loader .progress-bar {
+  width: 200px;
+  height: 20px;
+  border: 1px solid var(--white, #e9e6f6);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.loader .progress-bar::after {
+  display: block;
+  content: '';
+  position: absolute;
+  transform: scaleX(0);
+  width: 200px;
+  height: 20px;
+  background: var(--white, #e9e6f6);
+  transform-origin: left;
+  animation: loading 5s forwards;
+}
+.loader {
+  position: sticky;
+  z-index: 10000;
+  width: 100dvw;
+  height: 100dvh;
+  inset: 0;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader.display-none {
+  display: none;
+}
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+  }
+  20% {
+    transform: scaleX(0.25);
+  }
+  40% {
+    transform: scaleX(0.5);
+  }
+  60% {
+    transform: scaleX(0.75);
+  }
+  80% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 
 @media only screen and (min-width: 400px) {
   .container {
@@ -997,6 +1052,12 @@ svg.color-white {
     width: 270px;
     height: 60px;
   }
+  .loader .progress-bar {
+    width: 500px;
+  }
+  .loader .progress-bar::after {
+    width: 500px;
+  }
 }
 @media only screen and (min-width: 992px) {
   .btn-left {
@@ -1030,6 +1091,12 @@ svg.color-white {
   .games-container .info-container {
     padding: 36px 0;
     gap: 0;
+  }
+  .loader .progress-bar {
+    width: 800px;
+  }
+  .loader .progress-bar::after {
+    width: 800px;
   }
 }
 
