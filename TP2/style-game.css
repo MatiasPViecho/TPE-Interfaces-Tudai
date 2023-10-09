@@ -91,8 +91,16 @@ body.hide-scroll {
   display: flex;
   justify-content: end;
   gap: 20px;
-  padding: 8px;
-  border-top: 1px solid var(--main-lighter-2, #dcd6f5);
+  padding: 16px;
+  position: relative;
+}
+.game-play-buttom::before {
+    top:0;
+    left:8px;
+    border-top: 1px solid var(--main-lighter-2, #dcd6f5);
+    position: absolute;
+    content: "";
+    width: calc(100% - 16px);
 }
 .share-card {
   display: none;
@@ -102,8 +110,7 @@ body.hide-scroll {
 }
 .share-card .share-card-background {
   position: relative;
-  /* TODO: OSCURECER FONDO CON EL MISMO FILTRO QUE SE OSCURECE EN LOS MENUES */
-  background-color: rgba(50, 200, 75, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   width: 100vw;
@@ -117,7 +124,13 @@ body.hide-scroll {
   background-color: var(--white, #e9e6f6);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0%);
+  transition: all 1s;
+  opacity: 0;
+}
+.share-card.show .share-card-popup {
+  transform: translate(-50%, -50%) scale(100%);
+  opacity: 1;
 }
 .share-card-popup .close {
   position: absolute;
@@ -125,9 +138,23 @@ body.hide-scroll {
   right: 8px;
   cursor: pointer;
 }
+.share-card-popup .share-with {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.share-card-popup .share-with svg {
+  cursor: pointer;
+}
 .share-card.show {
   display: block;
   z-index: 1000;
+}
+.share-card-popup .title {
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* PLAY VIDEO BUTTON */
@@ -275,4 +302,15 @@ body.hide-scroll {
   100% {
     transform: translate(-13px, 60%) scale(1.4, 0.7);
   }
+}
+
+/* FONTS */
+/* H2 */
+h2,
+.h2 {
+  font-family: Ubuntu;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 33px;
 }
