@@ -972,7 +972,7 @@ svg.color-white {
   animation: loading 5s forwards;
 }
 .loader {
-  position: sticky;
+  position: fixed;
   z-index: 10000;
   width: 100dvw;
   height: 100dvh;
