@@ -51,13 +51,15 @@ body.hide-scroll {
 .play-game-row {
   display: grid;
   grid-template-columns: 1fr 300px;
-  gap: 8px;
+  gap: 16px;
+  padding: 16px;
   border-radius: 4px;
   background: var(--black, #0f0d16);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .play-game-content {
-  padding: 8px;
+  overflow: hidden;
+  border-radius: 2px;
   width: 100%;
   object-fit: cover;
 }
@@ -71,8 +73,8 @@ body.hide-scroll {
 .play-game-row aside {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px;
+  gap: 32px;
+  justify-content: end;
 }
 .play-game-row .video img {
   width: 100%;
@@ -91,16 +93,9 @@ body.hide-scroll {
   display: flex;
   justify-content: end;
   gap: 20px;
-  padding: 16px;
+  padding-top: 16px;
   position: relative;
-}
-.game-play-buttom::before {
-  top: 0;
-  left: 8px;
   border-top: 1px solid var(--main-lighter-2, #dcd6f5);
-  position: absolute;
-  content: "";
-  width: calc(100% - 16px);
 }
 .share-card {
   display: none;
