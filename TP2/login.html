@@ -50,7 +50,10 @@
               required
             />
           </div>
-          <button class="btn-register" type="submit">ingresar</button>
+          <div class="loading-spinner" id="loading-spinner"></div>
+          <button class="btn-register" type="submit">
+            ingresar
+          </button>
         </div>
         <div class="buttons-container">
           <button class="auto-register">
@@ -123,6 +126,11 @@
           <p>¿No tienés cuenta? <a href="register.html">Registrate!</a></p>
         </div>
       </form>
+      <div class="success-message" id="success-message">
+        <div class="success-message-content">
+          ¡Registro exitoso! Redirigiendo...
+        </div>
+      </div>
     </main>
     <!-- Footer section -->
     <footer class="footer-container">
