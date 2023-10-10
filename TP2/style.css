@@ -380,6 +380,9 @@ svg.color-white {
   font-size: 18px;
   line-height: 27px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .game-card .price {
   font-size: 16px;
@@ -971,6 +974,9 @@ svg.color-white {
   transform-origin: left;
   animation: loading 5s forwards;
 }
+.loader .percent {
+  color: var(--white, #e9e6f6);
+}
 .loader {
   position: fixed;
   z-index: 10000;
@@ -979,6 +985,7 @@ svg.color-white {
   inset: 0;
   background: var(--black);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
