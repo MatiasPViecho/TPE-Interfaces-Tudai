@@ -380,6 +380,9 @@ svg.color-white {
   font-size: 18px;
   line-height: 27px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .game-card .price {
   font-size: 16px;
@@ -802,7 +805,7 @@ svg.color-white {
 
 /* REGISTERRR AND LOGINNN */
 .loading-spinner {
-  display: block;
+  display: none;
   border: 6px solid rgba(122, 122, 122, 0.4); 
   border-top: 6px solid #6a6a6a; 
   border-radius: 50%;
