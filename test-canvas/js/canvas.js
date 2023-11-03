@@ -3,7 +3,6 @@
 
 import { Ficha } from "./Ficha.js";
 
-
 const canvas = document.querySelector("#test-canvas");
 // const w = 800;
 // const h = 500;
@@ -11,51 +10,61 @@ const canvas = document.querySelector("#test-canvas");
 const w = document.documentElement["clientHeight"]-10;
 const h = document.documentElement["clientHeight"]-10;
 
-const diametro = 150;
+const diametro = 50;
 
 canvas.width = w;
 canvas.height = h;
 const ctx = canvas.getContext('2d');
 
-// const f  = new Figura(100, 100, ctx,  "#FF0000");
-// f.draw();
+const fichas = new Array();
+const urlsFichas = [
+    './resources/linux.png',
+    './resources/linux2.png',
+    './resources/linux3.jpeg',
+    './resources/windows1.jpeg',
+    './resources/windows2.jpeg',
+]
 
-// const c = new Circulo(100, 100, 50, ctx, "#FF0000");
-// c.draw();
-const fichasJugador1 = new Array();
+for (let n = 0; n < 100; n++) {
+    const d = diametro+ Math.floor(Math.random() * 120);
+    const centroX = Math.random()*(w-d)+ d/2;
+    const centroY = Math.random()*(h-d)+ d/2;
+    const ficha = new Ficha({ 
+        x: centroX, 
+        y: centroY, 
+        diametro: d, 
+        ctx, 
+        imageUrl: selectRandom(urlsFichas)
+    });
 
-const imgFicha = new Image();
-imgFicha.src ='./resources/linux3.jpeg';
-imgFicha.onload = () => {
-    if (imgFicha.procesado) {
-        //Aquí imgFicha está escalada
-        // const f = new Ficha(0, 40, diametro, ctx, imgFicha);
-        // f.draw();
-        for (let n = 0; n < 20; n++) {
-            const centroX = Math.random()*(w-diametro)+ diametro/2;
-            const centroY = Math.random()*(h-diametro)+ diametro/2;
-            const ficha = new Ficha(centroX, centroY, diametro, ctx, imgFicha);
-
-            ficha.draw();
-            fichasJugador1.push(ficha);
-        }
-        return;
+    // ficha.draw();
+    fichas.push(ficha);
+}
+setTimeout(() => {
+    for (let i = 0; i < 100; i++) {
+        fichas[i].draw();
     }
+}, 500);
 
-    imgFicha.src = escalarImagenFicha(imgFicha, diametro, diametro);
-    imgFicha.procesado = true;
-}
 
-function escalarImagenFicha(image, diametro) {
-    const tmpCanvas = document.createElement('canvas');
-    tmpCanvas.width = diametro;
-    tmpCanvas.height = diametro;
-    const tmpCtx = tmpCanvas.getContext('2d');
-    tmpCtx.arc(diametro/2, diametro/2, diametro/2, 0, Math.PI * 2);
-    tmpCtx.clip();
-    tmpCtx.drawImage(image, 0, 0, diametro, diametro);
-    return tmpCanvas.toDataURL()
+function selectRandom(array) {
+    return array[Math.floor(Math.random() * array.length)];
 }
+// return;
+
+// const imgFicha = new Image();
+// imgFicha.src ='./resources/linux3.jpeg'; 
+// imgFicha.onload = () => {
+//     if (imgFicha.procesado) {
+//         //Aquí imgFicha está escalada
+//         // const f = new Ficha(0, 40, diametro, ctx, imgFicha);
+//         // f.draw();
+//     }
+
+//     imgFicha.src = escalarImagenFicha(imgFicha, diametro, diametro);
+//     imgFicha.procesado = true;
+// }
+
 // ctx.beginPath();
 // ctx.fillStyle = "#FF0000";
 // ctx.arc(200,200,100,0,Math.PI /3);
@@ -91,7 +100,17 @@ function setPixel(img, x, y, r, g, b, a) {
     img.data[pos + 3] = a;
 }
 
-canvas.addEventListener('click', (event) => {
+canvas.addEventListener('mousedown', (event) => {
+    for (let i = fichas.length - 1; i >= 0; i--) {
+        const ficha = fichas[i];
+        const p = getPos(event, canvas);
+        if (ficha.isInsidePosition(p.x, p.y)) {
+            fichas.splice(i, 1);
+            fichas.push(ficha);
+            ficha.draw();
+            break;
+        }
+    }
     console.log(getPos(event, canvas));
 })
 
