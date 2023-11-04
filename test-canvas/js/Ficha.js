@@ -1,6 +1,10 @@
 import { Figura } from "./Figura.js";
+import { getRelativePos } from "./functions.js";
 
 export class Ficha extends Figura {
+    isImageLoaded = false;
+    imageUrl;
+    dragDropInfo = {};
 
     constructor(args = {}) {
         const {x, y, diametro, ctx, imageUrl} = args;
@@ -15,7 +19,6 @@ export class Ficha extends Figura {
     loadImage() {
         const imgFichaOriginal = new Image();
         imgFichaOriginal.src = this.imageUrl; 
-        // imgFichaOriginal.src = './resources/linux3.jpeg'; 
         imgFichaOriginal.onload = () => {
             const imgFichaEscalada = new Image();
             imgFichaEscalada.src = this.escalarImagenFicha(imgFichaOriginal, this.diametro);
@@ -48,6 +51,7 @@ export class Ficha extends Figura {
         const circuloLeftX = this.x - this.diametro / 2;
         const circuloTopY = this.y - this.diametro / 2;
         this.ctx.drawImage(this.image, circuloLeftX, circuloTopY, this.diametro, this.diametro);
+        this.isImageLoaded = true;
     }
 
     isInsidePosition(x, y) {
@@ -59,11 +63,29 @@ export class Ficha extends Figura {
         return distancia < this.diametro / 2;
     }
 
-    eventDrag() {
+    startDragDrop(canvasX, canvasY, event) {
+        this.dragDropInfo = {
+            startX: this.x,
+            startY: this.y,
+            startCanvasX: canvasX,
+            startCanvasY: canvasY,
+        }
+    }
+
+    mouseMoveDragDrop(event) {
+        const canvasPos = getRelativePos(event, event.target);
+        const { startX, startY, startCanvasX, startCanvasY } = this.dragDropInfo;
+        console.log({ startX, startY, startCanvasX, startCanvasY });
+        console.log(this.dragDropInfo);
+        this.x = startX + canvasPos.x - startCanvasX;
+        this.y = startY + canvasPos.y - startCanvasY;
+    }
+
+    cancelDragDrop(canvasX, canvasY, event) {
 
     }
 
-    eventDrop() {
+    finishDragDrop(canvasX, canvasY, event) {
 
     }
     

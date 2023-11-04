@@ -1,7 +1,7 @@
-
 "use strict";
 
 import { Ficha } from "./Ficha.js";
+import { getRelativePos, selectRandom } from "./functions.js";
 
 const canvas = document.querySelector("#test-canvas");
 // const w = 800;
@@ -14,6 +14,7 @@ const diametro = 50;
 
 canvas.width = w;
 canvas.height = h;
+
 const ctx = canvas.getContext('2d');
 
 const fichas = new Array();
@@ -37,20 +38,20 @@ for (let n = 0; n < 100; n++) {
         imageUrl: selectRandom(urlsFichas)
     });
 
-    // ficha.draw();
     fichas.push(ficha);
 }
+
 setTimeout(() => {
+    drawGame()
+}, 1000);
+
+function drawGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < 100; i++) {
         fichas[i].draw();
     }
-}, 500);
-
-
-function selectRandom(array) {
-    return array[Math.floor(Math.random() * array.length)];
 }
-// return;
+
 
 // const imgFicha = new Image();
 // imgFicha.src ='./resources/linux3.jpeg'; 
@@ -100,24 +101,34 @@ function setPixel(img, x, y, r, g, b, a) {
     img.data[pos + 3] = a;
 }
 
+let dragDropInterval = null;
+let dragDropFicha = null;
 canvas.addEventListener('mousedown', (event) => {
     for (let i = fichas.length - 1; i >= 0; i--) {
         const ficha = fichas[i];
-        const p = getPos(event, canvas);
+        const p = getRelativePos(event);
         if (ficha.isInsidePosition(p.x, p.y)) {
+            dragDropFicha = ficha;
+            dragDropInterval = setInterval(drawGame, 1000 / 60);
             fichas.splice(i, 1);
             fichas.push(ficha);
             ficha.draw();
+            // const p = getRelativePos(event);
+            dragDropFicha.startDragDrop(p.x, p.y, event);
+            canvas.addEventListener('mousemove', mouseMoveEvent); 
             break;
         }
     }
-    console.log(getPos(event, canvas));
-})
+    console.log(getRelativePos(event));
+});
+canvas.addEventListener('mouseup', (event) => {
+    clearInterval(dragDropInterval);
+    canvas.removeEventListener('mousemove', mouseMoveEvent);
+    drawGame();
+});
 
-function getPos(event, ctx) {
-    const ctxPos = ctx.getBoundingClientRect();
-    return {
-        x: event.clientX - ctxPos.x,
-        y: event.clientY - ctxPos.y
-    }
+function mouseMoveEvent(event) {
+    console.log('mouseMoveEvent');
+    dragDropFicha.mouseMoveDragDrop(event);
 }
+
