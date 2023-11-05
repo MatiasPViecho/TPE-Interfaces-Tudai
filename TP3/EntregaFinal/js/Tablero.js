@@ -208,7 +208,7 @@ export class Tablero {
                 return;
             }
             const row = this.getLastFreeRow(col);
-            if (col < 0) {
+            if (row < 0) {
                 reject("La columna ya está llena");
                 return;
             }
@@ -218,7 +218,7 @@ export class Tablero {
                 
                 clearInterval(handleAnimation);
                 resolve("OK!");
-            } , 10);
+            } , 1000 / 60);
         });
     }
     
@@ -236,7 +236,7 @@ export class Tablero {
     getLastFreeRow(col) {
         if (col < 0) 
             return -1;
-        for (let row = this.height - 1; row < this.height; row--) {
+        for (let row = this.height - 1; row >= 0; row--) {
             if (this.cell[row][col].ficha == null) {
                 return row;
             }
