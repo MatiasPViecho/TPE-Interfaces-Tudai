@@ -19,10 +19,9 @@ export class Juego {
     {
       id: "linux",
       urlFicha: selectRandom([
-        "./resources/arch-linux.png",
-        "./resources/linux.png",
-        "./resources/linux2.png",
-        "./resources/linux3.jpeg",
+          "./resources/linux1.png",
+          "./resources/linux2.png",
+          "./resources/linux3.png",
       ]),
     },
     {
@@ -30,8 +29,7 @@ export class Juego {
       urlFicha: selectRandom([
         "./resources/windows1.png",
         "./resources/windows2.png",
-        // './resources/windows1.jpeg',
-        // './resources/windows2.jpeg'
+        "./resources/windows3.png",
       ]),
     },
   ];
