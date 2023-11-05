@@ -59,13 +59,23 @@ export class Juego {
     load() {
         const { ctx, canvas } = this;
         const boardBorderSize = 30;
-        const cellSize = (canvas.width * 6/10 - 2 * boardBorderSize) / this.cantidadFichasX; 
+
+        const cellSize = Math.min(
+            (canvas.width * 6/10 - 2 * boardBorderSize) / this.cantidadFichasX,
+            (canvas.height * 8/10 - 2 * boardBorderSize) / this.cantidadFichasY
+        ); 
+
+        const boardX = (canvas.width - (
+            2 * boardBorderSize + this.cantidadFichasX * cellSize
+        )) / 2;
+
         const boardY = canvas.height - (
             2 * boardBorderSize + this.cantidadFichasY * cellSize
         );
+
         const tablero = new Tablero({
             ctx, 
-            x: canvas.width * 2/ 10, 
+            x: boardX, 
             y: boardY,
             borderSize: boardBorderSize,
             cellSize,
@@ -75,18 +85,19 @@ export class Juego {
         this.tablero = tablero;
         this.diametro = cellSize * .85;
 
+        const padding = 30;
         this.jugadores[0].regionFichas = {
-            x: 0,
+            x: padding,
             y: canvas.height / 2,
-            width: canvas.width / 10,
-            height: canvas.height / 2
+            width: boardX - 2 * padding,
+            height: canvas.height / 2 - padding
         }
 
         this.jugadores[1].regionFichas = {
-            x: canvas.width * 9 / 10,
+            x: canvas.width - boardX + padding,
             y: canvas.height / 2,
-            width: canvas.width / 10,
-            height: canvas.height / 2
+            width: boardX - 2 * padding,
+            height: canvas.height / 2 - padding
         }
         this.jugadores.forEach(jugador => {
             for (let n = 0; n < this.cantidadFichasPorJugador; n++) {
