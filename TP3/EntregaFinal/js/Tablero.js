@@ -145,14 +145,14 @@ export class Tablero {
             this.ctx.fill();
 
             // highlight column
-            const n = this.currentDropDownColumn;
-            if (n >= 0) {
+            const col = this.currentDropDownColumn;
+            const row = this.getLastFreeRow(col);
+            if (col >= 0 && row >= 0) {
                 this.ctx.fillStyle= "#1111FF40";
                 this.ctx.beginPath();
                 // this.this.ctx.fillRect(x, y, width, height)
-                // TODO: en vez de resaltar la columna completa debería resaltar sólo las celdas libres de la columna
-                this.ctx.roundRect(boardX + this.borderSize + this.cellSize * n, boardY + this.borderSize, 
-                    this.cellSize, this.cellSize * this.height, this.borderSize);
+                this.ctx.roundRect(boardX + this.borderSize + this.cellSize * col, boardY + this.borderSize, 
+                    this.cellSize, this.cellSize * (row + 1), this.borderSize);
                 // this.ctx.stroke();
                 this.ctx.fill();
             }
@@ -178,5 +178,38 @@ export class Tablero {
         }
 
         return Math.floor((ficha.x - x) / this.cellSize);
+    }
+
+    /**
+     * dragDropOver()
+     * 
+     * @returns Promise que al cumplirse significa que terminó la animación que coloca la pieza
+     */
+    dragDropOver() {
+        return new Promise((resolve, reject) => {
+            if (!this.dragDropFicha) {
+                reject("Tablero no coce ficha para colocar")
+            }
+            const col = this.currentDropDownColumn;
+            if (col < 0) {
+                reject("La ficha no se encuentra en una posición válida para ser soltada")
+            }
+            const row = this.getLastFreeRow(col);
+            const handleAnimation = setInterval(()=>{
+                console.log(2);
+                
+                clearInterval(handleAnimation);
+                resolve("OK!")
+            } , 60);
+        });
+    }
+    
+    /**
+     * getLastFreeRow(col)
+     * @param {*} col 
+     * @returns índice de fila de la última celda vacía en la columna.
+     */
+    getLastFreeRow(col) {
+        return 3
     }
 }

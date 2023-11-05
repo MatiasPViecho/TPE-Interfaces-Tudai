@@ -173,6 +173,13 @@ export class Juego {
                     // posición original
                     game.dragDropFicha.cancelDragDrop();
                 }
+                game.tablero.dragDropOver().then(
+                    (result) => {
+                        // TODO: ACÁ VA LÓGICA A APLICAR UNA VEZ QUE TERMINÓ DE CAER LA PIEZA
+                        console.log(result)
+                    },
+                    (error) => console.log(error)
+                )
                 game.dragDropFicha = null;
                 // clearInterval(game.dragDropInterval);
                 game.canvas.removeEventListener('mousemove', mouseMoveEvent);
