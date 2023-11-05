@@ -31,8 +31,6 @@ export class Tablero {
                 }
             }
         }
-        console.log(this.cell);
-        console.log(this.cell[5]);
         this.borderSize = borderSize;
         this.cellSize = cellSize;
         this.x = x;
@@ -193,6 +191,7 @@ export class Tablero {
 
     /**
      * dragDropOver()
+     * Coloca la pieza soltada en el tablero, generando una animación.
      * 
      * @returns Promise que al cumplirse significa que terminó la animación que coloca la pieza
      */
@@ -212,20 +211,46 @@ export class Tablero {
                 reject("La columna ya está llena");
                 return;
             }
-            const handleAnimation = setInterval(()=>{
-                this.setFichaInCell(this.dragDropFicha, row, col);
-                this.dragDropFicha = null;
-                
-                clearInterval(handleAnimation);
-                resolve("OK!");
+            const ficha = this.dragDropFicha;
+            this.setFichaInCell(ficha, row, col);
+
+            // Centra la pieza en la columna y verticalmente en la zona de DrawDrop para poder 
+            // comenzar una animación sólo hacia abajo.
+            ficha.x = this.x + this.borderSize + col * this.cellSize + this.cellSize / 2;
+            ficha.y = this.dropDownZone.y + this.dropDownZone.height / 2;
+            // Calcula destino y final de la ficha:
+            const destinationY = this.y + this.borderSize + row * this.cellSize + this.cellSize / 2;
+            let initialY = ficha.y;
+            // Datos iniciales para calcular caída libre
+            let vi = 0; //velocidad inicial
+            let t = 0; //tiempo
+            let g = 10.1; //aceleración
+            let d = 0; //distancia recorrida
+            let rebotar = true;
+            const handleAnimation = setInterval(() => {
+                t += .3;
+                // Calcula distancia recorrida en base a fórumla de caída libre
+                d = vi * t + g * t * t;
+                ficha.y = Math.min(destinationY, initialY + d);
+
+                if (ficha.y == destinationY) {
+                    if (rebotar) {
+                        rebotar = false;
+                        vi = -40;
+                        t = 0;
+                        initialY = ficha.y;
+                    } else {
+                        this.dragDropFicha = null;
+                        clearInterval(handleAnimation);
+                        resolve("OK!");
+                    }
+                }
             } , 1000 / 60);
         });
     }
     
     setFichaInCell(ficha, row, col) {
-        ficha.x = this.x + this.borderSize + col * this.cellSize + this.cellSize / 2;
-        ficha.y = this.y + this.borderSize + row * this.cellSize + this.cellSize / 2;
-        this.cell[row][col].ficha = this.dragDropFicha;
+        this.cell[row][col].ficha = ficha;
     }
 
     /**

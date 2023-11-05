@@ -162,16 +162,17 @@ export class Juego {
 
     this.canvas.addEventListener("mouseup", (event) => {
       if (game.dragDropFicha && event.buttons == 0) {
+        const i = this.fichas.indexOf(game.dragDropFicha);
+        game.fichas.splice(i, 1);
         game.tablero
           .dragDropOver()
           .then(
             (result) => {
-              const i = this.fichas.indexOf(game.dragDropFicha);
-              game.fichas.splice(i, 1);
               // game.dragDropFicha = null;
             },
             (error) => {
               console.log(error);
+              game.fichas.push(game.dragDropFicha);
               game.dragDropFicha.cancelDragDrop();
             }
           )
