@@ -224,7 +224,7 @@ export class Tablero {
             // Datos iniciales para calcular caída libre
             let vi = 0; //velocidad inicial
             let t = 0; //tiempo
-            let g = 10.1; //aceleración
+            let g = 9.8; //aceleración
             let d = 0; //distancia recorrida
             let rebotar = true;
             const handleAnimation = setInterval(() => {

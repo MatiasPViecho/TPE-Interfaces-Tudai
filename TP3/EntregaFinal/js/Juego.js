@@ -160,21 +160,22 @@ export class Juego {
 
     this.canvas.addEventListener("mouseup", (event) => {
       if (game.dragDropFicha && event.buttons == 0) {
-        const i = this.fichas.indexOf(game.dragDropFicha);
+        const ficha = game.dragDropFicha;
+        game.dragDropFicha = null;
+        const i = this.fichas.indexOf(ficha);
         game.fichas.splice(i, 1);
         game.tablero
           .dragDropOver()
           .then(
             (result) => {
-              // game.dragDropFicha = null;
+              // aquí terminó la animación de colocar la pieza
             },
             (error) => {
               console.log(error);
-              game.fichas.push(game.dragDropFicha);
-              game.dragDropFicha.cancelDragDrop();
+              ficha.cancelDragDrop();
+              game.fichas.push(ficha);
             }
           )
-          .finally(() => (game.dragDropFicha = null));
 
         // clearInterval(game.dragDropInterval);
         game.canvas.removeEventListener("mousemove", mouseMoveEvent);
