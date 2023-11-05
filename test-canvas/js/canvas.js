@@ -1,7 +1,6 @@
 "use strict";
 
-import { Ficha } from "./Ficha.js";
-import { getRelativePos, selectRandom } from "./functions.js";
+import { Juego } from "./Juego.js";
 
 const canvas = document.querySelector("#test-canvas");
 // const w = 800;
@@ -15,43 +14,7 @@ const diametro = 50;
 canvas.width = w;
 canvas.height = h;
 
-const ctx = canvas.getContext('2d');
-
-const fichas = new Array();
-const urlsFichas = [
-    './resources/linux.png',
-    './resources/linux2.png',
-    './resources/linux3.jpeg',
-    './resources/windows1.jpeg',
-    './resources/windows2.jpeg',
-]
-
-for (let n = 0; n < 100; n++) {
-    const d = diametro+ Math.floor(Math.random() * 120);
-    const centroX = Math.random()*(w-d)+ d/2;
-    const centroY = Math.random()*(h-d)+ d/2;
-    const ficha = new Ficha({ 
-        x: centroX, 
-        y: centroY, 
-        diametro: d, 
-        ctx, 
-        imageUrl: selectRandom(urlsFichas)
-    });
-
-    fichas.push(ficha);
-}
-
-setTimeout(() => {
-    drawGame()
-}, 1000);
-
-function drawGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < 100; i++) {
-        fichas[i].draw();
-    }
-}
-
+const juego = new Juego(canvas);
 
 // const imgFicha = new Image();
 // imgFicha.src ='./resources/linux3.jpeg'; 
@@ -90,45 +53,4 @@ function drawGame() {
 // console.log(max);
 
 // ctx.putImageData(imgData, 0,0);
-
-function setPixel(img, x, y, r, g, b, a) {
-    // const h = img.height;
-    const w = img.width;
-    const pos = x * 4 + y * w * 4;
-    img.data[pos] = r;
-    img.data[pos + 1] = g;
-    img.data[pos + 2] = b;
-    img.data[pos + 3] = a;
-}
-
-let dragDropInterval = null;
-let dragDropFicha = null;
-canvas.addEventListener('mousedown', (event) => {
-    for (let i = fichas.length - 1; i >= 0; i--) {
-        const ficha = fichas[i];
-        const p = getRelativePos(event);
-        if (ficha.isInsidePosition(p.x, p.y)) {
-            dragDropFicha = ficha;
-            dragDropInterval = setInterval(drawGame, 1000 / 60);
-            fichas.splice(i, 1);
-            fichas.push(ficha);
-            ficha.draw();
-            // const p = getRelativePos(event);
-            dragDropFicha.startDragDrop(p.x, p.y, event);
-            canvas.addEventListener('mousemove', mouseMoveEvent); 
-            break;
-        }
-    }
-    console.log(getRelativePos(event));
-});
-canvas.addEventListener('mouseup', (event) => {
-    clearInterval(dragDropInterval);
-    canvas.removeEventListener('mousemove', mouseMoveEvent);
-    drawGame();
-});
-
-function mouseMoveEvent(event) {
-    console.log('mouseMoveEvent');
-    dragDropFicha.mouseMoveDragDrop(event);
-}
 
