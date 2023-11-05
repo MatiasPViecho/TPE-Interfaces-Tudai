@@ -6,10 +6,8 @@ const canvas = document.querySelector("#test-canvas");
 // const w = 800;
 // const h = 500;
 // const w = document.documentElement["clientWidth"];
-const w = document.documentElement["clientHeight"]-10;
+const w = document.documentElement["clientWidth"]-10;
 const h = document.documentElement["clientHeight"]-10;
-
-const diametro = 50;
 
 canvas.width = w;
 canvas.height = h;

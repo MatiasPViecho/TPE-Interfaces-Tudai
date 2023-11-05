@@ -14,14 +14,22 @@ export class Juego {
     diametro = 65;
     dragDropInterval = null;
     dragDropFicha = null;
-    
-    urlsFichas = [
-        './resources/linux.png',
-        './resources/linux2.png',
-        './resources/linux3.jpeg',
-        './resources/windows1.jpeg',
-        './resources/windows2.jpeg',
-    ];
+    jugadores = [
+        {
+            id: 'linux',
+            urlFicha: selectRandom([
+                './resources/linux.png',
+                './resources/linux2.png',
+                './resources/linux3.jpeg'
+                ]),
+        }, {
+            id: 'windows',
+            urlFicha: selectRandom([
+                './resources/windows1.jpeg',
+                './resources/windows2.jpeg'
+                ]),
+        }
+    ]
 
     constructor(canvas, options = {}) {
         const { 
@@ -41,32 +49,54 @@ export class Juego {
         return this.tipoJuego + 3;
     }
 
+    get cantidadFichasPorJugador() {
+        return this.cantidadFichasX * this.cantidadFichasY / 2;
+    }
+
     load() {
         const { ctx, canvas } = this;
         const tablero = new Tablero({
             ctx, 
+            x: canvas.width * 2/ 10, 
+            y: 300,
             width: this.cantidadFichasX,
             height: this.cantidadFichasY,
         });
         this.tablero = tablero;
 
-        for (let n = 0; n < 10; n++) {
-            // const d = this.diametro + Math.floor(Math.random() * 120);
-            const d = this.diametro;
-            const w = canvas.width;
-            const h = canvas.height;
-            const centroX = Math.random()*(w-d)+ d/2;
-            const centroY = Math.random()*(h-d)+ d/2;
-            const ficha = new Ficha({ 
-                x: centroX, 
-                y: centroY, 
-                diametro: d, 
-                ctx, 
-                imageUrl: selectRandom(this.urlsFichas)
-            });
-    
-            this.fichas.push(ficha);
+        this.jugadores[0].regionFichas = {
+            x: 0,
+            y: canvas.height / 2,
+            width: canvas.width / 10,
+            height: canvas.height / 2
         }
+
+        this.jugadores[1].regionFichas = {
+            x: canvas.width * 9 / 10,
+            y: canvas.height / 2,
+            width: canvas.width / 10,
+            height: canvas.height / 2
+        }
+        this.jugadores.forEach(jugador => {
+            for (let n = 0; n < this.cantidadFichasPorJugador; n++) {
+                const d = this.diametro;
+                const region = jugador.regionFichas;
+                const w = region.width;
+                const h = region.height;
+                const centroX = Math.random()*(w-d)+ d/2;
+                const centroY = Math.random()*(h-d)+ d/2;
+                const ficha = new Ficha({ 
+                    x: region.x + centroX, 
+                    y: region.y + centroY, 
+                    diametro: d, 
+                    ctx, 
+                    jugador: jugador.id,
+                    imageUrl: jugador.urlFicha
+                });
+        
+                this.fichas.push(ficha);
+            }
+        })
     
         this.startGame();
         setTimeout(() => {

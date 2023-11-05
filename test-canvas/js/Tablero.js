@@ -5,7 +5,9 @@ export class Tablero {
     imgs;
 
     constructor(args = {}) {
-        const { 
+        const {
+            x = 0,
+            y = 0,
             width = 7, 
             height = 6, 
             ctx
@@ -23,9 +25,11 @@ export class Tablero {
                 }
             }
         }
-        this.loadImages();
         this.borderSize = 30
         this.cellSize = 80;
+        this.x = x;
+        this.y = y;
+        this.loadImages();
     }
 
     loadImages() {
@@ -62,8 +66,8 @@ export class Tablero {
 
     draw() {
         const { cellSize, borderSize, ctx } = this;
-        const boardX = 0;
-        const boardY = 100;
+        const boardX = this.x;
+        const boardY = this.y;
         // draw top-left corner
         ctx.drawImage(this.imgCornerTopLeft, 
             boardX, boardY, 

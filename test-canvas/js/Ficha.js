@@ -16,11 +16,12 @@ export class Ficha extends Figura {
      * imageUrl: url de la imagen que se debe tomar para dibujar la ficha
      */
     constructor(args = {}) {
-        const {x, y, diametro, ctx, imageUrl} = args;
+        const {x, y, diametro, jugador, ctx, imageUrl} = args;
         // console.log({x, y, diametro, ctx, imageUrl});
         
         super(x, y, ctx, null);
         this.diametro = diametro;
+        this.jugador = jugador;
         this.loadImage(imageUrl);
     }
 
