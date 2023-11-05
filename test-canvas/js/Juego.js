@@ -18,6 +18,7 @@ export class Juego {
         {
             id: 'linux',
             urlFicha: selectRandom([
+                './resources/arch-linux.png',
                 './resources/linux.png',
                 './resources/linux2.png',
                 './resources/linux3.jpeg'
@@ -25,8 +26,10 @@ export class Juego {
         }, {
             id: 'windows',
             urlFicha: selectRandom([
-                './resources/windows1.jpeg',
-                './resources/windows2.jpeg'
+                './resources/windows1.png',
+                './resources/windows2.png',
+                // './resources/windows1.jpeg',
+                // './resources/windows2.jpeg'
                 ]),
         }
     ]
@@ -55,14 +58,22 @@ export class Juego {
 
     load() {
         const { ctx, canvas } = this;
+        const boardBorderSize = 30;
+        const cellSize = (canvas.width * 6/10 - 2 * boardBorderSize) / this.cantidadFichasX; 
+        const boardY = canvas.height - (
+            2 * boardBorderSize + this.cantidadFichasY * cellSize
+        );
         const tablero = new Tablero({
             ctx, 
             x: canvas.width * 2/ 10, 
-            y: 300,
+            y: boardY,
+            borderSize: boardBorderSize,
+            cellSize,
             width: this.cantidadFichasX,
             height: this.cantidadFichasY,
         });
         this.tablero = tablero;
+        this.diametro = cellSize * .85;
 
         this.jugadores[0].regionFichas = {
             x: 0,
@@ -99,9 +110,6 @@ export class Juego {
         })
     
         this.startGame();
-        setTimeout(() => {
-            tablero.draw();    
-        }, 1000);
     }
 
     reDrawGame() {

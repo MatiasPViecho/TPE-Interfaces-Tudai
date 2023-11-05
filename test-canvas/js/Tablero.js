@@ -10,7 +10,9 @@ export class Tablero {
             y = 0,
             width = 7, 
             height = 6, 
-            ctx
+            ctx,
+            borderSize = 30,
+            cellSize = 80
         } = args
         this.ctx = ctx;
         this.width = width;
@@ -25,8 +27,8 @@ export class Tablero {
                 }
             }
         }
-        this.borderSize = 30
-        this.cellSize = 80;
+        this.borderSize = borderSize;
+        this.cellSize = cellSize;
         this.x = x;
         this.y = y;
         this.loadImages();
