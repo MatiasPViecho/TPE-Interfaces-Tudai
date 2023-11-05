@@ -25,11 +25,14 @@ export class Tablero {
             this.cell[h] = [];
             for (let w = 0; w < width; w++) {
                 this.cell[h][w] = {
+                    position: h + "," + w,
                     equipo: "",
                     ficha: null,
                 }
             }
         }
+        console.log(this.cell);
+        console.log(this.cell[5]);
         this.borderSize = borderSize;
         this.cellSize = cellSize;
         this.x = x;
@@ -80,6 +83,14 @@ export class Tablero {
         const { cellSize, borderSize, ctx } = this;
         const boardX = this.x;
         const boardY = this.y;
+
+        // draw setted fichas
+        for (let h = 0; h < this.height; h++) {
+            for (let w = 0; w < this.width; w++) {
+                const ficha = this.cell[h][w].ficha;
+                ficha && ficha.draw();
+            }
+        }
 
         // draw top-left corner
         this.imgCornerTopLeft && ctx.drawImage(this.imgCornerTopLeft, 
@@ -146,7 +157,7 @@ export class Tablero {
 
             // highlight column
             const col = this.currentDropDownColumn;
-            const row = this.getLastFreeRow(col);
+            const row = col >= 0 ? this.getLastFreeRow(col): -1;
             if (col >= 0 && row >= 0) {
                 this.ctx.fillStyle= "#1111FF40";
                 this.ctx.beginPath();
@@ -166,7 +177,7 @@ export class Tablero {
      * @returns valid column number if is valid the position of dropDownFicha or return -1
      */
     get currentDropDownColumn() {
-        const {x, y, width, height} = this.dropDownZone;
+        const { x, y, width, height } = this.dropDownZone;
         const ficha = this.dragDropFicha;
         if (!ficha) 
             return -1;
@@ -189,27 +200,47 @@ export class Tablero {
         return new Promise((resolve, reject) => {
             if (!this.dragDropFicha) {
                 reject("Tablero no coce ficha para colocar")
+                return;
             }
             const col = this.currentDropDownColumn;
             if (col < 0) {
-                reject("La ficha no se encuentra en una posición válida para ser soltada")
+                reject("La ficha no se encuentra en una posición válida para ser soltada");
+                return;
             }
             const row = this.getLastFreeRow(col);
+            if (col < 0) {
+                reject("La columna ya está llena");
+                return;
+            }
             const handleAnimation = setInterval(()=>{
-                console.log(2);
+                this.setFichaInCell(this.dragDropFicha, row, col);
+                this.dragDropFicha = null;
                 
                 clearInterval(handleAnimation);
-                resolve("OK!")
-            } , 60);
+                resolve("OK!");
+            } , 10);
         });
     }
     
+    setFichaInCell(ficha, row, col) {
+        ficha.x = this.x + this.borderSize + col * this.cellSize + this.cellSize / 2;
+        ficha.y = this.y + this.borderSize + row * this.cellSize + this.cellSize / 2;
+        this.cell[row][col].ficha = this.dragDropFicha;
+    }
+
     /**
      * getLastFreeRow(col)
      * @param {*} col 
      * @returns índice de fila de la última celda vacía en la columna.
      */
     getLastFreeRow(col) {
-        return 3
+        if (col < 0) 
+            return -1;
+        for (let row = this.height - 1; row < this.height; row--) {
+            if (this.cell[row][col].ficha == null) {
+                return row;
+            }
+        }
+        return -1;
     }
 }
