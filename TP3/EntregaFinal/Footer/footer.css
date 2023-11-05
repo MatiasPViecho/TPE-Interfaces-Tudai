@@ -1,0 +1,136 @@
+.footer-container {
+  padding: 20px 0;
+  color: var(--white, #fff);
+  background: var(--main-darker-2, #000);
+  scroll-behavior: smooth;
+}
+.content-container {
+  padding: 0 16px;
+}
+
+.top-footer-content .logo {
+  display: flex;
+  justify-content: center;
+}
+.top-footer-content > * + *,
+.links-container > * + * {
+  margin-top: 16px;
+}
+.list-container h3 {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
+.list-container * + * {
+  margin-top: 4px;
+}
+.list-container ul li {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
+.legals-text {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16px;
+}
+
+.social-media-list {
+  display: flex;
+}
+.social-media-list > * + * {
+  margin-left: 10px;
+}
+
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+@media only screen and (min-width: 577px) {
+  .content-container {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+  #categories {
+    grid-area: categories;
+  }
+  #support {
+    grid-area: support;
+  }
+  #bussiness {
+    grid-area: contact;
+  }
+  .links-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'categories support'
+      'categories contact';
+    margin: 0 auto;
+    gap: 16px;
+    width: 100%;
+  }
+  .links-container > * + * {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .footer-container {
+    padding: 40px 0;
+  }
+  .content-container {
+    max-width: 976px;
+  }
+  .links-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'categories support contact';
+  }
+  .links-container h3 {
+    margin-bottom: 14px;
+  }
+  .bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social-media-list {
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .content-container {
+    max-width: 1200px;
+  }
+  .top-footer-content {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    max-height: 165px;
+    gap: 32px;
+  }
+  .logo {
+    justify-content: center;
+    align-items: center;
+  }
+  .links-container {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+  .links-container:first-child {
+    margin-right: 32px;
+  }
+  .list-container {
+    width: 100%;
+  }
+  .list-container ul {
+    display: flex;
+    max-height: 134px;
+    max-width: 272px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

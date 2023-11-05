@@ -1,0 +1,489 @@
+.my-32 {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+body.hide-scroll {
+  overflow: hidden;
+}
+.play-game-page-container {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.breadcumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--white);
+}
+.breadcumbs .breadcumb {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.play-game-container {
+  display: flex;
+  padding: 16px 0px;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  color: var(--white);
+}
+.play-game-title {
+  padding: 16px;
+  border-radius: 4px;
+  background: var(--black, #0f0d16);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.play-game-row {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background: var(--black, #0f0d16);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.play-game-content {
+  overflow: hidden;
+  border-radius: 2px;
+  width: 100%;
+  object-fit: cover;
+}
+.play-game-row .video {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+.play-game-row aside {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: end;
+}
+.play-game-row .video img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.btn-favourite {
+  cursor: pointer;
+}
+.btn-favourite.not-like path {
+  fill: none;
+}
+
+.game-play-buttom {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  padding-top: 16px;
+  position: relative;
+  border-top: 1px solid var(--main-lighter-2, #dcd6f5);
+}
+.share-card {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.share-card .share-card-background {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.share-card-popup {
+  padding: 32px;
+  position: absolute;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: var(--white, #e9e6f6);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0%);
+  transition: all 1s;
+  opacity: 0;
+}
+.share-card.show .share-card-popup {
+  transform: translate(-50%, -50%) scale(100%);
+  opacity: 1;
+}
+.share-card-popup .close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+.share-card-popup .share-with {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.share-card-popup .share-with svg {
+  cursor: pointer;
+}
+.share-card.show {
+  display: block;
+  z-index: 1000;
+}
+.share-card-popup .title {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* PLAY VIDEO BUTTON */
+.button-play-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.circle {
+  display: block;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 120px;
+  height: 120px;
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 0;
+  transform-origin: 50% 50%;
+  transition: all 0.8s linear 0.2s, opacity 0s linear 0s;
+}
+
+.button-play {
+  display: block;
+  position: relative;
+  border: 8px solid white;
+  box-shadow: 0 4px 6px -3px rgba(0, 0, 0, 0.3),
+    inset 0 3px 4px -2px rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: 112px;
+  height: 112px;
+  transform: scale(0.6);
+  opacity: 0.9;
+  background: grey;
+  background-image: linear-gradient(
+    120deg,
+    rgba(166, 166, 166, 0.3) 50%,
+    grey 51%
+  );
+  border-radius: 50%;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.465, 1.55) 0.2s,
+    border-width 0.4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
+}
+.button-play:before {
+  display: block;
+  position: absolute;
+  content: "";
+  bottom: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-width: 25px 0px 25px 40px;
+  border-radius: 0;
+  border-left-color: white;
+  transform: translate(-13px, 50%);
+}
+.video:hover .button-play,
+.button-play:hover,
+.button-play.active {
+  border: 4px solid white;
+}
+.button-play:hover .circle,
+.button-play.active .circle {
+  stroke-dasharray: -1000px;
+  stroke-dashoffset: -500px;
+  opacity: 0;
+  transition: all 2s linear 0.3s, opacity 0.1s linear 2s;
+}
+.video:hover .button-play:before,
+.button-play:hover:before,
+.button-play.active:before {
+  -webkit-animation: playJump 0.5s linear infinite;
+  animation: playJump 0.5s linear infinite;
+}
+
+@-webkit-keyframes playJump {
+  0% {
+    transform: translate(-13px, 60%) scale(1.1, 0.7);
+  }
+  10% {
+    transform: translate(-13px, 30%) scale(0.9, 1.2);
+  }
+  20% {
+    transform: translate(-13px, 15%);
+  }
+  40% {
+    transform: translate(-13px, 10%);
+  }
+  50% {
+    transform: translate(-13px, 10%);
+  }
+  55% {
+    transform: translate(-13px, 18%);
+  }
+  60% {
+    transform: translate(-13px, 20%);
+  }
+  65% {
+    transform: translate(-13px, 25%);
+  }
+  70% {
+    transform: translate(-13px, 30%);
+  }
+  90% {
+    transform: translate(-13px, 60%) scale(1.2, 0.7);
+  }
+  100% {
+    transform: translate(-13px, 60%) scale(1.4, 0.7);
+  }
+}
+
+@keyframes playJump {
+  0% {
+    transform: translate(-13px, 60%) scale(1.1, 0.7);
+  }
+  10% {
+    transform: translate(-13px, 30%) scale(0.9, 1.2);
+  }
+  20% {
+    transform: translate(-13px, 15%);
+  }
+  40% {
+    transform: translate(-13px, 10%);
+  }
+  50% {
+    transform: translate(-13px, 10%);
+  }
+  55% {
+    transform: translate(-13px, 18%);
+  }
+  60% {
+    transform: translate(-13px, 20%);
+  }
+  65% {
+    transform: translate(-13px, 25%);
+  }
+  70% {
+    transform: translate(-13px, 30%);
+  }
+  90% {
+    transform: translate(-13px, 60%) scale(1.2, 0.7);
+  }
+  100% {
+    transform: translate(-13px, 60%) scale(1.4, 0.7);
+  }
+}
+
+/* COMMENTS */
+
+.comments-games {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1200px;
+  gap: 32px;
+}
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0px;
+  color: white;
+  gap: 32px;
+}
+.comment-container .input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 12px 16px;
+}
+.comment-container .input-container .title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.comment-container .input-container .title-container h2 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 33px;
+}
+.comment-container .input-container .input-btn-container {
+  display: flex;
+  gap: 16px;
+  max-width: 768px;
+  align-items: center;
+}
+
+.comment-container .input-container .input-btn-container input {
+  border-radius: 8px;
+  border: 2px solid var(--Negro, #0f0d16);
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  gap: 10px;
+  width: 645px;
+}
+.comment-container .input-container .input-btn-container button {
+  border-radius: 4px;
+  border: 1px solid var(--Primario-S2, #100a29);
+  background: var(--Acento, #f8c630);
+  display: flex;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.comment-container .input-container .input-btn-container button:hover{
+  border: 1px solid var(--Acento, #f8c630);
+  background: var(--Primario-S2, #100a29);
+  color: var(--Acento, #f8c630);
+}
+.comment-container .box-comments {
+  display: flex;
+  padding: 0px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.comment-container .box-comments .box-detail {
+  display: flex;
+  max-width: 750px;
+  padding: 16px 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--Primario-S2, #100a29);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.comment-container .box-comments .box-detail .profile-info {
+  display: flex;
+  padding-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid var(--Primario-L1, #9785e0);
+}
+.comment-container .box-comments .box-detail .profile-info .avatar-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.comment-container .box-comments .box-detail .profile-info .avatar-name img {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 48px;
+  border: 2px solid var(--Blanco, #e9e6f6);
+  background: lightgray 50% / cover no-repeat;
+}
+.comment-container .box-comments .box-detail .profile-info .avatar-name p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.comment-container .box-comments .box-detail .profile-info .like-number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.like-number svg {
+  cursor: pointer;
+}
+.comment-container .box-comments .box-detail .text {
+  display: flex;
+  padding: 10px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+.comment-container .box-comments .box-detail .time-comment {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.comments-games .games-sidebar {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  gap: 24px;
+}
+.games-sidebar .title-games{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 12px;
+}
+.title-games h1 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 33px;
+  color: var(--white);
+}
+.games-sidebar .cards-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.games-sidebar .cards-sidebar li .game-card {
+  transform: none;
+}
+.games-sidebar .cards-sidebar li .game-card:hover{
+  box-shadow: none;
+}
+
+/* FIN COMMENTS */
+
+/* FONTS */
+/* H2 */
+h2,
+.h2 {
+  font-family: Ubuntu;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 33px;
+}
