@@ -70,49 +70,58 @@ export class Tablero {
         const { cellSize, borderSize, ctx } = this;
         const boardX = this.x;
         const boardY = this.y;
+
         // draw top-left corner
-        ctx.drawImage(this.imgCornerTopLeft, 
-            boardX, boardY, 
-            borderSize, borderSize);
+        this.imgCornerTopLeft && ctx.drawImage(this.imgCornerTopLeft, 
+                boardX, boardY, 
+                borderSize, borderSize);
+
         // draw top border
-        ctx.drawImage(this.imgBorderTop, 
-            boardX + borderSize, boardY, 
-            cellSize * this.width, borderSize);
+        this.imgBorderTop && ctx.drawImage(this.imgBorderTop, 
+                boardX + borderSize, boardY, 
+                cellSize * this.width, borderSize);
+
         // draw top right corner
-        ctx.drawImage(this.imgCornerTopRight, 
+        this.imgCornerTopRight && ctx.drawImage(this.imgCornerTopRight, 
             boardX + borderSize + cellSize * this.width, boardY, 
             borderSize, borderSize);
         
         let currentY = boardY + borderSize;
         for (let y = 0; y < this.height; y++) {
             // Draw border Left
-            ctx.drawImage(this.imgBorderLeft, 
+            this.imgBorderLeft && ctx.drawImage(this.imgBorderLeft, 
                 boardX, currentY, 
-                borderSize, cellSize);      
+                borderSize, cellSize);  
+
             let currentX = boardX + borderSize;
             for (let x = 0; x < this.width; x++) {
-                
-                ctx.drawImage(this.imgCell, 
+                // Draw cell (x, y)
+                this.imgCell && ctx.drawImage(this.imgCell, 
                     currentX, currentY, 
-                    cellSize, cellSize);   
+                    cellSize, cellSize);
+
                 currentX += cellSize;
             }
+
             // Draw border right
-            ctx.drawImage(this.imgBorderRight, 
+            this.imgBorderRight && ctx.drawImage(this.imgBorderRight, 
                 boardX + borderSize + cellSize * this.width, currentY, 
                 borderSize, cellSize);   
             currentY += cellSize;         
         }
+
         // draw botom left corner 
-        ctx.drawImage(this.imgCornerBotomLeft, 
+        this.imgCornerBotomLeft && ctx.drawImage(this.imgCornerBotomLeft, 
             boardX, currentY, 
             borderSize, borderSize);
+
         // draw botom border
-        ctx.drawImage(this.imgBorderBotom, 
+        this.imgBorderBotom && ctx.drawImage(this.imgBorderBotom, 
             boardX + borderSize, currentY, 
             cellSize * this.width, borderSize);
+
         // draw botom right corner
-        ctx.drawImage(this.imgCornerBotomRight, 
+        this.imgCornerBotomRight && ctx.drawImage(this.imgCornerBotomRight, 
             boardX + borderSize + cellSize * this.width, currentY, 
             borderSize, borderSize);
         

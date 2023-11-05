@@ -1,4 +1,4 @@
-import { Juego } from "../../test-canvas/js/Juego.js";
+import { Juego } from "./js/Juego.js";
 
 document.querySelectorAll(".btn-favourite").forEach((btn) => {
   btn.addEventListener("click", () => btn.classList.toggle("not-like"));
@@ -27,4 +27,12 @@ const canvas = document.querySelector("canvas#game");
 // canvas.height = 300;
 canvas.width = canvas.parentElement.clientWidth;
 canvas.height = canvas.parentElement.clientHeight;
-new Juego(canvas);
+
+// TODO: CARGAR JUEGO AL LLENAR FORMULARIO PERSONALIZADO
+window.onload = () => {
+  // Para un n en raya pasar por parametro  tipoJuego: n
+  new Juego(canvas, {
+    tipoJuego: 4
+  });
+
+}

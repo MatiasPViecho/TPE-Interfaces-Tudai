@@ -36,7 +36,7 @@ export class Juego {
 
     constructor(canvas, options = {}) {
         const { 
-            tipoJuego = 5
+            tipoJuego = 4
         } = options;
         this.tipoJuego = tipoJuego;
         this.canvas = canvas;
@@ -58,7 +58,7 @@ export class Juego {
 
     load() {
         const { ctx, canvas } = this;
-        const boardBorderSize = 30;
+        const boardBorderSize = 15;
 
         const cellSize = Math.min(
             (canvas.width * 6/10 - 2 * boardBorderSize) / this.cantidadFichasX,
@@ -125,13 +125,11 @@ export class Juego {
 
     reDrawGame() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.tablero.draw();
+        try {
+        } catch { }
         for (let i = 0; i < this.fichas.length; i++) {
             this.fichas[i].draw();
-        }
-        try {
-            this.tablero.draw();
-        } catch {
-
         }
     }
 
