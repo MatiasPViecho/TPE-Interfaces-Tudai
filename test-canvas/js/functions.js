@@ -6,6 +6,6 @@ export function getRelativePos(event) {
     }
 }
 
-export function selectRandom(array) {
+export function selectRandom( array) {
     return array[Math.floor(Math.random() * array.length)];
 }

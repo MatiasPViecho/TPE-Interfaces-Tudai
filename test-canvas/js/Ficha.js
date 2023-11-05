@@ -8,7 +8,7 @@ export class Ficha extends Figura {
 
     constructor(args = {}) {
         const {x, y, diametro, ctx, imageUrl} = args;
-        console.log({x, y, diametro, ctx, imageUrl});
+        // console.log({x, y, diametro, ctx, imageUrl});
         
         super(x, y, ctx, null);
         this.imageUrl = imageUrl;
@@ -75,14 +75,30 @@ export class Ficha extends Figura {
     mouseMoveDragDrop(event) {
         const canvasPos = getRelativePos(event, event.target);
         const { startX, startY, startCanvasX, startCanvasY } = this.dragDropInfo;
-        console.log({ startX, startY, startCanvasX, startCanvasY });
-        console.log(this.dragDropInfo);
+        // console.log({ startX, startY, startCanvasX, startCanvasY });
+        // console.log(this.dragDropInfo);
         this.x = startX + canvasPos.x - startCanvasX;
         this.y = startY + canvasPos.y - startCanvasY;
     }
 
-    cancelDragDrop(canvasX, canvasY, event) {
-
+    cancelDragDrop() {
+        const { startX, startY } = this.dragDropInfo;
+        const ficha = this;
+        // La ficha debe voler a (startX, startY)
+        const deltaX = (startX - ficha.x) / 30;
+        const deltaY = (startY - ficha.y) / 30;
+        const regresarPiezaInterval = setInterval(() => {
+            console.log('cancelar-volver')
+            ficha.x += deltaX;
+            ficha.y += deltaY;  
+            if ( Math.abs(startX - ficha.x) < 10) {
+                console.log(regresarPiezaInterval);
+                console.log('cancel-volver-fin')
+                clearInterval(regresarPiezaInterval);
+                this.x = startX;
+                this.y = startY;
+            }
+        }, 1000 / 200)
     }
 
     finishDragDrop(canvasX, canvasY, event) {
