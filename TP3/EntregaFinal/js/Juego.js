@@ -14,6 +14,7 @@ export class Juego {
     diametro = 65;
     dragDropInterval = null;
     dragDropFicha = null;
+    
     jugadores = [
         {
             id: 'linux',
@@ -146,6 +147,7 @@ export class Juego {
                     if (ficha.isInsidePosition(p.x, p.y)) {
                         // console.log(ficha);
                         game.dragDropFicha = ficha;
+                        game.tablero.dragDropFicha = ficha;
                         // game.dragDropInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
                         game.fichas.splice(i, 1);
                         game.fichas.push(ficha);
@@ -153,6 +155,7 @@ export class Juego {
                         // const p = getRelativePos(event);
                         game.dragDropFicha.startDragDrop(event);
                         game.canvas.addEventListener('mousemove', mouseMoveEvent); 
+
                         break;
                     }
                 }
@@ -163,20 +166,27 @@ export class Juego {
         this.canvas.addEventListener('mouseup', (event) => {
 
             if (game.dragDropFicha && event.buttons==0) {
-                game.dragDropFicha.cancelDragDrop();
+                console.log(game.tablero.currentDropDownColumn);
+                
+                if (game.tablero.currentDropDownColumn < 0) {
+                    // Si no se soltó la ficha en una zona válida se le soliticta que vuelva a su 
+                    // posición original
+                    game.dragDropFicha.cancelDragDrop();
+                }
                 game.dragDropFicha = null;
                 // clearInterval(game.dragDropInterval);
                 game.canvas.removeEventListener('mousemove', mouseMoveEvent);
+                game.tablero.drawDropZone = false;
                 game.reDrawGame();
-
             }
         });
 
         function mouseMoveEvent(event) {
             // console.log('mouseMoveEvent');
+            game.tablero.drawDropZone = true;
             game.dragDropFicha.mouseMoveDragDrop(event);
         }
-
+        // Evita que aparezca menú al hace click derecho
         this.canvas.addEventListener("contextmenu",  e => e.preventDefault());
     }
 

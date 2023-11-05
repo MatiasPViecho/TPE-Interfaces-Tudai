@@ -27,7 +27,6 @@ export class Ficha extends Figura {
 
     /**
      * Carga imagen de la ficha a partir de url de imagen de la ficha
-     * Se 
      */
     loadImage(imageUrl) {
         const imgFichaOriginal = new Image();

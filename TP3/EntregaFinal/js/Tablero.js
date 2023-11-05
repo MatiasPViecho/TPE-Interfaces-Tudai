@@ -3,6 +3,9 @@ export class Tablero {
     "use strict";
     cell;
     imgs;
+    drawDropZone = false;
+    dropDownZone;
+    dragDropFicha;
 
     constructor(args = {}) {
         const {
@@ -64,6 +67,13 @@ export class Tablero {
         const cell = new Image();
         cell.src = "./resources/tablero/cell.png";
         cell.onload = () => this.imgCell = cell;
+        
+        this.dropDownZone = {
+            x: this.x + + this.borderSize,
+            y: this.y - this.borderSize - this.cellSize,
+            width: this.cellSize * this.width,
+            height: this.cellSize + this.borderSize /2
+        }
     }
 
     draw() {
@@ -125,5 +135,48 @@ export class Tablero {
             boardX + borderSize + cellSize * this.width, currentY, 
             borderSize, borderSize);
         
+        if (this.drawDropZone) {
+            const {x, y, width, height} = this.dropDownZone;
+            this.ctx.fillStyle= "#1111FF40";
+            this.ctx.beginPath();
+            // this.this.ctx.fillRect(x, y, width, height)
+            this.ctx.roundRect(x - this.borderSize, y, width + 2 * this.borderSize, height, this.borderSize);
+            // this.ctx.stroke();
+            this.ctx.fill();
+
+            // highlight column
+            const n = this.currentDropDownColumn;
+            if (n >= 0) {
+                this.ctx.fillStyle= "#1111FF40";
+                this.ctx.beginPath();
+                // this.this.ctx.fillRect(x, y, width, height)
+                // TODO: en vez de resaltar la columna completa debería resaltar sólo las celdas libres de la columna
+                this.ctx.roundRect(boardX + this.borderSize + this.cellSize * n, boardY + this.borderSize, 
+                    this.cellSize, this.cellSize * this.height, this.borderSize);
+                // this.ctx.stroke();
+                this.ctx.fill();
+            }
+        }
+
+
+    }
+
+    /**
+     * currentDropDownColumn()
+     * @returns valid column number if is valid the position of dropDownFicha or return -1
+     */
+    get currentDropDownColumn() {
+        const {x, y, width, height} = this.dropDownZone;
+        const ficha = this.dragDropFicha;
+        if (!ficha) 
+            return -1;
+        if (ficha.x < x || x + width < ficha.x) {
+            return -1;
+        }
+        if (ficha.y < y || y + height < ficha.y) {
+            return -1;
+        }
+
+        return Math.floor((ficha.x - x) / this.cellSize);
     }
 }
