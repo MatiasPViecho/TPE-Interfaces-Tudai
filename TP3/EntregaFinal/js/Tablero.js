@@ -245,7 +245,7 @@ export class Tablero {
   dragDropOver() {
     return new Promise((resolve, reject) => {
       if (!this.dragDropFicha) {
-        reject("Tablero no coce ficha para colocar");
+        reject("Tablero no conoce la ficha para colocar");
         return;
       }
       const col = this.currentDropDownColumn;
@@ -277,7 +277,7 @@ export class Tablero {
       let t = 0; //tiempo
       let g = 9.8; //aceleración
       let d = 0; //distancia recorrida
-      let rebotes = 1; // cantidad de veces que rebota la ficha al caer
+      let rebotes = 2; // cantidad de veces que rebota la ficha al caer
       const handleAnimation = setInterval(() => {
         // Simula tiempo transcurrido
         t += 0.25;
@@ -285,7 +285,7 @@ export class Tablero {
         d = vi * t + g * t * t;
         ficha.y = Math.min(destinationY, initialY + d);
 
-        if (ficha.y == destinationY) {
+        if (ficha.y === destinationY) {
           if (rebotes > 0) {
             rebotes--;
             // Define vi negativa basada en la velocidad final g*t
@@ -315,7 +315,7 @@ export class Tablero {
   getLastFreeRow(col) {
     if (col < 0) return -1;
     for (let row = this.height - 1; row >= 0; row--) {
-      if (this.cell[row][col] == null) {
+      if (this.cell[row][col] === null) {
         return row;
       }
     }
@@ -400,7 +400,7 @@ export class Tablero {
     let col = fromCol + incCol;
     while (row >= 0 && row < this.height && col >= 0 && col < this.width) {
       const xJugador = this.cell[row][col]?.jugador;
-      if (jugador == xJugador) {
+      if (jugador === xJugador) {
         matches++;
       } else {
         break;

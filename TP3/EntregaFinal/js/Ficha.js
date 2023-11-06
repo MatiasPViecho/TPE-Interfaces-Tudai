@@ -137,12 +137,9 @@ export class Ficha extends Figura {
         const deltaX = (startX - ficha.x) / 30;
         const deltaY = (startY - ficha.y) / 30;
         const regresarPiezaInterval = setInterval(() => {
-            // console.log('cancelar-volver')
             ficha.x += deltaX;
             ficha.y += deltaY;  
-            if ( Math.abs(startX - ficha.x) < 10) {
-                // console.log(regresarPiezaInterval);
-                // console.log('cancel-volver-fin')
+            if ( Math.abs(startX - ficha.x) < 10 && Math.abs(startY - ficha.y) < 10) {
                 clearInterval(regresarPiezaInterval);
                 this.x = startX;
                 this.y = startY;

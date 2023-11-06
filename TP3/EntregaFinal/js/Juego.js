@@ -18,19 +18,21 @@ export class Juego {
   jugadores = [
     {
       id: "linux",
-      urlFicha: selectRandom([
+      urlFicha: null,
+      urlsFicha: [
           "./resources/linux1.png",
           "./resources/linux2.png",
           "./resources/linux3.png",
-      ]),
+      ],
     },
     {
       id: "windows",
-      urlFicha: selectRandom([
+      urlFicha: null,
+      urlsFicha: [
         "./resources/windows1.png",
         "./resources/windows2.png",
         "./resources/windows3.png",
-      ]),
+      ],
     },
   ];
 
@@ -97,6 +99,7 @@ export class Juego {
       height: canvas.height / 2 - padding,
     };
 
+    this.fichas = new Array();
     this.jugadores.forEach((jugador) => {
       for (let n = 0; n < this.cantidadFichasPorJugador; n++) {
         const d = this.diametro;
@@ -111,7 +114,7 @@ export class Juego {
           diametro: d,
           ctx,
           jugador: jugador.id,
-          imageUrl: jugador.urlFicha,
+          imageUrl: jugador.urlFicha ?? selectRandom(jugador.urlsFicha),
         });
 
         this.fichas.push(ficha);
@@ -140,22 +143,18 @@ export class Juego {
           const ficha = this.fichas[i];
           const p = getRelativePos(event);
           if (ficha.isInsidePosition(p.x, p.y)) {
-            // console.log(ficha);
             game.dragDropFicha = ficha;
             game.tablero.dragDropFicha = ficha;
-            // game.dragDropInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
             game.fichas.splice(i, 1);
             game.fichas.push(ficha);
             ficha.draw();
-            // const p = getRelativePos(event);
-            game.dragDropFicha.startDragDrop(event);
+            ficha.startDragDrop(event);
             game.canvas.addEventListener("mousemove", mouseMoveEvent);
 
             break;
           }
         }
       }
-      // console.log(getRelativePos(event));
     });
 
     this.canvas.addEventListener("mouseup", (event) => {
@@ -168,12 +167,12 @@ export class Juego {
           .dragDropOver()
           .then(
             (result) => {
+                // terminó la animación de colocación de la pieza
                 const win = game.tablero.checkForWinner(result.row, result.col, this.tipoJuego);
                 if (win) {
                     // Lógica ganadora
                     console.log('JUEGO TERMINADO', win)
                 }
-              // aquí terminó la animación de colocar la pieza
             },
             (error) => {
               console.log(error);
@@ -182,7 +181,6 @@ export class Juego {
             }
           )
 
-        // clearInterval(game.dragDropInterval);
         game.canvas.removeEventListener("mousemove", mouseMoveEvent);
         game.tablero.drawDropZone = false;
         game.reDrawGame();
