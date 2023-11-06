@@ -22,11 +22,21 @@ shareCard.addEventListener("click", (event) => {
 
 btnCompartir.addEventListener("click", () => shareCard.classList.add("show"));
 
+const btnStart = document.getElementById('start-game');
+const formGame = document.getElementById('game-setup')
+
 // TODO: CARGAR JUEGO AL LLENAR FORMULARIO PERSONALIZADO
 const canvas = document.querySelector("canvas#game");
 canvas.width = canvas.parentElement.clientWidth;
 canvas.height = canvas.parentElement.clientHeight;
 // Para un n en raya pasar por parametro  tipoJuego: n
-new Juego(canvas, {
-  tipoJuego: 4
-});
+btnStart.addEventListener('click', (e) => {
+  e.preventDefault()
+  formGame.classList.add('hidden')
+
+  const selectedBoardSize = document.querySelector('input[name="board-size"]:checked').value;
+  new Juego(canvas, {
+    tipoJuego: parseInt(selectedBoardSize)
+  });
+
+})

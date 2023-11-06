@@ -493,6 +493,22 @@
           <h1 class="play-game-title">¡¡Windows VS Linux!</h1>
           <div class="play-game-row">
             <div class="play-game-content">
+              <form id="game-setup">
+                <h2>WINDOWS vs LINUX</h2>
+                <p>TIPO DE JUEGO</p>
+                <div class="inputs-check">
+                  <label>
+                    <input  type="radio" name="board-size" value="4" checked/> 4 en linea
+                  </label>
+                  <label>
+                    <input type="radio"  name="board-size" value="5"/> 5 en linea
+                  </label>
+                  <label>
+                    <input type="radio"  name="board-size" value="6"/> 6 en linea
+                  </label>
+                </div>
+                <button id="start-game">Iniciar Juego</button>
+              </form>
               <canvas id="game"></canvas>
             </div>
             <aside>
