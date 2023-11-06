@@ -168,6 +168,11 @@ export class Juego {
           .dragDropOver()
           .then(
             (result) => {
+                const win = game.tablero.checkForWinner(result.row, result.col, this.tipoJuego);
+                if (win) {
+                    // Lógica ganadora
+                    console.log('JUEGO TERMINADO', win)
+                }
               // aquí terminó la animación de colocar la pieza
             },
             (error) => {
