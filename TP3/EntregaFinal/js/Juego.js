@@ -17,6 +17,7 @@ export class Juego {
   dragDropFicha = null;
   turnoJugador = null;
   turnTimer = null;
+  secondsPerTurn = 30;
 
   jugadores = [
     {
@@ -42,12 +43,13 @@ export class Juego {
   ];
 
   constructor(canvas, options = {}) {
-    const { tipoJuego = 4 } = options;
+    const { tipoJuego = 4, secondsPerTurn = 30 } = options;
     this.tipoJuego = tipoJuego;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.turnTimer = new TurnTimer(0, 0, this.ctx);
     this.load();
+    this.secondsPerTurn = secondsPerTurn;
   }
 
   get cantidadFichasY() {
@@ -93,16 +95,16 @@ export class Juego {
     const padding = 30;
     this.jugadores[0].regionFichas = {
       x: padding,
-      y: boardY + 130 + padding / 2,
+      y: boardY + 130,
       width: boardX - 2 * padding,
-      height: canvas.height - (boardY + 130 + padding),
+      height: canvas.height - (boardY + 140),
     };
 
     this.jugadores[1].regionFichas = {
       x: canvas.width - boardX + padding,
-      y: canvas.height / 2,
+      y: boardY + 130,
       width: boardX - 2 * padding,
-      height: canvas.height / 2 - padding,
+      height: canvas.height - (boardY + 140),
     };
 
     this.fichas = new Array();
@@ -156,6 +158,7 @@ export class Juego {
             game.fichas.push(ficha);
             ficha.draw();
             ficha.startDragDrop(event);
+            game.handleMouseMoveEvent = mouseMoveEvent;
             game.canvas.addEventListener("mousemove", mouseMoveEvent);
 
             break;
@@ -202,8 +205,8 @@ export class Juego {
     });
 
     function mouseMoveEvent(event) {
-      game.tablero.drawDropZone = true;
-      game.dragDropFicha.mouseMoveDragDrop(event);
+        game.tablero.drawDropZone = true;
+        game.dragDropFicha.mouseMoveDragDrop(event);
     }
     // Evita que aparezca menú al hace click derecho
     this.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
@@ -220,8 +223,13 @@ export class Juego {
     this.turnTimer.y = this.tablero.y
 
     this.turnTimer.maxWidth = this.turnoJugador.regionFichas.width
-    this.turnTimer.start(5).then( () => {
+    this.turnTimer.start(this.secondsPerTurn).then( () => {
       // Tiempo terminado
+      if (this.dragDropFicha) {
+        this.dragDropFicha.cancelDragDrop()
+        this.tablero.drawDropZone = false;
+        this.canvas.removeEventListener("mousemove", this.handleMouseMoveEvent);
+      }
       this.siguienteTurno(this.turnoJugador);
     }
     );

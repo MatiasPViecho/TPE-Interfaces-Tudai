@@ -52,7 +52,6 @@ export class TurnTimer  {
 
     draw() {
         if (this.handleTimer && !this.pausedTime) {
-            console.log(this.x, this.y)
             const ctx = this.ctx;
             ctx.textAlign="center";
                             
@@ -61,7 +60,7 @@ export class TurnTimer  {
             ctx.fillText("Turno", this.x, this.y + 30, this.maxWidth);
             ctx.fillText(this.jugador, this.x, this.y + 60, this.maxWidth);
             ctx.font="italic small-caps bold 30pt Verdana";
-            ctx.fillText(Math.max(0, this.current) + " Seg", this.x, this.y + 100, this.maxWidth);
+            ctx.fillText(Math.max(0, this.current) + " seg", this.x, this.y + 105, this.maxWidth);
         }
     }
 
