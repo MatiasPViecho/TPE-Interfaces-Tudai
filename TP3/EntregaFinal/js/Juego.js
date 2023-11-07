@@ -43,7 +43,7 @@ export class Juego {
   ];
 
   constructor(canvas, options = {}) {
-    const { tipoJuego = 4, secondsPerTurn = 3 } = options;
+    const { tipoJuego = 4, secondsPerTurn = 10 } = options;
     this.tipoJuego = tipoJuego;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");

@@ -36,7 +36,8 @@ btnStart.addEventListener('click', (e) => {
 
   const selectedBoardSize = document.querySelector('input[name="board-size"]:checked').value;
   new Juego(canvas, {
-    tipoJuego: parseInt(selectedBoardSize)
+    tipoJuego: parseInt(selectedBoardSize),
+    secondsPerTurn: 30
   });
 
 })

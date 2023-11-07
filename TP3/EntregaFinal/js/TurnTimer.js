@@ -52,6 +52,19 @@ export class TurnTimer  {
 
     draw() {
         if (this.handleTimer && !this.pausedTime) {
+
+            this.ctx.fillStyle = "#1111FF15";
+            this.ctx.beginPath();
+            this.ctx.roundRect(
+              this.x - this.maxWidth / 2 - 10,
+              this.y,
+              this.maxWidth + 20,
+              120,
+              15
+            );
+            // this.ctx.stroke();
+            this.ctx.fill();
+
             const ctx = this.ctx;
             ctx.textAlign="center";
                             
