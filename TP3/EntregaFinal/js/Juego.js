@@ -187,7 +187,13 @@ export class Juego {
                   // Acciones de ganador
                   console.log('JUEGO TERMINADO', win)
                 } else {
-                  this.siguienteTurno(ultimoTurno);
+                  // chequea por empate
+                  if (this.fichas.length === 0) {
+                    console.log('JUEGO EMPATADO')
+                    game.turnTimer.cancel();
+                  } else {
+                    this.siguienteTurno(ultimoTurno);
+                  }
                 }
             },
             (error) => {
