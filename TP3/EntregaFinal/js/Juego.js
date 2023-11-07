@@ -2,6 +2,7 @@
 
 import { Ficha } from "./Ficha.js";
 import { Tablero } from "./Tablero.js";
+import { TurnTimer } from "./TurnTimer.js";
 import { getRelativePos, selectRandom } from "./functions.js";
 
 export class Juego {
@@ -15,10 +16,11 @@ export class Juego {
   dragDropInterval = null;
   dragDropFicha = null;
   turnoJugador = null;
+  turnTimer = null;
 
   jugadores = [
     {
-      id: "linux",
+      id: "Linux",
       urlFicha: null,
       urlsFicha: [
           "./resources/linux1.png",
@@ -28,7 +30,7 @@ export class Juego {
       regionFichas: null
     },
     {
-      id: "windows",
+      id: "Windows",
       urlFicha: null,
       urlsFicha: [
         "./resources/windows1.png",
@@ -44,6 +46,7 @@ export class Juego {
     this.tipoJuego = tipoJuego;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
+    this.turnTimer = new TurnTimer(0, 0, this.ctx);
     this.load();
   }
 
@@ -90,9 +93,9 @@ export class Juego {
     const padding = 30;
     this.jugadores[0].regionFichas = {
       x: padding,
-      y: canvas.height / 2,
+      y: boardY + 130 + padding / 2,
       width: boardX - 2 * padding,
-      height: canvas.height / 2 - padding,
+      height: canvas.height - (boardY + 130 + padding),
     };
 
     this.jugadores[1].regionFichas = {
@@ -130,6 +133,7 @@ export class Juego {
   reDrawGame() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.tablero.draw();
+    this.turnTimer.draw();
     for (let i = 0; i < this.fichas.length; i++) {
       this.fichas[i].draw();
     }
@@ -168,6 +172,7 @@ export class Juego {
         game.fichas.splice(i, 1);
         const ultimoTurno = this.turnoJugador;
         this.turnoJugador = null;
+        this.turnTimer.pause(); // pausa
         game.tablero
           .dragDropOver()
           .then(
@@ -182,6 +187,7 @@ export class Juego {
                 }
             },
             (error) => {
+              this.turnTimer.pause(); //reanuda
               console.log(error);
               this.turnoJugador = ultimoTurno;
               ficha.cancelDragDrop();
@@ -208,6 +214,17 @@ export class Juego {
       this.turnoJugador = this.jugadores.find(jugador => ultimoJugador.id !== jugador.id);
     else
       this.turnoJugador = selectRandom(this.jugadores);
+
+    this.turnTimer.jugador = this.turnoJugador.id;
+    this.turnTimer.x = this.turnoJugador.regionFichas.x + this.turnoJugador.regionFichas.width / 2;
+    this.turnTimer.y = this.tablero.y
+
+    this.turnTimer.maxWidth = this.turnoJugador.regionFichas.width
+    this.turnTimer.start(5).then( () => {
+      // Tiempo terminado
+      this.siguienteTurno(this.turnoJugador);
+    }
+    );
     // console.log('SIGUIENTE TURNO '+ this.turnoJugador.id, ultimoJugador);
   }
 }
