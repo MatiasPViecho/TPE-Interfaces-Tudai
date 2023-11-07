@@ -14,6 +14,7 @@ export class Juego {
   diametro = 65;
   dragDropInterval = null;
   dragDropFicha = null;
+  turnoJugador = null;
 
   jugadores = [
     {
@@ -24,6 +25,7 @@ export class Juego {
           "./resources/linux2.png",
           "./resources/linux3.png",
       ],
+      regionFichas: null
     },
     {
       id: "windows",
@@ -33,6 +35,7 @@ export class Juego {
         "./resources/windows2.png",
         "./resources/windows3.png",
       ],
+      regionFichas: null
     },
   ];
 
@@ -113,7 +116,7 @@ export class Juego {
           y: region.y + centroY,
           diametro: d,
           ctx,
-          jugador: jugador.id,
+          idJugador: jugador.id,
           imageUrl: jugador.urlFicha ?? selectRandom(jugador.urlsFicha),
         });
 
@@ -135,14 +138,14 @@ export class Juego {
   startGame() {
     const game = this;
     game.dragDropInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
-    this.reDrawGame();
+    game.siguienteTurno();
 
     this.canvas.addEventListener("mousedown", (event) => {
-      if (!game.dragDropFicha && event.buttons == 1) {
+      if (game.turnoJugador && !game.dragDropFicha && event.buttons == 1) {
         for (let i = game.fichas.length - 1; i >= 0; i--) {
           const ficha = this.fichas[i];
           const p = getRelativePos(event);
-          if (ficha.isInsidePosition(p.x, p.y)) {
+          if (ficha.idJugador === game.turnoJugador.id && ficha.isInsidePosition(p.x, p.y)) {
             game.dragDropFicha = ficha;
             game.tablero.dragDropFicha = ficha;
             game.fichas.splice(i, 1);
@@ -163,6 +166,8 @@ export class Juego {
         game.dragDropFicha = null;
         const i = this.fichas.indexOf(ficha);
         game.fichas.splice(i, 1);
+        const ultimoTurno = this.turnoJugador;
+        this.turnoJugador = null;
         game.tablero
           .dragDropOver()
           .then(
@@ -170,12 +175,15 @@ export class Juego {
                 // terminó la animación de colocación de la pieza
                 const win = game.tablero.checkForWinner(result.row, result.col, this.tipoJuego);
                 if (win) {
-                    // Lógica ganadora
-                    console.log('JUEGO TERMINADO', win)
+                  // Acciones de ganador
+                  console.log('JUEGO TERMINADO', win)
+                } else {
+                  this.siguienteTurno(ultimoTurno);
                 }
             },
             (error) => {
               console.log(error);
+              this.turnoJugador = ultimoTurno;
               ficha.cancelDragDrop();
               game.fichas.push(ficha);
             }
@@ -188,11 +196,18 @@ export class Juego {
     });
 
     function mouseMoveEvent(event) {
-      // console.log('mouseMoveEvent');
       game.tablero.drawDropZone = true;
       game.dragDropFicha.mouseMoveDragDrop(event);
     }
     // Evita que aparezca menú al hace click derecho
     this.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+  }
+
+  siguienteTurno(ultimoJugador = null) {
+    if (ultimoJugador)
+      this.turnoJugador = this.jugadores.find(jugador => ultimoJugador.id !== jugador.id);
+    else
+      this.turnoJugador = selectRandom(this.jugadores);
+    // console.log('SIGUIENTE TURNO '+ this.turnoJugador.id, ultimoJugador);
   }
 }

@@ -394,12 +394,12 @@ export class Tablero {
    * @returns cantidad de coincidencias
    */
   countConsecutiveMatches(fromRow, fromCol, incRow, incCol) {
-    const jugador = this.cell[fromRow][fromCol].jugador;
+    const jugador = this.cell[fromRow][fromCol].idJugador;
     let matches = 0;
     let row = fromRow + incRow;
     let col = fromCol + incCol;
     while (row >= 0 && row < this.height && col >= 0 && col < this.width) {
-      const xJugador = this.cell[row][col]?.jugador;
+      const xJugador = this.cell[row][col]?.idJugador;
       if (jugador === xJugador) {
         matches++;
       } else {
