@@ -17,7 +17,7 @@ export class Juego {
   dragDropFicha = null;
   turnoJugador = null;
   turnTimer = null;
-  secondsPerTurn = 30;
+  secondsPerTurn;
 
   jugadores = [
     {
@@ -43,13 +43,13 @@ export class Juego {
   ];
 
   constructor(canvas, options = {}) {
-    const { tipoJuego = 4, secondsPerTurn = 30 } = options;
+    const { tipoJuego = 4, secondsPerTurn = 3 } = options;
     this.tipoJuego = tipoJuego;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.turnTimer = new TurnTimer(0, 0, this.ctx);
-    this.load();
     this.secondsPerTurn = secondsPerTurn;
+    this.load();
   }
 
   get cantidadFichasY() {
@@ -183,6 +183,7 @@ export class Juego {
                 // terminó la animación de colocación de la pieza
                 const win = game.tablero.checkForWinner(result.row, result.col, this.tipoJuego);
                 if (win) {
+                  game.turnTimer.cancel();
                   // Acciones de ganador
                   console.log('JUEGO TERMINADO', win)
                 } else {
@@ -231,8 +232,12 @@ export class Juego {
         this.canvas.removeEventListener("mousemove", this.handleMouseMoveEvent);
       }
       this.siguienteTurno(this.turnoJugador);
+    },
+    (error) => {
+      // Promesa cancelada.
+      // Nothing to do. Timer cancelado (cambio de turno o fin de juego)
+      // Se agrega esto para que no salga error en consola.
     }
     );
-    // console.log('SIGUIENTE TURNO '+ this.turnoJugador.id, ultimoJugador);
   }
 }
