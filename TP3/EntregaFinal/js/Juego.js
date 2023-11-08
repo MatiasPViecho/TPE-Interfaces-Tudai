@@ -21,6 +21,7 @@ export class Juego {
   title;
   mensaje;
   fichasGanadoras = [];
+  loaded = false;
 
   jugadores = [
     {
@@ -64,6 +65,7 @@ export class Juego {
     };
     this.jugadores[0].urlFicha = urlLinux;
     this.jugadores[1].urlFicha = urlWindows;
+    this.loaded = false;
     this.load();
   }
 
@@ -164,7 +166,9 @@ export class Juego {
     });
     this.fichasGanadoras = [];
     this.mensaje.text = "";
-    this.startGame();
+    if (!this.loaded)
+      this.startGame();
+    this.loaded = true;
   }
 
   restartGame() {
