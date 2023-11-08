@@ -13,12 +13,13 @@ export class Juego {
   cantidadCeldasY;
   fichas = new Array();
   diametro = 65;
-  dragDropInterval = null;
+  redrawInterval = null;
   dragDropFicha = null;
   turnoJugador = null;
   turnTimer = null;
   secondsPerTurn;
   title;
+  mensaje;
   fichasGanadoras = [];
 
   jugadores = [
@@ -54,7 +55,12 @@ export class Juego {
     this.title = {
       x: canvas.width / 2,
       width: canvas.width - 30,
-      title: "Windows vs Linux: " + tipoJuego + " en línea"
+      text: "Windows vs Linux: " + tipoJuego + " en línea"
+    };
+    this.mensaje = {
+      x: canvas.width / 2,
+      width: canvas.width - 30,
+      text: ""
     };
     this.jugadores[0].urlFicha = urlLinux;
     this.jugadores[1].urlFicha = urlWindows;
@@ -135,11 +141,6 @@ export class Juego {
           idJugador: jugador.id,
           imageUrl: url,
         });
-        console.log(ficha);
-        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
-        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
-        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
-        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
         this.fichas.push(ficha);
 
         const buttonSize = cellSize * .6;
@@ -162,16 +163,19 @@ export class Juego {
       }
     });
     this.fichasGanadoras = [];
+    this.mensaje.text = "";
     this.startGame();
   }
 
   restartGame() {
+    clearInterval(game.redrawInterval);
     this.load();
   }
 
   reDrawGame() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawTitle();
+    this.drawMensaje();
     this.restartButton.draw();
     this.pauseButton.draw();
     this.tablero.draw();
@@ -186,7 +190,7 @@ export class Juego {
 
   startGame() {
     const game = this;
-    game.dragDropInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
+    game.redrawInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
     game.siguienteTurno();
 
     this.canvas.addEventListener("mousedown", (event) => {
@@ -236,6 +240,7 @@ export class Juego {
                 // terminó la animación de colocación de la pieza
                 const win = game.tablero.checkForWinner(result.row, result.col, this.tipoJuego);
                 if (win) {
+                  game.mensaje.text = "Ganador " + win.fichas[0].idJugador + "!"
                   game.turnTimer.cancel();
                   // Acciones de ganador
                   console.log('JUEGO TERMINADO', win)
@@ -248,6 +253,7 @@ export class Juego {
                   // chequea por empate
                   if (game.fichas.length === 0) {
                     console.log('JUEGO EMPATADO')
+                    game.mensaje.text = "Ha sido un empate!"
                     game.turnTimer.cancel();
                   } else {
                     game.siguienteTurno(ultimoTurno);
@@ -310,8 +316,14 @@ export class Juego {
     ctx.textAlign="center";       
     ctx.fillStyle = "blue";
     ctx.font="italic small-caps bold 50pt Verdana";
-    ctx.fillText(this.title.title, this.title.x, 60, this.title.width);
-    // ctx.font="italic small-caps bold 30pt Verdana";
-    // ctx.fillText(Math.max(0, this.current) + " seg", this.x, this.y + 105, this.maxWidth);
+    ctx.fillText(this.title.text, this.title.x, 60, this.title.width);
+  }
+
+  drawMensaje() {
+    const ctx = this.ctx;
+    ctx.textAlign="center";       
+    ctx.fillStyle = "white";
+    ctx.font="bold 40pt Verdana";
+    ctx.fillText(this.mensaje.text, this.mensaje.x, 160, this.mensaje.width);
   }
 }
