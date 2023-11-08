@@ -61,7 +61,7 @@ body.hide-scroll {
   overflow: hidden;
   border-radius: 2px;
   width: 100%;
-  height: 800px;
+  height: 900px;
   object-fit: cover;
   position: relative;
 }
