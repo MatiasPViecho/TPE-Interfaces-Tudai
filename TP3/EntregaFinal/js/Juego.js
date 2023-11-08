@@ -200,7 +200,12 @@ export class Juego {
       const p = getRelativePos(event);
       if (this.pauseButton.isInsidePosition(p.x, p.y)) {
         this.turnTimer.pause();
-        // TODO: MOSTRAR CARTEL JUEGO PAUSADO
+        if (this.turnTimer.isPaused) {
+          this.mensaje.text = "Juego pausado";
+        } else {
+          this.mensaje.text = "";
+        }
+
       }
       if (this.restartButton.isInsidePosition(p.x, p.y)) { 
         this.restartGame();   
@@ -322,7 +327,7 @@ export class Juego {
   drawMensaje() {
     const ctx = this.ctx;
     ctx.textAlign="center";       
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#DCD6F5";
     ctx.font="bold 40pt Verdana";
     ctx.fillText(this.mensaje.text, this.mensaje.x, 160, this.mensaje.width);
   }
