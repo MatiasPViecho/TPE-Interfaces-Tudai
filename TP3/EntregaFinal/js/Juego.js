@@ -169,6 +169,7 @@ export class Juego {
     if (!this.loaded)
       this.startGame();
     this.loaded = true;
+    this.siguienteTurno();
   }
 
   restartGame() {
@@ -195,7 +196,6 @@ export class Juego {
   startGame() {
     const game = this;
     game.redrawInterval = setInterval(() => game.reDrawGame(), 1000 / 60);
-    game.siguienteTurno();
 
     this.canvas.addEventListener("mousedown", (event) => {
       if (event.buttons !== 1 )
