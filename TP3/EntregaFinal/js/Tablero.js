@@ -341,6 +341,7 @@ export class Tablero {
   checkForWinner(row, col, cantToWin) {
     console.log("CHECK FOR (" + row + ", " + col + ")");
     let wins = [];
+    let fichasGanadoras = [];
     let checks = [
       {
         direction: "Horizontal",
@@ -390,10 +391,20 @@ export class Tablero {
           post,
           count
         });
+        for (let i = 1; i <= pre; i++ ) {
+          fichasGanadoras.push(this.cell[row + check.pre.incRow * i][col + check.pre.incCol * i])
+        }
+        for (let i = 1; i <= post; i++ ) {
+          fichasGanadoras.push(this.cell[row + check.post.incRow * i][col + check.post.incCol * i])
+        }
       }
     });
+    if (wins.length > 0) {
+      fichasGanadoras.push(this.cell[row][col]);
+      return { fichas: fichasGanadoras, wins };
+    }
 
-    return wins.length === 0 ? false: wins;
+    return false;
   }
 
   /**

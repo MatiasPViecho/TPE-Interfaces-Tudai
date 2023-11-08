@@ -19,6 +19,7 @@ export class Juego {
   turnTimer = null;
   secondsPerTurn;
   title;
+  fichasGanadoras = [];
 
   jugadores = [
     {
@@ -160,7 +161,7 @@ export class Juego {
 
       }
     });
-
+    this.fichasGanadoras = [];
     this.startGame();
   }
 
@@ -177,6 +178,9 @@ export class Juego {
     this.turnTimer.draw();
     for (let i = 0; i < this.fichas.length; i++) {
       this.fichas[i].draw();
+    }
+    for (let i = 0; i < this.fichasGanadoras.length; i++) {
+      this.fichasGanadoras[i].draw();
     }
   }
 
@@ -196,8 +200,6 @@ export class Juego {
       }
       if (this.restartButton.isInsidePosition(p.x, p.y)) { 
         this.restartGame();   
-        console.log('REINICIO JUEGO')    
-        // TODO: REINICIAR EL JUEGO
       }
       if (game.turnoJugador && !game.dragDropFicha && event.buttons == 1) {
         for (let i = game.fichas.length - 1; i >= 0; i--) {
@@ -237,13 +239,18 @@ export class Juego {
                   game.turnTimer.cancel();
                   // Acciones de ganador
                   console.log('JUEGO TERMINADO', win)
+                  game.fichasGanadoras = win.fichas;
+
+                  for (let i = 0; i < game.fichasGanadoras.length; i++) {
+                    game.fichasGanadoras[i].diametro = game.fichasGanadoras[i].diametro * 1.15;
+                  }
                 } else {
                   // chequea por empate
-                  if (this.fichas.length === 0) {
+                  if (game.fichas.length === 0) {
                     console.log('JUEGO EMPATADO')
                     game.turnTimer.cancel();
                   } else {
-                    this.siguienteTurno(ultimoTurno);
+                    game.siguienteTurno(ultimoTurno);
                   }
                 }
             },
