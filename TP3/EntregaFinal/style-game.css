@@ -169,6 +169,21 @@ body.hide-scroll {
 }
 
 /* END FORM GAME */
+.text-instruction{
+  max-width: 800px;
+  margin: auto;
+}
+.text-instruction p:first-child {
+  text-align: center;
+  font-size: 17px;
+}
+.text-instruction h3 {
+  margin-top: 20px;
+  text-align: center;
+}
+.text-instruction p {
+  text-align: center;
+}
 .play-game-row .image-video {
   display: flex;
   gap: 20px;
