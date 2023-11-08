@@ -157,9 +157,11 @@ body.hide-scroll {
   cursor: pointer;
 }
 
-.select-img label input[type="radio"]:checked img {
+
+.select-img label input[type="radio"]:checked+img {
   opacity: 1;
-  border: 2px solid white;
+  border: 3px solid white;
+  border-radius: 50%;
 }
 
 #game-setup.hidden{
