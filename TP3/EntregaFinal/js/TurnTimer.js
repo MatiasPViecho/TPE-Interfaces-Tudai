@@ -33,10 +33,14 @@ export class TurnTimer  {
             this.pausedTime = now();
         } else  {
             //reanuda
-            this.initialTime += this.elapsedPauseTime;
+            this.limit += this.elapsedPauseTime;
             this.pausedTime = 0; 
         }
     }
+    get isPaused() {
+        return this.pausedTime ? true : false;
+    }
+
     get elapsedPauseTime() {
         return this.pausedTime ? now() - this.pausedTime : 0;
     }
@@ -47,7 +51,7 @@ export class TurnTimer  {
     }
 
     get current() {
-        return Math.ceil((this.limit - now()) / 1000);
+        return Math.ceil((this.limit - now() - this.elapsedPauseTime) / 1000);
     }
 
     draw() {
