@@ -84,8 +84,8 @@ export class Juego {
     const boardX =
       (canvas.width - (2 * boardBorderSize + this.cantidadFichasX * cellSize)) /
       2;
-
-    const boardY = 160 + this.diametro;
+    this.diametro = cellSize * 0.85;
+    const boardY = 130 + this.diametro;
       // canvas.height - (2 * boardBorderSize + this.cantidadFichasY * cellSize);
 
     const tablero = new Tablero({
@@ -98,21 +98,21 @@ export class Juego {
       height: this.cantidadFichasY,
     });
     this.tablero = tablero;
-    this.diametro = cellSize * 0.85;
 
     const padding = 30;
     this.jugadores[0].regionFichas = {
       x: padding,
       y: boardY + 130,
       width: boardX - 2 * padding,
-      height: canvas.height - (boardY + 140),
+      // height: canvas.height - (boardY + 140),
+      height: tablero.finalY - boardY - 130,
     };   
 
     this.jugadores[1].regionFichas = {
       x: canvas.width - boardX + padding,
       y: boardY + 130,
       width: boardX - 2 * padding,
-      height: canvas.height - (boardY + 140),
+      height: tablero.finalY - boardY - 130,
       urlFicha: this.urlWindows,
     };
 

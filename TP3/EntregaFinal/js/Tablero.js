@@ -235,6 +235,22 @@ export class Tablero {
   }
 
   /**
+   * finalX
+   * Devuelve posición x de la parte derecha del tablero relativo al canvas
+   */
+  get finalX() {
+    return this.x + this.borderSize * 2 + this.cellSize * this.width;
+  }
+
+    /**
+   * finalY
+   * Devuelve posición y de la parte inferior del tablero relativo al canvas
+   */
+  get finalY() {
+    return this.y + this.borderSize * 2 + this.cellSize * this.height;
+  }
+
+  /**
    * dragDropOver()
    * Coloca la pieza soltada en el tablero, generando una animación.
    *
