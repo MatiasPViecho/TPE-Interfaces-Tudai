@@ -495,17 +495,59 @@
             <div class="play-game-content">
               <form id="game-setup">
                 <h2>WINDOWS vs LINUX</h2>
-                <p>TIPO DE JUEGO</p>
-                <div class="inputs-check">
-                  <label>
-                    <input  type="radio" name="board-size" value="4" checked/> 4 en linea
-                  </label>
-                  <label>
-                    <input type="radio"  name="board-size" value="5"/> 5 en linea
-                  </label>
-                  <label>
-                    <input type="radio"  name="board-size" value="6"/> 6 en linea
-                  </label>
+                <div class="input-check-game">
+                  <p>TIPO DE JUEGO</p>
+                  <div class="inputs-check">
+                    <label>
+                      <input  type="radio" name="board-size" value="4" checked/> 4 en linea
+                    </label>
+                    <label>
+                      <input type="radio"  name="board-size" value="5"/> 5 en linea
+                    </label>
+                    <label>
+                      <input type="radio"  name="board-size" value="6"/> 6 en linea
+                    </label>
+                  </div>
+                </div>
+                <div class="input-check-img">
+                  <p class="title">Seleccione ficha Windows</p>
+                  <div class="select-img">
+                    <label for="windows1">
+                      <img src="./resources/windows1.png" alt="Windows">
+                      <input type="radio" name="player" id="windows1"  value="./resources/windows1.png" checked/>
+                    </label>
+                    <label for="windows2">
+                      <img src="./resources/windows2.png" alt="windows">
+                      <input type="radio" name="player" id="windows2" value="./resources/windows2.png"/>
+                    </label>
+                    <label  for="windows3">
+                      <img src="./resources/windows3.png" alt="windows">
+                      <input type="radio" name="player" id="windows3" value="./resources/windows3.png"/>
+                    </label>
+                    <label for="random-windows">
+                      <img src="./resources/windows-random.png" alt="windows">
+                      <input type="radio" name="player"  value="sarar"/>
+                    </label>
+                  </div>
+                  <p>Seleccione ficha Linux</p>
+                  <div class="select-img">
+                    <label for="linux1">
+                      <img src="./resources/linux1.png" alt="Linux">
+                      <input type="radio" name="player2" id="linux1" value="./resources/linux1.png" checked/>
+                    </label>
+                    <label for="linux2">
+                      <img src="./resources/linux2.png" alt="Linux">
+                      <input type="radio" name="player2" id="linux2" value="./resources/linux2.png"/>
+                    </label>
+                    <label for="linux3">
+                      <img src="./resources/linux3.png" alt="Linux">
+                      <input type="radio" name="player2" id="linux3" value="./resources/linux3.png"/>
+                    </label>
+                    <label  for="random-linux">
+                      <img src="./resources/linux-random.png" alt="Linux">
+                      <input type="radio" name="player2"  value="srar"/>
+                    </label>
+                  </div>
                 </div>
                 <button id="start-game">Iniciar Juego</button>
               </form>
@@ -526,6 +568,11 @@
                 <p>Gana el primero en formar una línea de 4 piezas iguales!</p>
               </div>
               <div class="video">
+
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+               
                 <a
                   href="https://www.youtube.com/shorts/F4qtKiAOqHg"
                   target="_blank"

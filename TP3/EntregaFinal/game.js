@@ -1,5 +1,6 @@
 import { Juego } from "./js/Juego.js";
 
+
 document.querySelectorAll(".btn-favourite").forEach((btn) => {
   btn.addEventListener("click", () => btn.classList.toggle("not-like"));
 });
@@ -34,12 +35,18 @@ btnStart.addEventListener('click', (e) => {
   e.preventDefault()
   formGame.classList.add('hidden')
 
+  const selectedWindowsImage = document.querySelector('input[name="player"]:checked').value;
+  const selectedLinuxImage = document.querySelector('input[name="player2"]:checked').value;
+  
+  
+  console.log(selectedWindowsImage)
+  console.log(selectedLinuxImage)
   const selectedBoardSize = document.querySelector('input[name="board-size"]:checked').value;
   new Juego(canvas, {
     tipoJuego: parseInt(selectedBoardSize),
     secondsPerTurn: 30, // Segundos del turno
-    urlWindows: "", // Url Ficha Windows. Vacío pone fichas aleatorias
-    urlLinux: "" // Url Ficha Linux. Vacío pone fichas aleatorias
+    urlWindows: selectedWindowsImage,
+    urlLinux: selectedLinuxImage
   });
 
 })

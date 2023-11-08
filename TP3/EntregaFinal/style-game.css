@@ -71,11 +71,12 @@ body.hide-scroll {
   top: 0;
   left: 0;
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 
 #game-setup h2 {
@@ -89,14 +90,12 @@ body.hide-scroll {
 #game-setup p{
   color: #fff;
   text-shadow:7px 3px 5px rgba(0,0,0,0.55);
-  margin-top: 60px;
   font-size: 28px;
   font-weight: 800;
 }
 #game-setup .inputs-check{
   display: flex;
   gap: 30px;
-  margin-bottom: 30px;
 }
 #game-setup .inputs-check label{
   display: flex;
@@ -120,17 +119,64 @@ body.hide-scroll {
   border: var(--main-darker-2, #100a29);
   background: var(--main-lighter-2, #dcd6f5);
 }
+.input-check-game{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-check-img{
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.input-check-img img {
+  width: 80px;
+}
+.select-img {
+  display: flex;
+  gap: 30px;
+  position: relative;
+}
+
+.select-img input[type="radio"] {
+  position: absolute;
+  content: '';
+  width: 80px;
+  height: 80px;
+  left: 0px;
+  z-index: -1;
+}
+.select-img label {
+  display: inline-block;
+  cursor: pointer; 
+}
+
+.select-img label img {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.select-img label input[type="radio"]:checked img {
+  opacity: 1;
+  border: 2px solid white;
+}
 
 #game-setup.hidden{
   display: none;
 }
 
+/* END FORM GAME */
+
 .play-game-row .video {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  width: 100%;
-  height: auto;
+  display: flex;
+  gap: 5px;
+}
+.play-game-row .video img{
+  width: 200px;
 }
 .play-game-row aside {
   display: flex;
