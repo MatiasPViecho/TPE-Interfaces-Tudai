@@ -62,7 +62,6 @@ export class TurnTimer  {
               120,
               15
             );
-            // this.ctx.stroke();
             this.ctx.fill();
 
             const ctx = this.ctx;

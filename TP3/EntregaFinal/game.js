@@ -36,8 +36,10 @@ btnStart.addEventListener('click', (e) => {
 
   const selectedBoardSize = document.querySelector('input[name="board-size"]:checked').value;
   new Juego(canvas, {
-    tipoJuego: parseInt(selectedBoardSize),
-    secondsPerTurn: 30
+    tipoJuego: parseInt(selectedBoardSize) + 20,
+    secondsPerTurn: 30, // Segundos del turno
+    urlWindows: "", // Url Ficha Windows. Vacío pone fichas aleatorias
+    urlLinux: "" // Url Ficha Linux. Vacío pone fichas aleatorias
   });
 
 })

@@ -18,6 +18,7 @@ export class Juego {
   turnoJugador = null;
   turnTimer = null;
   secondsPerTurn;
+  title;
 
   jugadores = [
     {
@@ -43,12 +44,19 @@ export class Juego {
   ];
 
   constructor(canvas, options = {}) {
-    const { tipoJuego = 4, secondsPerTurn = 10 } = options;
+    const { tipoJuego = 4, secondsPerTurn = 10, urlLinux = "", urlWindows = "" } = options;
     this.tipoJuego = tipoJuego;
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.turnTimer = new TurnTimer(0, 0, this.ctx);
     this.secondsPerTurn = secondsPerTurn;
+    this.title = {
+      x: canvas.width / 2,
+      width: canvas.width - 30,
+      title: "Windows vs Linux: " + tipoJuego + " en línea"
+    };
+    this.jugadores[0].urlFicha = urlLinux;
+    this.jugadores[1].urlFicha = urlWindows;
     this.load();
   }
 
@@ -77,8 +85,8 @@ export class Juego {
       (canvas.width - (2 * boardBorderSize + this.cantidadFichasX * cellSize)) /
       2;
 
-    const boardY =
-      canvas.height - (2 * boardBorderSize + this.cantidadFichasY * cellSize);
+    const boardY = 160 + this.diametro;
+      // canvas.height - (2 * boardBorderSize + this.cantidadFichasY * cellSize);
 
     const tablero = new Tablero({
       ctx,
@@ -98,13 +106,14 @@ export class Juego {
       y: boardY + 130,
       width: boardX - 2 * padding,
       height: canvas.height - (boardY + 140),
-    };
+    };   
 
     this.jugadores[1].regionFichas = {
       x: canvas.width - boardX + padding,
       y: boardY + 130,
       width: boardX - 2 * padding,
       height: canvas.height - (boardY + 140),
+      urlFicha: this.urlWindows,
     };
 
     this.fichas = new Array();
@@ -116,24 +125,54 @@ export class Juego {
         const h = region.height;
         const centroX = Math.random() * (w - d) + d / 2;
         const centroY = Math.random() * (h - d) + d / 2;
+        const url = jugador.urlFicha ? jugador.urlFicha: selectRandom(jugador.urlsFicha);
         const ficha = new Ficha({
           x: region.x + centroX,
           y: region.y + centroY,
           diametro: d,
           ctx,
           idJugador: jugador.id,
-          imageUrl: jugador.urlFicha ?? selectRandom(jugador.urlsFicha),
+          imageUrl: url,
+        });
+        console.log(ficha);
+        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
+        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
+        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
+        console.log(jugador.urlFicha || selectRandom(jugador.urlsFicha));
+        this.fichas.push(ficha);
+
+        const buttonSize = cellSize * .6;
+        this.restartButton = new Ficha({
+          x: canvas.width / 2 - buttonSize/2,
+          y: canvas.height - buttonSize / 2,
+          diametro: buttonSize,
+          ctx,
+          imageUrl: "./resources/accion-reiniciar.png",
         });
 
-        this.fichas.push(ficha);
+        this.pauseButton = new Ficha({
+          x: canvas.width / 2 + buttonSize/2,
+          y: canvas.height - buttonSize / 2,
+          diametro: buttonSize,
+          ctx,
+          imageUrl: "./resources/accion-pausar.png",
+        });
+
       }
     });
 
     this.startGame();
   }
 
+  restartGame() {
+    this.load();
+  }
+
   reDrawGame() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.drawTitle();
+    this.restartButton.draw();
+    this.pauseButton.draw();
     this.tablero.draw();
     this.turnTimer.draw();
     for (let i = 0; i < this.fichas.length; i++) {
@@ -147,10 +186,22 @@ export class Juego {
     game.siguienteTurno();
 
     this.canvas.addEventListener("mousedown", (event) => {
+      if (event.buttons !== 1 )
+        return;
+
+      const p = getRelativePos(event);
+      if (this.pauseButton.isInsidePosition(p.x, p.y)) {
+        this.turnTimer.pause();
+        // TODO: MOSTRAR CARTEL JUEGO PAUSADO
+      }
+      if (this.restartButton.isInsidePosition(p.x, p.y)) { 
+        this.restartGame();   
+        console.log('REINICIO JUEGO')    
+        // TODO: REINICIAR EL JUEGO
+      }
       if (game.turnoJugador && !game.dragDropFicha && event.buttons == 1) {
         for (let i = game.fichas.length - 1; i >= 0; i--) {
           const ficha = this.fichas[i];
-          const p = getRelativePos(event);
           if (ficha.idJugador === game.turnoJugador.id && ficha.isInsidePosition(p.x, p.y)) {
             game.dragDropFicha = ficha;
             game.tablero.dragDropFicha = ficha;
@@ -245,5 +296,15 @@ export class Juego {
       // Se agrega esto para que no salga error en consola.
     }
     );
+  }
+
+  drawTitle() {
+    const ctx = this.ctx;
+    ctx.textAlign="center";       
+    ctx.fillStyle = "blue";
+    ctx.font="italic small-caps bold 50pt Verdana";
+    ctx.fillText(this.title.title, this.title.x, 60, this.title.width);
+    // ctx.font="italic small-caps bold 30pt Verdana";
+    // ctx.fillText(Math.max(0, this.current) + " seg", this.x, this.y + 105, this.maxWidth);
   }
 }
