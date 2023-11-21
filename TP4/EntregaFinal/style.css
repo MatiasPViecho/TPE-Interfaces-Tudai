@@ -9,6 +9,7 @@ body {
   width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  position:relative;
 }
 
 header {
@@ -75,4 +76,38 @@ header {
   font-weight: 900;
   letter-spacing: 2.2px;
   -webkit-text-stroke: 2px #02187e;
+}
+
+.scene-1-background {
+    position: absolute;
+    top:126px;
+    width: 1280px;
+    height: 720px;
+    background: url(./assets/scene1-background-clouds.png) repeat-x;
+    z-index: -10;
+}
+
+.scene-1-buildings-left {
+    position: absolute;
+    top:137px;
+    left:0px;
+    width: 452px;
+    height: 720px;
+    background: url(./assets/scene1-building-left.png) no-repeat;
+}
+.scene-1-buildings-middle {
+    position: absolute;
+    top:626px;
+    left:385px;
+    width: 543.5px;
+    height: 213.5px;
+    background: url(./assets/scene1-building-middle.png) no-repeat;
+}
+.scene-1-buildings-right {
+    position: absolute;
+    top:118px;
+    left:899px;
+    width: 382px;
+    height: 727.5px;
+    background: url(./assets/scene1-building-right.png) no-repeat;
 }
