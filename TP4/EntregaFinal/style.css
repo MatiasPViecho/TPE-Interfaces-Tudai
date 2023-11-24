@@ -10,20 +10,21 @@ html {
 
 main {
   position: relative;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  width: 1280px;
+
   /*dev- borrar luego*/
+  width: 1280px;
 }
 
 /* BEGIN ZONE 1 */
 header {
   position: fixed;
   width: 100%;
-  left:0;
+  left: 0;
   box-sizing: border-box;
   top: 0;
   background: linear-gradient(
@@ -107,7 +108,7 @@ header {
   position: relative;
   /* top:-15px; */
   width: 100%;
-  margin-top: 24px;
+  margin-top: 128px;
   height: auto;
   /* background-color: #5499f8; */
   &::before {
@@ -172,7 +173,7 @@ header {
     position: absolute;
     width: 163%;
     left: -125.5%;
-    bottom: -37%; 
+    bottom: -37%;
   }
 }
 
@@ -190,7 +191,7 @@ header {
     right: 27.3%;
     translate: 100%;
     bottom: -11.4%;
-    width:113.4860050890585%
+    width: 113.4860050890585%;
   }
 }
 
@@ -205,10 +206,12 @@ header {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  display: flex;
+  padding-top: 54px;
 }
 .scene-two-goblin {
-  position: relative;
-  right: 0;
+  /* position: relative;
+  right: 0; */
 }
 /* END ZONE 1 */
 
