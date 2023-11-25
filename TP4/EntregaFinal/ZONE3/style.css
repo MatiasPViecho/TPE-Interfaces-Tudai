@@ -10,14 +10,14 @@ body{
     width: 100%;
     height: 200px;
 }
-.white-bg{
+.zone-3-white-bg{
     position: absolute;
     width: 100%;
     height: 50%;
     background: #fff;
     z-index: -1;
 }
-.img-bg-1{
+.zone-3-img-bg-1{
     position: relative;
     background-image: url('../assets/zone-3/1st-bg.png');
     background-size: cover;
@@ -28,20 +28,93 @@ body{
     max-height: 566px;
     width: 100%;
 }
-.card{
+.zone-3-card{
     position: absolute;
     left: 0;
 }
-.card-3{
+.zone-3-card-3{
     top: 210px;
 }
-.card-1{
+.zone-3-card-1{
     top: -140px;
     left: 15px;
 }
-.container{
+.zone-3-container{
     max-width: 1080px;
     margin: 0 auto;
 }
 
-
+.zone-4{
+    background-image: url("../assets/zone-3/zone-3-4.png");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.zone-3-black{
+    height: 600px;
+    padding-top: 175px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+.zone-3-text span{
+    color: #FFF;
+    font-family: "Lato", sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: .95;
+    overflow: hidden;
+    max-width: 20ch;
+    z-index: 4;
+    display: -webkit-box;
+}
+.zone-3-relative{
+    position: relative;
+}
+.zone-3-bg-block-2{
+    width: 100%;
+    height: 527px;
+    box-shadow: 26px 29px 41px 14px rgba(0, 0, 0, 0.15);
+}
+.zone-3-bg-2-part{
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 1077px;
+    max-height: 527px;
+}
+.index-0{
+    z-index: 0;
+}
+.index-1{
+    z-index: 1;
+}
+.index-2{
+    z-index: 2;
+}
+.index-3{
+    z-index: 3;
+}
+.index-4{
+    z-index: 4;
+}
+.zone-3-character{
+    position: absolute;
+}
+.character-left{
+    top: -100px;
+    left: 30px;
+}
+.character-right{
+    left: unset;
+    bottom: unset;
+    right: -45px;
+    top: 105px;
+}
+.character-middle{
+    left: unset;
+    right: 150px;
+    bottom: 10px;
+    top: unset;
+}
