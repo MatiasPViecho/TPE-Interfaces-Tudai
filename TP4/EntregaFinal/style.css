@@ -4,8 +4,11 @@
   padding: 0;
   border: 0;
 }
-html {
-  background: #000;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
 }
 
 main {
@@ -15,9 +18,6 @@ main {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
-
-  /*dev- borrar luego*/
-  width: 1280px;
 }
 
 /* BEGIN ZONE 1 */
@@ -57,9 +57,6 @@ header {
 }
 
 .logo {
-  width: 133px;
-  height: 68px;
-  top: 17px;
   left: 50%;
   translate: -50%;
   position: fixed;
@@ -67,6 +64,13 @@ header {
   height: 301px;
   top: 91px;
   transform: translateX(-15px);
+  transition: all 1s;
+}
+.logo.logo-menu {
+  top: 17px;
+  /* width: 133px; */
+  height: 68px;
+  transform: none;
 }
 
 .buy-button {
@@ -96,10 +100,14 @@ header {
   letter-spacing: 2.3px;
   -webkit-text-stroke: 2px #02187e;
   transition: all 0.1s;
-  &:active {
-    box-shadow: none;
-    transform: translate(4px, 5px);
-  }
+}
+.button:hover {
+  transform: translate(-1px, -2px);
+  box-shadow: 5px 7px 0px 0px #02187e;
+}
+.button:active {
+  box-shadow: none;
+  transform: translate(4px, 5px);
 }
 .relative {
   position: relative;
@@ -111,21 +119,21 @@ header {
   margin-top: 128px;
   height: auto;
   /* background-color: #5499f8; */
-  &::before {
-    position: absolute;
-    content: " ";
-    top: -40px;
-    width: 100%;
-    height: 140px;
-    display: block;
-    background-color: #5499f8;
-    background: linear-gradient(
-      180deg,
-      #5499f8 0%,
-      #5499f8 87.91%,
-      rgba(84, 153, 248, 0) 100%
-    );
-  }
+}
+.scene-one-contain::before {
+  position: absolute;
+  content: " ";
+  top: -40px;
+  width: 100%;
+  height: 140px;
+  display: block;
+  background-color: #5499f8;
+  background: linear-gradient(
+    180deg,
+    #5499f8 0%,
+    #5499f8 87.91%,
+    rgba(84, 153, 248, 0) 100%
+  );
 }
 .scene-one-background {
   height: auto;
@@ -154,6 +162,9 @@ header {
   width: 29.84%;
   height: auto;
 }
+.spider {
+  width: 100%;
+}
 .scene-one-spider-left {
   position: absolute;
   bottom: 2.6%;
@@ -166,15 +177,12 @@ header {
   left: 50%;
   translate: -50.75%;
   width: 36.328%;
-  .spider {
-    width: 100%;
-  }
-  .spiderweb {
-    position: absolute;
-    width: 163%;
-    left: -125.5%;
-    bottom: -37%;
-  }
+}
+.scene-one-spider-middle .spiderweb {
+  position: absolute;
+  width: 163%;
+  left: -125.5%;
+  bottom: -37%;
 }
 
 .scene-one-spider-right {
@@ -183,25 +191,22 @@ header {
   right: 15%;
   width: 30.703125%;
   height: auto;
-  .spider {
-    width: 100%;
-  }
-  .spiderweb {
-    position: absolute;
-    right: 27.3%;
-    translate: 100%;
-    bottom: -11.4%;
-    width: 113.4860050890585%;
-  }
+}
+.scene-one-spider-right .spiderweb {
+  position: absolute;
+  right: 27.3%;
+  translate: 100%;
+  bottom: -11.4%;
+  width: 113.4860050890585%;
 }
 
-.scene-two-background {
+.spidey-and-friends-background {
   position: absolute;
   top: 89.5%;
   left: 0px;
   width: 100%;
 }
-.scene-two-contain {
+.spidey-and-friends {
   position: relative;
   width: 100%;
   max-width: 1280px;
@@ -209,7 +214,7 @@ header {
   display: flex;
   padding-top: 54px;
 }
-.scene-two-goblin {
+.spidey-and-friends-goblin {
   /* position: relative;
   right: 0; */
 }
