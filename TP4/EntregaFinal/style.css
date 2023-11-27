@@ -166,12 +166,14 @@ header {
   width: 100%;
 }
 .scene-one-spider-left {
+  transition: all .4s; 
   position: absolute;
   bottom: 2.6%;
   left: 7%;
   width: 28.125%;
 }
 .scene-one-spider-middle {
+  transition: all .4s; 
   position: absolute;
   bottom: -2.9%;
   left: 50%;
@@ -186,6 +188,7 @@ header {
 }
 
 .scene-one-spider-right {
+  transition: all .4s;
   position: absolute;
   bottom: 16.5%;
   right: 15%;
