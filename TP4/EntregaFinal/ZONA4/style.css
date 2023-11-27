@@ -16,7 +16,7 @@ body {
   width: 100%;
   background-color: orange;
 }
-.container {
+.zone-4 {
   max-width: 1200px;
   margin: auto;
   width: 100%;
@@ -24,7 +24,7 @@ body {
   top: 55px;
 }
 
-.container h2 {
+.zone-4 h2 {
   width: 100%;
   font-size: 60px;
   font-weight: 600;
