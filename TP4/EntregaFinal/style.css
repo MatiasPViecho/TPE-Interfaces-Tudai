@@ -585,6 +585,39 @@ header {
   bottom: 0;
   top: 110px;
 }
+#spiderman-bright-spritesheet{
+  background: url("./assets/zone-6-7/spiderman_spritesheet_red.png") repeat-x;
+  background-position-y: -1070px;
+  background-position-x: -50px;
+  position: absolute;
+  width: 170px;
+  height: 200px;
+  bottom: 18.5%;
+  right: 10%;
+  background-size: 1930px 1632px;
+  transform: rotateY(180deg);
+  animation: spiderman-animate 5s steps(1) infinite;
+}
+@keyframes spiderman-animate {
+  0%{
+    background-position-x: 0px;
+  }
+  20%{
+    background-position-x: -165px;
+  }
+  40%{
+    background-position-x: -323px;
+  }
+  60%{
+    background-position-x: -485px;
+  }
+  80%{
+    background-position-x: -625px;
+  }
+  100%{
+    background-position-x: -805px;
+  }
+}
 .buildings-zone-7{
   position: absolute;
   bottom: 0;
