@@ -57,25 +57,26 @@ window.onload = () => {
     function Zone3SpiderCardsAppear() {
       if (scrollY > cardCoordinates.bottom - cardCoordinates.top) {
         console.log('if');
+        const starterPointFirst = -140;
+        const starterPointSecond = 0;
+        const starterPointThird = 210;
         cardSpiderGirlFirst.classList.remove('zone-3-card-invisible');
         cardSpiderGirlTwo.classList.remove('zone-3-card-invisible');
         cardSpiderGirlThird.classList.remove('zone-3-card-invisible');
-        if (!cardSpiderGirlFirst.classList.contains('zone-3-card-1-end')) {
+        if (!cardSpiderGirlFirst.classList.contains('zone-3-card-1')) {
           cardSpiderGirlFirst.classList.add('zone-3-card-1');
           cardSpiderGirlTwo.classList.add('zone-3-card-2');
           cardSpiderGirlThird.classList.add('zone-3-card-3');
-          //   setTimeout(() => {
-          //     cardSpiderGirlFirst.classList.remove('zone-3-card-1');
-          //     cardSpiderGirlTwo.classList.remove('zone-3-card-2');
-          //     cardSpiderGirlThird.classList.remove('zone-3-card-3');
-          //     cardSpiderGirlFirst.classList.add('zone-3-card-1-end');
-          //     cardSpiderGirlTwo.classList.add('zone-3-card-2-end');
-          //     cardSpiderGirlThird.classList.add('zone-3-card-3-end');
-          //   }, 1000);
         }
-        // cardSpiderGirlFirst.style.transform = `translateY(${
-        //   -scrollY * 0.08
-        // }px)`;
+        cardSpiderGirlFirst.style.transform = `translateY(${
+          -scrollY * 0.1 + starterPointFirst + 160
+        }px)`;
+        cardSpiderGirlTwo.style.transform = `translateY(${
+          -scrollY * 0.1 + starterPointSecond + 160
+        }px)`;
+        cardSpiderGirlThird.style.transform = `translateY(${
+          -scrollY * 0.1 + starterPointThird + 160
+        }px)`;
       } else {
         if (cardSpiderGirlFirst.classList.contains('zone-3-card-1-end')) {
           cardSpiderGirlFirst.classList.remove('zone-3-card-1-end');

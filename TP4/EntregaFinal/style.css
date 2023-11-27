@@ -243,43 +243,32 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: auto;
   height: 566px;
   max-height: 566px;
   width: 100%;
 }
 .zone-3-card {
   transform: translateY(0);
+  left: 40px;
   position: absolute;
 }
 .zone-3-card-invisible {
   opacity: 0;
 }
 .zone-3-card-3 {
-  opacity: 0;
-  animation: card-3 1s ease-in-out forwards;
-}
-.zone-3-card-3-end {
-  transform: translateY(210px) translateX(80px);
+  opacity: 1;
+  transform: rotate(0) translateY(210px);
+  animation: card-3 1s ease-in-out;
 }
 .zone-3-card-2 {
-  opacity: 0;
-  animation: card-2 1s ease-in-out forwards;
-}
-.zone-3-card-2-end {
-  transform: translateY(50px) translateX(0);
+  opacity: 1;
+  animation: card-2 1s ease-in-out;
+  transform: rotate(0) translateY(0);
 }
 .zone-3-card-1 {
-  opacity: 0;
-  animation: card-1 1s ease-in-out forwards;
-}
-.zone-3-card-1-end {
-  transform: translateY(-140px) translateX(100px);
-}
-.zone-3-card-1-end,
-.zone-3-card-2-end,
-.zone-3-card-3-end {
-  transition: transform 0.1s;
+  opacity: 1;
+  transform: rotate(0deg) translateY(-140px);
+  animation: card-1 1s ease-in-out;
 }
 .zone-3-container {
   max-width: 1080px;
@@ -364,10 +353,8 @@ header {
 
 @keyframes card-3 {
   0% {
-    left: 0;
     opacity: 0;
-    top: 0;
-    transform: rotate(15deg);
+    transform: rotate(15deg) translateY(0);
   }
   40% {
     opacity: 0#000;
@@ -377,17 +364,13 @@ header {
   }
   100% {
     opacity: 1;
-    top: 210px;
-    left: 80px;
-    transform: rotate(0);
+    transform: rotate(0) translateY(210px);
   }
 }
 @keyframes card-2 {
   0% {
-    left: 0px;
     opacity: 0;
-    top: -50px;
-    transform: rotate(30deg);
+    transform: rotate(30deg) translateY(-50px);
   }
   40% {
     opacity: 0#000;
@@ -397,27 +380,23 @@ header {
   }
   100% {
     opacity: 1;
-    left: 50px;
-    top: 0;
-    transform: rotate(0);
+    transform: rotate(0) translateY(0);
   }
 }
 @keyframes card-1 {
   0% {
-    top: 0;
     opacity: 0;
-    transform: rotate(45deg);
+    transform: rotate(45deg) translateY(0);
   }
   40% {
-    opacity: 0#000;
+    opacity: 0;
   }
   50% {
     opacity: 1;
   }
   100% {
     opacity: 1;
-    top: -140px;
-    left: 100px;
+    transform: rotate(0deg) translateY(-140px);
   }
 }
 .border-test {
