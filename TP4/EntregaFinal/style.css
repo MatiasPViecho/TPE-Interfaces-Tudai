@@ -504,7 +504,7 @@ header {
 /* BEGIN ZONE 6 */
 .zone-6{
   position: relative;
-  padding: 152px 0 531px;
+  padding: 152px 0 709px;
   background: linear-gradient(180deg, #F7E3D8 21.2%, #8FBEFC 81.48%); 
 }
 .zone-6-text-container{
@@ -555,6 +555,35 @@ header {
   border: 9px solid #2982FF;
   background: #FFE901;
   box-shadow: 4px 5px 0px 0px #02187E;
+}
+.email-form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+}
+.parent-advice{
+  position: relative;
+  padding-left: 52px;
+  max-width: 578px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.parent-advice span{
+  color: #000;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 94.5%; /* 18.9px */
+}
+.parent-advice span a{
+  text-decoration: underline;
+}
+.parent-advice img{
+  position: absolute;
+  bottom: 0;
+  top: 110px;
 }
 .buildings-zone-7{
   position: absolute;
