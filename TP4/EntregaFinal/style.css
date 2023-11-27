@@ -230,11 +230,7 @@ header {
 }
 .spidey-and-friends h1 {
   color: #fff;
-  font-family: 'Lato', sans-serif;
-  font-size: 60px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 94.5%; /* 56.7px */
   margin-bottom: 20px;
 }
 .spidey-and-friends p {
@@ -323,11 +319,7 @@ header {
 }
 .zone-3-text span {
   color: #fff;
-  font-family: 'Lato', sans-serif;
-  font-size: 60px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 0.95;
   overflow: hidden;
   max-width: 15ch;
   display: -webkit-box;
@@ -453,9 +445,6 @@ header {
 
 .zone-4 h2 {
   width: 100%;
-  font-size: 60px;
-  font-weight: 600;
-  line-height: 94.5%;
 }
 
 .image-text {
@@ -511,7 +500,26 @@ header {
 /* END ZONE 5 */
 
 /* BEGIN ZONE 6 */
-
+.zone-6{
+  position: relative;
+  padding: 152px 0 531px;
+  background: linear-gradient(180deg, #F7E3D8 21.2%, #8FBEFC 81.48%); 
+}
+.zone-6-text-container{
+  padding: 0 250px;
+}
+.title{
+  font-size: 60px;
+  line-height: 94.5%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+}
+.buildings-zone-7{
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+}
 /* END ZONE 6 */
 
 /* BEGIN ZONE 7 */
