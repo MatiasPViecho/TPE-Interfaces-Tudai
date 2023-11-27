@@ -279,9 +279,9 @@ header {
   margin: 0 auto;
 }
 
-.zone-4 {
+.zone-4-background {
   background-image: url('./assets/zone-3/zone-3-4.png');
-  height: 500px;
+  height: auto;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -413,7 +413,68 @@ header {
 /* END ZONE 3 */
 
 /* BEGIN ZONE 4 */
+.zone-4 {
+  font-family: "Lato", sans-serif;
+  max-width: 1200px;
+  margin: 200px auto;
+  width: 100%;
+  position: relative;
+  top: 55px;
+}
 
+.zone-4 h2 {
+  width: 100%;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 94.5%;
+}
+
+.image-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-left {
+  width: 550px;
+}
+
+.col-right {
+  width: 467px;
+}
+
+.imgSticky {
+  padding: 50px 0;
+  position: fixed;
+  top: 150px;
+  width: 550px;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.imgSticky img {
+  width: 100%;
+}
+
+.stickyText {
+  padding: 100px 0;
+  width: 470px;
+  transition: opacity 1s ease-in-out;
+}
+
+.stickyText:first-child {
+  margin-top: 100px;
+}
+.stickyText p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 94.5%;
+}
+.stickyText h3 {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 94.5%;
+  margin-bottom: 20px;
+}
 /* END ZONE 4 */
 
 /* BEGIN ZONE 5 */
