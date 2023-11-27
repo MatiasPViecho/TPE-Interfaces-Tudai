@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Lato;
+  font-weight: 600;
+  src: url(./assets/Lato/Lato-SemiBold.ttf);
+}
 /* Reset all margins, paddings, and borders */
 * {
   margin: 0;
@@ -98,7 +103,8 @@ header {
   font-style: normal;
   font-weight: 900;
   letter-spacing: 2.3px;
-  -webkit-text-stroke: 2px #02187e;
+  line-height: 94.5%; /* 18.9px */
+  -webkit-text-stroke: 2.5px #02187e;
   transition: all 0.1s;
 }
 .button:hover {
@@ -215,7 +221,25 @@ header {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
+  padding-left: 100px;
+  padding-right: 100px;
   padding-top: 54px;
+}
+.spidey-and-friends h1 {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 94.5%; /* 56.7px */
+}
+.spidey-and-friends p {
+  color: #FFF;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .spidey-and-friends-goblin {
   /* position: relative;
