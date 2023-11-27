@@ -122,7 +122,7 @@ header {
 }
 .scene-one-contain::before {
   position: absolute;
-  content: " ";
+  content: ' ';
   top: -40px;
   width: 100%;
   height: 140px;
@@ -166,14 +166,14 @@ header {
   width: 100%;
 }
 .scene-one-spider-left {
-  transition: all .4s; 
+  transition: all 0.4s;
   position: absolute;
   bottom: 2.6%;
   left: 7%;
   width: 28.125%;
 }
 .scene-one-spider-middle {
-  transition: all .4s; 
+  transition: all 0.4s;
   position: absolute;
   bottom: -2.9%;
   left: 50%;
@@ -188,7 +188,7 @@ header {
 }
 
 .scene-one-spider-right {
-  transition: all .4s;
+  transition: all 0.4s;
   position: absolute;
   bottom: 16.5%;
   right: 15%;
@@ -222,47 +222,220 @@ header {
   right: 0; */
 }
 
-
-
 /* END ZONE 1 */
 
 /* BEGIN ZONE 2 */
-
-
-
 
 /* END ZONE 2 */
 
 /* BEGIN ZONE 3 */
 
+.zone-3-white-bg {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: #fff;
+  z-index: -1;
+}
+.zone-3-img-bg-1 {
+  position: relative;
+  background-image: url('./assets/zone-3/1st-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: auto;
+  height: 566px;
+  max-height: 566px;
+  width: 100%;
+}
+.zone-3-card {
+  transform: translateY(0);
+  position: absolute;
+}
+.zone-3-card-invisible {
+  opacity: 0;
+}
+.zone-3-card-3 {
+  opacity: 0;
+  animation: card-3 1s ease-in-out forwards;
+}
+.zone-3-card-3-end {
+  transform: translateY(210px) translateX(80px);
+}
+.zone-3-card-2 {
+  opacity: 0;
+  animation: card-2 1s ease-in-out forwards;
+}
+.zone-3-card-2-end {
+  transform: translateY(50px) translateX(0);
+}
+.zone-3-card-1 {
+  opacity: 0;
+  animation: card-1 1s ease-in-out forwards;
+}
+.zone-3-card-1-end {
+  transform: translateY(-140px) translateX(100px);
+}
+.zone-3-card-1-end,
+.zone-3-card-2-end,
+.zone-3-card-3-end {
+  transition: transform 0.1s;
+}
+.zone-3-container {
+  max-width: 1080px;
+  padding: 0 100px;
+  width: 100%;
+  margin: 0 auto;
+}
 
+.zone-4 {
+  background-image: url('./assets/zone-3/zone-3-4.png');
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.zone-3-black {
+  height: 600px;
+  padding-top: 175px;
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+}
+.zone-3-text span {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 0.95;
+  overflow: hidden;
+  max-width: 15ch;
+  display: -webkit-box;
+}
+.zone-3-relative {
+  position: relative;
+}
+.zone-3-bg-block-2 {
+  width: 100%;
+  height: 527px;
+  box-shadow: 26px 29px 41px 14px rgba(0, 0, 0, 0.15);
+}
+.zone-3-bg-2-part {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 1077px;
+  max-height: 527px;
+}
+.index-0 {
+  z-index: 0;
+}
+.index-1 {
+  z-index: 1;
+}
+.index-2 {
+  z-index: 2;
+}
+.index-3 {
+  z-index: 3;
+}
+.index-4 {
+  z-index: 4;
+}
+.zone-3-character {
+  position: absolute;
+}
+.character-left {
+  top: -100px;
+  left: 30px;
+}
+.character-right {
+  left: unset;
+  bottom: unset;
+  right: -45px;
+  top: 105px;
+}
+.character-middle {
+  left: unset;
+  right: 150px;
+  bottom: 10px;
+  top: unset;
+}
 
-
+@keyframes card-3 {
+  0% {
+    left: 0;
+    opacity: 0;
+    top: 0;
+    transform: rotate(15deg);
+  }
+  40% {
+    opacity: 0#000;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    top: 210px;
+    left: 80px;
+    transform: rotate(0);
+  }
+}
+@keyframes card-2 {
+  0% {
+    left: 0px;
+    opacity: 0;
+    top: -50px;
+    transform: rotate(30deg);
+  }
+  40% {
+    opacity: 0#000;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    left: 50px;
+    top: 0;
+    transform: rotate(0);
+  }
+}
+@keyframes card-1 {
+  0% {
+    top: 0;
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+  40% {
+    opacity: 0#000;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    top: -140px;
+    left: 100px;
+  }
+}
+.border-test {
+  border: 3px solid red;
+}
 /* END ZONE 3 */
 
 /* BEGIN ZONE 4 */
-
-
-
 
 /* END ZONE 4 */
 
 /* BEGIN ZONE 5 */
 
-
-
-
 /* END ZONE 5 */
 
 /* BEGIN ZONE 6 */
 
-
-
-
 /* END ZONE 6 */
-
-
-
 
 /* BEGIN ZONE 7 */
 
