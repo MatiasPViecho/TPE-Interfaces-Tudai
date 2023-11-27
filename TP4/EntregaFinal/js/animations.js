@@ -52,7 +52,9 @@ window.onload = () => {
         sceneOneSpiderRight.style.opacity = scrollY >= 350 ? 0 : 1;
     }
     function zone3SpiderCardsAppear() {
-      if (scrollY > cardCoordinates.bottom - cardCoordinates.top) {
+      let y = (scrollY - zone3.getBoundingClientRect().y) - 400 ;
+      if (y > 0 && y < 1500) {
+        let relY = y / 1500;
         const starterPointFirst = -140;
         const starterPointSecond = 0;
         const starterPointThird = 210;
@@ -65,8 +67,10 @@ window.onload = () => {
           cardSpiderGirlThird.classList.add('zone-3-card-3');
         }
         cardSpiderGirlFirst.style.transform = `translateY(${
-          -scrollY * 0.1 + starterPointFirst + 160
-        }px)`;
+          -relY * 0.1 + starterPointFirst + 160
+        }px)
+        skewY(${relY * 10}deg)
+        `;
         cardSpiderGirlTwo.style.transform = `translateY(${
           -scrollY * 0.1 + starterPointSecond + 160
         }px)`;
