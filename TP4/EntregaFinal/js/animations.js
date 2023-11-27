@@ -10,8 +10,7 @@ window.onload = () => {
   const cardSpiderGirlTwo = document.querySelector('#target-card-2-zone-3');
   const cardSpiderGirlThird = document.querySelector('#target-card-3-zone-3');
   const zone3 = document.querySelector('.zone-3-img-bg-1');
-  const cardCoordinates = zone3.getBoundingClientRect();
-
+  const avengersOnBg = document.querySelector('.zone-3-black');
   window.addEventListener('scroll', (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
@@ -21,6 +20,7 @@ window.onload = () => {
     }
     zone1Parallax()
     zone3SpiderCardsAppear();
+    zone3AvengersMove();
     function zone1Parallax() {
         
         const scene1MaxY = 300;
@@ -53,7 +53,7 @@ window.onload = () => {
     }
     function zone3SpiderCardsAppear() {
       let y = (scrollY - zone3.getBoundingClientRect().y) - 400 ;
-      if (y > 0 && y < 1500) {
+      if (y > 0 && y < 3000) {
         let relY = y / 1500;
         const starterPointFirst = -140;
         const starterPointSecond = 0;
@@ -67,16 +67,20 @@ window.onload = () => {
           cardSpiderGirlThird.classList.add('zone-3-card-3');
         }
         cardSpiderGirlFirst.style.transform = `translateY(${
-          -relY * 0.1 + starterPointFirst + 160
+          -relY * 50 + starterPointFirst
         }px)
-        skewY(${relY * 10}deg)
+        skewY(${relY * -5}deg)
         `;
         cardSpiderGirlTwo.style.transform = `translateY(${
-          -scrollY * 0.1 + starterPointSecond + 160
-        }px)`;
+          -relY * 50 + starterPointSecond
+        }px)
+        skewY(${relY * 7}deg)
+        `;
         cardSpiderGirlThird.style.transform = `translateY(${
-          -scrollY * 0.1 + starterPointThird + 160
-        }px)`;
+          -relY * 50 + starterPointThird
+        }px)
+        skewY(${relY * 8}deg)
+        `;
       } else {
         if (!cardSpiderGirlFirst.classList.contains('zone-3-card-1')) {
          return;
@@ -87,6 +91,11 @@ window.onload = () => {
         cardSpiderGirlFirst.classList.remove('zone-3-card-1');
         cardSpiderGirlTwo.classList.remove('zone-3-card-2');
         cardSpiderGirlThird.classList.remove('zone-3-card-3');
+      }
+    }
+    function zone3AvengersMove() {
+      let y = (scrollY - avengersOnBg.getBoundingClientRect().y) - 400 ;
+      if (y > 0 && y < 2400) {
       }
     }
   });
