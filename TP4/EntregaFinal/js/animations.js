@@ -11,7 +11,6 @@ window.onload = () => {
   const cardSpiderGirlThird = document.querySelector('#target-card-3-zone-3');
   const zone3 = document.querySelector('.zone-3-img-bg-1');
   const cardCoordinates = zone3.getBoundingClientRect();
-  console.log(cardCoordinates);
 
   window.addEventListener('scroll', (event) => {
     const scrollY = window.scrollY;
@@ -20,41 +19,39 @@ window.onload = () => {
     } else {
       imgLogo.classList.remove('logo-menu');
     }
-    Zone3SpiderCardsAppear();
-    const scene1MaxY = 200;
-    const scene1scrollY = Math.min(scrollY, scene1MaxY);
-    const scene1Variation = scene1scrollY / scene1MaxY;
-    // Parallax effect for scene 1 spidermen
-    sceneOneSpiderLeft.style.transform = `scale(${1 + 0.5 * scene1Variation})
-                                              translateX(${
-                                                scene1Variation * -200
-                                              }px)
-                                              translateY(${
-                                                scene1Variation * -100
-                                              }px)
+    zone1Parallax()
+    zone3SpiderCardsAppear();
+    function zone1Parallax() {
+        
+        const scene1MaxY = 300;
+        const scene1scrollY = Math.min(scrollY, scene1MaxY);
+        let scene1Variation = scene1scrollY / scene1MaxY;
+        // Parallax effect for scene 1 spidermen
+        sceneOneSpiderLeft.style.transform = `scale(${1 + .5 * scene1Variation})
+                                              translateX(${scene1Variation * -300}px)
+                                              translateY(${scene1Variation * -100}px)
+                                              skewX(${10 * scene1Variation}deg)
+                                              rotate(${15 * scene1Variation}deg)
                                               `;
-    sceneOneSpiderMiddle.style.transform = `scale(${1 + 0.6 * scene1Variation}) 
-                                                translateX(${
-                                                  scene1Variation * -50
-                                                }px)
-                                                translateY(${
-                                                  scene1Variation * 0
-                                                }px)
-                                                rotate(${
-                                                  10 * scene1Variation
-                                                }deg)`;
-    sceneOneSpiderRight.style.transform = ` scale(${1 + 0.3 * scene1Variation})
-                                                translateX(${
-                                                  scene1Variation * 100
-                                                }px)
-                                                translateY(${
-                                                  scene1Variation * 100
-                                                }px)
-                                                rotate(${
-                                                  -10 * scene1Variation
-                                                }deg)`;
 
-    function Zone3SpiderCardsAppear() {
+        sceneOneSpiderMiddle.style.transform = `scale(${1 + .6 * scene1Variation}) 
+                                                translateX(${scene1Variation * 100}px)
+                                                translateY(${scene1Variation * -30}px)
+                                                skewX(${10 * scene1Variation}deg)
+                                                rotate(${10 * scene1Variation}deg)
+                                                `;
+
+        sceneOneSpiderRight.style.transform = ` scale(${1 + .5 * scene1Variation})
+                                                translateX(${scene1Variation * 300}px)
+                                                translateY(${scene1Variation * 200}px)
+                                                skewY(${-10 * scene1Variation}deg)
+                                                rotate(${-5 * scene1Variation}deg)
+                                                `;
+
+        sceneOneSpiderLeft.style.opacity = scrollY >= 350 ? 0 : 1;
+        sceneOneSpiderRight.style.opacity = scrollY >= 350 ? 0 : 1;
+    }
+    function zone3SpiderCardsAppear() {
       if (scrollY > cardCoordinates.bottom - cardCoordinates.top) {
         console.log('if');
         const starterPointFirst = -140;
