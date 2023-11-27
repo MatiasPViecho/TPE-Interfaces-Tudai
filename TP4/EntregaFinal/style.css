@@ -222,8 +222,11 @@ header {
   margin: 0 auto;
   display: flex;
   padding-left: 100px;
-  padding-right: 100px;
   padding-top: 54px;
+  box-sizing: border-box;
+}
+.spidey-and-friends-content {
+  margin-top: 90px;
 }
 .spidey-and-friends h1 {
   color: #fff;
@@ -232,6 +235,7 @@ header {
   font-style: normal;
   font-weight: 600;
   line-height: 94.5%; /* 56.7px */
+  margin-bottom: 20px;
 }
 .spidey-and-friends p {
   color: #FFF;
@@ -242,6 +246,7 @@ header {
   line-height: normal;
 }
 .spidey-and-friends-goblin {
+  translate: -17px;
   /* position: relative;
   right: 0; */
 }
