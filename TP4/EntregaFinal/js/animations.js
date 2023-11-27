@@ -53,7 +53,6 @@ window.onload = () => {
     }
     function zone3SpiderCardsAppear() {
       if (scrollY > cardCoordinates.bottom - cardCoordinates.top) {
-        console.log('if');
         const starterPointFirst = -140;
         const starterPointSecond = 0;
         const starterPointThird = 210;
@@ -75,10 +74,9 @@ window.onload = () => {
           -scrollY * 0.1 + starterPointThird + 160
         }px)`;
       } else {
-        if (cardSpiderGirlFirst.classList.contains('zone-3-card-1-end')) {
-          cardSpiderGirlFirst.classList.remove('zone-3-card-1-end');
+        if (!cardSpiderGirlFirst.classList.contains('zone-3-card-1')) {
+         return;
         }
-        console.log('else');
         cardSpiderGirlFirst.classList.add('zone-3-card-invisible');
         cardSpiderGirlTwo.classList.add('zone-3-card-invisible');
         cardSpiderGirlThird.classList.add('zone-3-card-invisible');
