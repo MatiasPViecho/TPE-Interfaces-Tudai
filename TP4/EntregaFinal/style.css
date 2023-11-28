@@ -302,7 +302,55 @@ header {
 /* BEGIN ZONE 2 */
 
 /* END ZONE 2 */
-
+.zone-2{
+  padding: 36px 100px 155px;
+  background: #fff;
+}
+.zone-2-cards-container{
+  max-width: 1080px;
+}
+.zone-2-cards{
+  list-style: none;
+  display: flex;
+  gap: 41px;
+  color: #000;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.zone-2-cards li{
+  max-width: 332px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card-img{
+  width: auto;
+  border-radius: 41px;
+  border: 9px solid var(--2982-ff, #2982FF); 
+  box-shadow: 4px 5px 0px 0px #02187E; 
+  height: 302px;
+  max-width: 332px;
+  max-height: 302px;
+  background-size: 815px 439px;
+  background-position-x: -71px;
+  background-position-y: -73px;
+}
+.card-img.first{
+  background-image: url('./assets/zone-2/first-image.png');
+}
+.card-img.second{
+  background-image: url('./assets/zone-2/second-image.png');
+  background-position-y: -65px;
+}
+.card-img.third{
+  background-image: url('./assets/zone-2/third-image.png');
+}
+.zone-2-cards li span{
+  white-space: pre-line;
+}
 /* BEGIN ZONE 3 */
 
 .zone-3-white-bg {
