@@ -30,7 +30,7 @@ window.onload = () => {
     zone1Parallax();
     zone3SpiderCardsAppear();
     zone3AvengersMove();
-    zone4MoreFriendsMoreFun()
+    zone4MoreFriendsMoreFun();
     function zone1Parallax() {
       const scene1MaxY = 300;
       const scene1scrollY = Math.min(scrollY, scene1MaxY);
@@ -131,43 +131,39 @@ window.onload = () => {
       if (y > 0 && y < 2400) {
       }
     }
-    function zone4MoreFriendsMoreFun(){
-      if (scrollY < 3100) {
-          imgSticky1.style.opacity = 0;
-          textSticky1.style.opacity = 0;
+    function zone4MoreFriendsMoreFun() {
+      let y = -zone4.getBoundingClientRect().y - 100;
+      if (y < 0) {
+        imgSticky1.style.opacity = 0;
+        textSticky1.style.opacity = 0;
+      } else if (y > 0 && y < 600) {
+        imgSticky1.style.opacity = 1;
+        textSticky1.style.opacity = 1;
+        imgSticky2.style.opacity = 0;
+        textSticky2.style.opacity = 0;
+      } else if (y > 600 && y < 1200) {
+        imgSticky1.style.opacity = 0;
+        textSticky1.style.opacity = 0;
+        imgSticky2.style.opacity = 1;
+        textSticky2.style.opacity = 1;
+        imgSticky3.style.opacity = 0;
+        textSticky3.style.opacity = 0;
+      } else if (y > 1200  && y < 1800) {
+        imgSticky2.style.opacity = 0;
+        textSticky2.style.opacity = 0;
+        imgSticky3.style.opacity = 1;
+        textSticky3.style.opacity = 1;
+        imgSticky4.style.opacity = 0;
+        textSticky4.style.opacity = 0;
+      } else if (y > 1800 && y < 2600) {
+        imgSticky3.style.opacity = 0;
+        textSticky3.style.opacity = 0;
+        imgSticky4.style.opacity = 1;
+        textSticky4.style.opacity = 1;
+      } else {
+        imgSticky4.style.opacity = 0;
+        textSticky4.style.opacity = 0;
       }
-      else if (scrollY > 3100 && scrollY < 3600) {
-          imgSticky1.style.opacity = 1;
-          textSticky1.style.opacity = 1;
-          imgSticky2.style.opacity = 0;
-          textSticky2.style.opacity = 0;
-      }
-      else if (scrollY > 3600 && scrollY < 4200) {
-          imgSticky1.style.opacity = 0;
-          textSticky1.style.opacity = 0;
-          imgSticky2.style.opacity = 1;
-          textSticky2.style.opacity = 1;
-          imgSticky3.style.opacity = 0;
-          textSticky3.style.opacity = 0;
-      }
-      else if (scrollY > 4200 && scrollY < 4800) {
-          imgSticky2.style.opacity = 0;
-          textSticky2.style.opacity = 0;
-          imgSticky3.style.opacity = 1;
-          textSticky3.style.opacity = 1;
-          imgSticky4.style.opacity = 0;
-          textSticky4.style.opacity = 0;
-      }
-      else if (scrollY > 4800 && scrollY < 5400) {
-          imgSticky3.style.opacity = 0;
-          textSticky3.style.opacity = 0;
-          imgSticky4.style.opacity = 1;
-          textSticky4.style.opacity = 1;
-      } 
-      else {
-          imgSticky4.style.opacity = 0;
-          textSticky4.style.opacity = 0;
-      }
-  }
+    }
   });
 };
