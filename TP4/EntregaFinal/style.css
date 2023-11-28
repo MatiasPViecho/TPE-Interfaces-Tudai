@@ -345,14 +345,14 @@ header {
   background-position-y: -73px;
 }
 .card-img.first{
-  background-image: url('./assets/zone-2/first-image.png');
+  background-image: url('./assets/zone-2/first-image.webp');
 }
 .card-img.second{
-  background-image: url('./assets/zone-2/second-image.png');
+  background-image: url('./assets/zone-2/second-image.webp');
   background-position-y: -65px;
 }
 .card-img.third{
-  background-image: url('./assets/zone-2/third-image.png');
+  background-image: url('./assets/zone-2/third-image.webp');
 }
 .zone-2-cards li span{
   white-space: pre-line;
@@ -409,7 +409,7 @@ header {
 }
 
 .zone-4-background {
-  background-image: url("./assets/zone-3/zone-3-4.png");
+  background-image: url("./assets/zone-3/zone-3-4.webp");
   height: auto;
   background-repeat: no-repeat;
   background-size: cover;
@@ -676,19 +676,19 @@ header {
 .container-spider-Blanco{
   width: 268px;
   height: 416.5px;
-  background-image: url('./assets/spider1-zone5.png');
+  background-image: url('./assets/spider1-zone5.webp');
   transition: all 0.3s ease;
 }
 .container-spider-Normal{
   width: 416.5px;
   height: 457.5px;
-  background-image: url('./assets/spider2-zone5.png');
+  background-image: url('./assets/spider2-zone5.webp');
   transition: all 0.3s ease;
 }
 .container-spider-Black {
   width: 313.5px;
   height: 398.5px;
-  background-image: url('./assets/spider3-zone5.png');
+  background-image: url('./assets/spider3-zone5.webp');
   transition: all 0.3s ease;
 }
 
@@ -780,7 +780,7 @@ header {
   top: 110px;
 }
 #spiderman-bright-spritesheet {
-  background: url("./assets/zone-6-7/spiderman_spritesheet_red.png") repeat-x;
+  background: url("./assets/zone-6-7/spiderman_spritesheet_red.webp") repeat-x;
   background-position-y: -1070px;
   background-position-x: -50px;
   position: absolute;

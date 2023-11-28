@@ -19,7 +19,7 @@ body{
 }
 .zone-3-img-bg-1{
     position: relative;
-    background-image: url('../assets/zone-3/1st-bg.png');
+    background-image: url('../assets/zone-3/1st-bg.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -45,7 +45,7 @@ body{
 }
 
 .zone-4{
-    background-image: url("../assets/zone-3/zone-3-4.png");
+    background-image: url("../assets/zone-3/zone-3-4.webp");
     height: 500px;
     background-repeat: no-repeat;
     background-size: cover;
