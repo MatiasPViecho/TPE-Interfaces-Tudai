@@ -6,6 +6,8 @@ window.onload = () => {
     ".scene-one-spider-middle"
   );
   const sceneOneSpiderRight = document.querySelector(".scene-one-spider-right");
+  const spideyAndFriends = document.querySelector(".spidey-and-friends");
+  const goblin = document.querySelector(".spidey-and-friends-goblin");
   const cardSpiderGirlFirst = document.querySelector("#target-card-1-zone-3");
   const cardSpiderGirlTwo = document.querySelector("#target-card-2-zone-3");
   const cardSpiderGirlThird = document.querySelector("#target-card-3-zone-3");
@@ -28,6 +30,7 @@ window.onload = () => {
       imgLogo.classList.remove("logo-menu");
     }
     zone1Parallax();
+    zone1Goblin();
     zone3SpiderCardsAppear();
     zone3AvengersMove();
     zone4MoreFriendsMoreFun();
@@ -84,6 +87,16 @@ window.onload = () => {
       sceneOneSpiderLeft.style.opacity = scrollY >= 350 ? 0 : 1;
       sceneOneSpiderRight.style.opacity = scrollY >= 350 ? 0 : 1;
     }
+
+    function zone1Goblin() {
+      const y = spideyAndFriends.getBoundingClientRect().y * -1 + 600;
+      if (y > 0 && y < 1000) {
+        // Parallax efect for goblin
+        const variation = y / 1000;
+        goblin.style.transform = `translateY(${variation * 150 - 100}px)`;
+      }
+    }
+
     function zone3SpiderCardsAppear() {
       let y = scrollY - zone3.getBoundingClientRect().y - 400;
       if (y > 0 && y < 3000) {
