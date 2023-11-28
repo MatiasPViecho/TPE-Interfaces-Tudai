@@ -51,6 +51,9 @@ header {
   margin-left: -4px;
   position: absolute;
 }
+.menu-button-container{
+  position: relative;
+}
 .menu-button .line {
   margin-bottom: -1px;
   width: 42px;
@@ -59,8 +62,29 @@ header {
   border: 4px solid #2981ff;
   background: #ffe901;
   box-sizing: border-box;
+  position: absolute;
+  transition: all 250ms ease-in-out;
 }
-
+.line.top{
+  top: 2px;
+}
+.line.middle{
+  top: 12px;
+}
+.line.bottom{
+  top: 22px;
+}
+.menu-button.animate .line.top{
+  top: 12px;
+  transform: rotate(45deg);
+}
+.menu-button.animate .line.middle{
+  transform: rotate(45deg);
+}
+.menu-button.animate .line.bottom{
+  top: 12px;
+  transform: rotate(-45deg);
+}
 .logo {
   left: 50%;
   translate: -50%;
