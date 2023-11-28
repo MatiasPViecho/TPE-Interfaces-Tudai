@@ -601,6 +601,7 @@ header {
 }
 
 .images-container {
+  margin-top: 40px;
   max-width: 1280px;
   display: flex;
   justify-content: center;

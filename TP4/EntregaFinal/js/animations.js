@@ -22,6 +22,8 @@ window.onload = () => {
   const textSticky3 = document.querySelector("#text3");
   const textSticky4 = document.querySelector("#text4");
   const zone4 = document.querySelector(".zone-4-background");
+  const imagesZone5 = document.querySelectorAll('.images-container > div');
+
   window.addEventListener("scroll", (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
@@ -179,4 +181,38 @@ window.onload = () => {
       }
     }
   });
+
+  window.addEventListener('mouseover' , () => {
+    zone5TransformSpiders();
+
+    function zone5TransformSpiders() {
+      imagesZone5.forEach(addHoverEffect);
+    }
+    
+    function addHoverEffect(elemento) {
+      elemento.addEventListener('mouseover', () => {
+        applyHoverStyles(elemento);
+      });
+    
+      elemento.addEventListener('mouseout', () => {
+        resetStyles();
+      });
+    }
+    function applyHoverStyles(selectedElement) {
+      imagesZone5.forEach(item => {
+        if (item !== selectedElement) {
+          item.style.filter = 'blur(5px)';
+        } else {
+          item.style.transform = 'scale(1.3)';
+          item.style.filter = 'none';
+        }
+      });
+    }
+    function resetStyles() {
+      imagesZone5.forEach(item => {
+        item.style.transform = '';
+        item.style.filter = '';
+      });
+    }
+  })
 };
