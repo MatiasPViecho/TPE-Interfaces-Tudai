@@ -50,6 +50,7 @@ header {
   top: 16px;
   margin-left: -4px;
   position: absolute;
+  cursor: pointer;
 }
 .menu-button-container{
   position: relative;
@@ -707,3 +708,56 @@ footer{
   color: #fff;
 }
 /* END ZONE 7 */
+
+/* MENU HEADER */
+
+.menu-header{
+  position: fixed;
+  top: 100px;
+  z-index: 10;
+}
+.menu-header a{
+  background: #FFE901;
+  border-radius: 0 50px 50px 0;
+  padding: 16px 24px;
+  border: 10px solid #02187e;
+  border-left: none;
+  position: absolute;
+  z-index: 10;
+  transform: translateX(-250px);
+  font-size: 24px;
+  line-height: 1.2;
+  filter: drop-shadow(0px 0px 0px #02187e);
+}
+.menu-header a:hover{
+  filter: drop-shadow(4px 2px 0px #02187e);
+}
+.menu-header a:active{
+  filter: drop-shadow(1px 0px 0px #02187e);
+}
+.menu-header a{
+  color: #000;
+  text-decoration: none;
+}
+.menu-header a:nth-child(1){
+  bottom: -100px;
+  transition: transform 200ms ease-in-out 0ms, filter 200ms ease-in-out;
+}
+.menu-header a:nth-child(2){
+  bottom: -190px;
+  transition: transform 300ms ease-in-out 200ms, filter 200ms ease-in-out;
+}
+.menu-header a:nth-child(3){
+  bottom: -280px;
+  transition: transform 400ms ease-in-out 500ms, filter 200ms ease-in-out;
+}
+.menu-header.open a:nth-child(1){
+  transform: translateX(-10px);
+}
+.menu-header.open a:nth-child(2){
+  transform: translateX(-10px);
+}
+.menu-header.open a:nth-child(3){
+  transform: translateX(-10px);
+}
+/* END MENU HEADER*/
