@@ -26,6 +26,8 @@ window.onload = () => {
   const zone2First = document.querySelector('#zone-2-card-1');
   const zone2Second = document.querySelector('#zone-2-card-2');
   const zone2Third = document.querySelector('#zone-2-card-3');
+  const zone2Cards = document.querySelector('.zone-2-cards');
+  const liElements = zone2Cards.querySelectorAll('li');
   window.addEventListener("scroll", (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
@@ -268,8 +270,23 @@ window.onload = () => {
 
   function zone2ScrollMove() {
     const y = zone2First.getBoundingClientRect().y * -1 + 600;
-    
-      if (y > 0 && y < 1000) {
+    const listY = zone2Cards.getBoundingClientRect().y * -1 + 600;
+      if((listY > 0 && listY < 900) && !liElements[0].classList.contains('animate-enter')){
+        console.log("entered!");
+        liElements.forEach(li => {
+          console.log("in");
+          li.classList.add('animate-enter');
+          li.classList.remove('animate-out');
+        });
+      } 
+      if((listY < -200 || listY >= 900 )&& !liElements[0].classList.contains('animate-out')){
+        liElements.forEach(li => {
+          console.log("out");
+          li.classList.add('animate-out');
+          li.classList.remove('animate-enter');
+        });
+      }
+      if (y > -750 && y < 1000) {
         const variation = y / 1000;
         zone2First.style.setProperty('background-position-x', `${(variation * 0.4) * (-200)}px`);      
         zone2Third.style.setProperty('background-position-y', `${-120 + (variation * 1.4) * (-200)}px`);      

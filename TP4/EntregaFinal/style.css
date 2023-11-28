@@ -990,3 +990,39 @@ MENU HEADER KEYFRAME ANIMATIONS
   transform: rotate(0deg);
 }
 }
+
+.zone-2-cards li{
+  transform: translateY(800px);
+}
+.zone-2-cards li.animate-out{
+  transform: translateY(0);
+}
+.zone-2-cards li:nth-child(1){
+  animation-delay: 250ms;
+}
+.zone-2-cards li:nth-child(2){
+  animation-delay: 70ms;
+}
+.animate-enter{
+  animation: showFromBottom 1000ms ease-in-out forwards;
+}
+.animate-out{
+  animation: hideToBottom 1000ms ease-in-out forwards;
+}
+
+@keyframes showFromBottom {
+  0%{
+    transform: translateY(800px);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+@keyframes hideToBottom {
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(800px);
+  }
+}
