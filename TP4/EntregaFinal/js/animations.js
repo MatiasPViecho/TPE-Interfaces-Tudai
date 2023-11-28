@@ -23,7 +23,9 @@ window.onload = () => {
   const textSticky4 = document.querySelector("#text4");
   const zone4 = document.querySelector(".zone-4-background");
   const imagesZone5 = document.querySelectorAll('.images-container > div');
-
+  const zone2First = document.querySelector('#zone-2-card-1');
+  const zone2Second = document.querySelector('#zone-2-card-2');
+  const zone2Third = document.querySelector('#zone-2-card-3');
   window.addEventListener("scroll", (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
@@ -33,6 +35,7 @@ window.onload = () => {
     }
     zone1Parallax();
     zone1Goblin();
+    zone2ScrollMove();
     zone3SpiderCardsAppear();
     zone3AvengersMove();
     zone4MoreFriendsMoreFun();
@@ -263,4 +266,16 @@ window.onload = () => {
     zone3_2.style.transform = '';
   });
 
+  function zone2ScrollMove() {
+    const y = zone2First.getBoundingClientRect().y * -1 + 600;
+    
+      if (y > 0 && y < 1000) {
+        const variation = y / 1000;
+        zone2First.style.setProperty('background-position-x', `${(variation * 0.4) * (-200)}px`);      
+        zone2Third.style.setProperty('background-position-y', `${-120 + (variation * 1.4) * (-200)}px`);      
+        zone2Second.style.setProperty('background-position-x', `${-100 + (variation * 0.4) * (20 + 100)}px`);      
+        zone2Third.style.setProperty('background-position-x', `${(variation * 1.5) * (-10)}px`);      
+        zone2Third.style.setProperty('background-position-y', `${-120 + -(variation * 0.2) * (-500)}px`);      
+    }
+  }
 };
