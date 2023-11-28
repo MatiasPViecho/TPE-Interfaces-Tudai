@@ -256,9 +256,6 @@ window.onload = () => {
     zone3_2.style.transform = `translate(${relX * v - v / 2}%, ${relY * v - v / 2}%)
                 scale(${1 + v / 100})          
     `;
-  zone3Black.addEventListener("mouseleave", () => {
-    console.log('over');
-  });
     
   }) 
 
@@ -272,16 +269,13 @@ window.onload = () => {
     const y = zone2First.getBoundingClientRect().y * -1 + 600;
     const listY = zone2Cards.getBoundingClientRect().y * -1 + 600;
       if((listY > 0 && listY < 900) && !liElements[0].classList.contains('animate-enter')){
-        console.log("entered!");
         liElements.forEach(li => {
-          console.log("in");
           li.classList.add('animate-enter');
           li.classList.remove('animate-out');
         });
       } 
       if((listY < -200 || listY >= 900 )&& !liElements[0].classList.contains('animate-out')){
         liElements.forEach(li => {
-          console.log("out");
           li.classList.add('animate-out');
           li.classList.remove('animate-enter');
         });
