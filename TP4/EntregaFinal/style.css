@@ -108,6 +108,9 @@ header {
   top: 20px;
   right: 100px;
 }
+.buy-button:hover {
+  background-color: #ffef67;
+}
 .button {
   height: 50px;
   flex-shrink: 0;
