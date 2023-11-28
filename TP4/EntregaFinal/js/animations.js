@@ -215,4 +215,52 @@ window.onload = () => {
       });
     }
   })
+
+  const zone3Black = document.querySelector(".zone-3-black");
+  const zone3_1 = document.querySelector(".zone-3-bg-2-part.index-1");
+  const zone3_2 = document.querySelector(".zone-3-bg-2-part.index-2");
+  const zone3Characters = document.querySelectorAll(".zone-3-character");
+  zone3Black.addEventListener("mousemove", (e) => {
+    const rect = zone3Black.getBoundingClientRect();
+    const x = e.clientX; // 0 to rect.width
+    const y = e.clientY;  // 0 to rect.height
+    const relX = x / rect.width; // 0 to 1
+    const relY = y / rect.height; // 0 to 1
+    let v = 1.5; // max variation
+    zone3_1.style.transform = `translate(${relX * v * -1 + v / 2}%, ${relY * v * -.5 + v / 2}%)
+                scale(${1 + v / 100})          
+                `;
+
+    v = 8; // max variation
+    zone3Characters[0].style.transform = `translate(${relX * v - v / 2}%, ${relY * v - v / 2}%)
+                scale(${1 + v / 100})          
+                `;
+
+    v = 7; // max variation
+    let r = 5; // max rotation
+    zone3Characters[1].style.transform = `translate(${relX * v * -1 + v / 2}%, ${relY * v - v / 2}%)
+                rotate(${relX * relY * r - r / 2}deg)
+                skewY(${relY * relX  * v - v / 2}deg)
+                `;
+
+    v = 2; // max variation
+    zone3Characters[2].style.transform = `translate(${relX * v - v / 2}%, ${relY * v - v / 2}%)
+                `;
+
+    v = 6; // max variation
+    zone3_2.style.transform = `translate(${relX * v - v / 2}%, ${relY * v - v / 2}%)
+                scale(${1 + v / 100})          
+    `;
+  zone3Black.addEventListener("mouseleave", () => {
+    console.log('over');
+  });
+    
+  }) 
+
+  zone3Black.addEventListener("mouseleave", () => {
+    zone3_1.style.transform = '';
+    zone3Characters.forEach(character => character.style.transform =  '');
+    zone3_2.style.transform = '';
+  });
+
 };
