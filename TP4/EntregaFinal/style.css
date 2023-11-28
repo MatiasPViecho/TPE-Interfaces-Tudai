@@ -293,8 +293,7 @@ header {
 }
 .spidey-and-friends-goblin {
   translate: -17px;
-  /* position: relative;
-  right: 0; */
+  transform: translateY(-100px);
 }
 
 /* END ZONE 1 */
@@ -547,6 +546,85 @@ header {
 /* END ZONE 4 */
 
 /* BEGIN ZONE 5 */
+.zone-5-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.zone-5 {
+  width: 100%;
+  padding: 40px;
+  background-color: #000;
+  clip-path: polygon(0 0, 100% 20%, 100% 75%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -80px;
+  padding-bottom: 0px;
+}
+.zone-5-text {
+  padding: 100px;
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 42px;
+}
+.zone-5-text h2 {
+  width: 100%;
+  max-width: 816px;
+  color: #fff;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: normal;
+}
+.zone-5-text button {
+  max-width: 292px;
+  width: 100%;
+}
+
+.zone-5-images {
+  background-color: white;
+  width: 100%;
+  min-height: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  position: relative;
+  z-index: 2;
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.images-container {
+  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 25px;
+  position: relative;
+}
+
+.container-spider-Blanco{
+  width: 268px;
+  height: 416.5px;
+  background-image: url('./assets/spider1-zone5.png');
+  transition: all 0.3s ease;
+}
+.container-spider-Normal{
+  width: 416.5px;
+  height: 457.5px;
+  background-image: url('./assets/spider2-zone5.png');
+  transition: all 0.3s ease;
+}
+.container-spider-Black {
+  width: 313.5px;
+  height: 398.5px;
+  background-image: url('./assets/spider3-zone5.png');
+  transition: all 0.3s ease;
+}
+
 
 /* END ZONE 5 */
 
