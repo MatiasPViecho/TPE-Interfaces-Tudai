@@ -64,7 +64,6 @@ header {
   background: #ffe901;
   box-sizing: border-box;
   position: absolute;
-  transition: all 250ms ease-in-out;
 }
 .line.top {
   top: 2px;
@@ -75,16 +74,23 @@ header {
 .line.bottom {
   top: 22px;
 }
-.menu-button.animate .line.top {
-  top: 12px;
-  transform: rotate(45deg);
+.menu-button.animate .line.top{
+  animation: rotateFirst 250ms ease-in-out forwards;
 }
-.menu-button.animate .line.middle {
-  transform: rotate(45deg);
+.menu-button .line.top{
+  animation: rotateFirstBackwards 250ms ease-in-out forwards;
 }
-.menu-button.animate .line.bottom {
-  top: 12px;
-  transform: rotate(-45deg);
+.menu-button.animate .line.middle{
+  animation: rotateCenter 250ms ease-in-out forwards;
+}
+.menu-button .line.middle{
+  animation: rotateCenterBackwards 250ms ease-in-out forwards;
+}
+.menu-button.animate .line.bottom{
+  animation: rotateBottom 250ms ease-in-out forwards;
+}
+.menu-button .line.bottom{
+  animation: rotateBottomBackwards 250ms ease-in-out forwards;
 }
 .logo {
   left: 50%;
@@ -924,3 +930,63 @@ footer {
   transform: translateX(-10px);
 }
 /* END MENU HEADER*/
+
+/*
+MENU HEADER KEYFRAME ANIMATIONS
+*/
+@keyframes rotateFirst {
+  0%{
+    transform: rotate(0deg);
+    top: 2px;
+  }
+  100%{
+    top: 12px;
+    transform: rotate(45deg);
+  }
+}
+@keyframes rotateFirstBackwards {
+0%{
+  top: 12px;
+  transform: rotate(45deg);
+}
+100%{
+  transform: rotate(0deg);
+  top: 2px;
+}
+}
+@keyframes rotateCenter{
+0%{
+  transform: rotate(0deg);
+}
+100%{
+  transform: rotate(45deg);
+}
+}
+@keyframes rotateCenterBackwards {
+0%{
+  transform: rotate(45deg);
+}
+100%{
+  transform: rotate(0deg);
+}
+}
+@keyframes rotateBottom {
+0%{
+  top: 22px;
+  transform: rotate(0deg);
+}
+100%{
+  top: 12px;
+  transform: rotate(-45deg);
+}
+}
+@keyframes rotateBottomBackwards {
+0%{
+  top: 12px;
+  transform: rotate(-45deg);
+}
+100%{
+  top: 22px;
+  transform: rotate(0deg);
+}
+}
