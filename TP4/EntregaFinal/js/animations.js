@@ -8,10 +8,7 @@ window.onload = () => {
   const sceneOneSpiderRight = document.querySelector(".scene-one-spider-right");
   const spideyAndFriends = document.querySelector(".spidey-and-friends");
   const goblin = document.querySelector(".spidey-and-friends-goblin");
-  const cardSpiderGirlFirst = document.querySelector("#target-card-1-zone-3");
-  const cardSpiderGirlTwo = document.querySelector("#target-card-2-zone-3");
-  const cardSpiderGirlThird = document.querySelector("#target-card-3-zone-3");
-  const zone3 = document.querySelector(".zone-3-img-bg-1");
+  const zone3Cards = document.querySelector('.zone-3-container');
   const avengersOnBg = document.querySelector(".zone-3-black");
   const imgSticky1 = document.querySelector("#img1");
   const imgSticky2 = document.querySelector("#img2");
@@ -105,45 +102,11 @@ window.onload = () => {
     }
 
     function zone3SpiderCardsAppear() {
-      let y = scrollY - zone3.getBoundingClientRect().y - 400;
-      if (y > 0 && y < 3000) {
-        let relY = y / 1500;
-        const starterPointFirst = -140;
-        const starterPointSecond = 0;
-        const starterPointThird = 210;
-        cardSpiderGirlFirst.classList.remove("zone-3-card-invisible");
-        cardSpiderGirlTwo.classList.remove("zone-3-card-invisible");
-        cardSpiderGirlThird.classList.remove("zone-3-card-invisible");
-        if (!cardSpiderGirlFirst.classList.contains("zone-3-card-1")) {
-          cardSpiderGirlFirst.classList.add("zone-3-card-1");
-          cardSpiderGirlTwo.classList.add("zone-3-card-2");
-          cardSpiderGirlThird.classList.add("zone-3-card-3");
-        }
-        cardSpiderGirlFirst.style.transform = `translateY(${
-          -relY * 50 + starterPointFirst
-        }px)
-        skewY(${relY * -5}deg)
-        `;
-        cardSpiderGirlTwo.style.transform = `translateY(${
-          -relY * 50 + starterPointSecond
-        }px)
-        skewY(${relY * 7}deg)
-        `;
-        cardSpiderGirlThird.style.transform = `translateY(${
-          -relY * 50 + starterPointThird
-        }px)
-        skewY(${relY * 8}deg)
-        `;
-      } else {
-        if (!cardSpiderGirlFirst.classList.contains("zone-3-card-1")) {
-          return;
-        }
-        cardSpiderGirlFirst.classList.add("zone-3-card-invisible");
-        cardSpiderGirlTwo.classList.add("zone-3-card-invisible");
-        cardSpiderGirlThird.classList.add("zone-3-card-invisible");
-        cardSpiderGirlFirst.classList.remove("zone-3-card-1");
-        cardSpiderGirlTwo.classList.remove("zone-3-card-2");
-        cardSpiderGirlThird.classList.remove("zone-3-card-3");
+      const y = zone3Cards.getBoundingClientRect().y * -1 + 600;
+      if (y > 0 && y < 1000) {
+        // Parallax efect for goblin
+        const variation = y / 1000;
+        zone3Cards.style.transform = `translateY(${variation * 150 - 100}px)`;
       }
     }
     function zone3AvengersMove() {
