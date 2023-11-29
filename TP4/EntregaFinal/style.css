@@ -780,7 +780,7 @@ header {
   position: relative;
 }
 .zone-5-images.white-selected{
-  background-color: rgba(255, 0, 167, 0.04);
+  background-color: rgb(255, 244.8, 251.48);
   clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
   z-index: 9;
 }
@@ -789,7 +789,7 @@ header {
   content: "";
 }
 .zone-5-images.red-selected{
-  background-color: rgba(37, 82, 200, 0.04);
+  background-color: rgb(235.38, 239.43, 250.05);
   clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
   z-index: 9;
 }
@@ -798,7 +798,7 @@ header {
   content: "";
 }
 .zone-5-images.black-selected{
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(229.5, 229.5, 229.5);
   clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
   z-index: 9;
 }
@@ -1250,4 +1250,9 @@ MENU HEADER KEYFRAME ANIMATIONS
   100% {
     tranform: none;
   }
+}
+
+
+#spider-white, #spider-red, #spider-black{
+  z-index: 50;
 }
