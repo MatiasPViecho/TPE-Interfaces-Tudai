@@ -25,7 +25,10 @@ window.onload = () => {
   const zone2Third = document.querySelector('#zone-2-card-3');
   const zone2Cards = document.querySelector('.zone-2-cards');
   const liElements = zone2Cards.querySelectorAll('li');
-  const header = document.querySelector('#header-container')
+  const header = document.querySelector('#header-container');
+  const zone5Container = document.querySelector('#zone-5-container');
+  const zone5ImageContainer = document.querySelector('#zone-5-bg-container');
+
   window.addEventListener("scroll", (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
@@ -165,12 +168,36 @@ window.onload = () => {
     }
     function applyHoverStyles(selectedElement) {
       imagesZone5.forEach(item => {
+        console.log(item);
         if (item !== selectedElement) {
           item.style.filter = 'blur(5px)';
           item.style.transform = 'scale(0.8)';
         } else {
           item.style.transform = 'scale(1.3)';
           item.style.filter = 'none';
+          console.log(item.id);
+          if(item?.id === 'spider-white'){
+            zone5Container.classList.add('white-selected');
+            zone5ImageContainer.classList.add('white-selected');
+            zone5Container.classList.remove('red-selected');
+            zone5ImageContainer.classList.remove('red-selected');
+            zone5Container.classList.remove('black-selected');
+            zone5ImageContainer.classList.remove('black-selected');
+          } else if (item?.id === 'spider-red'){
+            zone5Container.classList.add('red-selected');
+            zone5ImageContainer.classList.add('red-selected');
+            zone5Container.classList.remove('white-selected');
+            zone5ImageContainer.classList.remove('white-selected');
+            zone5Container.classList.remove('black-selected');
+            zone5ImageContainer.classList.remove('black-selected');
+          } else if (item?.id === 'spider-black'){
+            zone5Container.classList.add('black-selected');
+            zone5ImageContainer.classList.add('black-selected');
+            zone5Container.classList.remove('red-selected');
+            zone5ImageContainer.classList.remove('red-selected');
+            zone5Container.classList.remove('white-selected');
+            zone5ImageContainer.classList.remove('white-selected');
+          }
         }
       });
     }
@@ -179,6 +206,12 @@ window.onload = () => {
         item.style.transform = '';
         item.style.filter = '';
       });
+      zone5Container.classList.remove('red-selected');
+            zone5ImageContainer.classList.remove('red-selected');
+            zone5Container.classList.remove('white-selected');
+            zone5ImageContainer.classList.remove('white-selected');
+            zone5Container.classList.remove('black-selected');
+            zone5ImageContainer.classList.remove('black-selected');
     }
 
   const zone3Black = document.querySelector(".zone-3-black");
