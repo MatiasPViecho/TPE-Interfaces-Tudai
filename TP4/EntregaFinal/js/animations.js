@@ -153,18 +153,12 @@ window.onload = () => {
     }
   });
 
-  window.addEventListener('mouseover' , () => {
-    zone5TransformSpiders();
-
-    function zone5TransformSpiders() {
-      imagesZone5.forEach(addHoverEffect);
-    }
-    
+  // Zona 5
+    imagesZone5.forEach(addHoverEffect);
     function addHoverEffect(elemento) {
       elemento.addEventListener('mouseover', () => {
         applyHoverStyles(elemento);
       });
-    
       elemento.addEventListener('mouseout', () => {
         resetStyles();
       });
@@ -186,7 +180,6 @@ window.onload = () => {
         item.style.filter = '';
       });
     }
-  })
 
   const zone3Black = document.querySelector(".zone-3-black");
   const zone3_1 = document.querySelector(".zone-3-bg-2-part.index-1");
