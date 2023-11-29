@@ -924,7 +924,7 @@ header {
   right: 10%;
   background-size: 1930px 1632px;
   transform: rotateY(180deg);
-  animation: spiderman-animate 5s steps(1) infinite;
+  animation: spiderman-animate 1s steps(1) infinite;
 }
 @keyframes spiderman-animate {
   0% {
@@ -1159,4 +1159,37 @@ MENU HEADER KEYFRAME ANIMATIONS
     transform: translateY(800px);
   }
 }
+.scene-one-spider-right.animate {
+  animation: animateSpiderRight 800ms ease-in-out;
+}
+.scene-one-spider-middle.animate {
+  animation: animateSpiderMiddle 1000ms ease-in-out;
+}
+.scene-one-spider-left.animate {
+  animation: animateSpiderLeft 1100ms ease-in-out;
+}
 
+@keyframes animateSpiderLeft {
+  0% {
+    transform: translate(200%, -130%) scale(.5);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes animateSpiderRight {
+  0% {
+    transform: translateX(200%) scale(.5);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes animateSpiderMiddle {
+  0% {
+    transform: translateX(-200%) scale(.5);
+  }
+  100% {
+    translate: -50.75%
+  }
+}

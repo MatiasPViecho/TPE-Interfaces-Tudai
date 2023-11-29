@@ -9,13 +9,24 @@ addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         const loader = document.querySelector('#loader');
         if(loader){
-            console.log("if loader")
             body.classList.remove('body-loading');
             mainDiv.classList.remove('hide-loading');
             footer.classList.remove('hide-loading');
             loader.parentNode.removeChild(loader);
-        } else {
-            console.log("else")
+
         }
+        setInitialAnimations();
     }, time * 1000);
-})
+});
+
+
+
+function setInitialAnimations() {
+    const spiderLeft = document.querySelector(".scene-one-spider-left");
+    const spiderMiddle = document.querySelector(".scene-one-spider-middle");
+    const spiderRight = document.querySelector(".scene-one-spider-right");
+
+    spiderLeft.classList.add("animate");
+    spiderMiddle.classList.add("animate");
+    spiderRight.classList.add("animate");
+}
