@@ -170,6 +170,7 @@ window.onload = () => {
       imagesZone5.forEach(item => {
         if (item !== selectedElement) {
           item.style.filter = 'blur(5px)';
+          item.style.transform = 'scale(0.8)';
         } else {
           item.style.transform = 'scale(1.3)';
           item.style.filter = 'none';

@@ -673,7 +673,7 @@ header {
   top: 150px;
   width: 550px;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity .2s ease-in-out;
 }
 
 .imgSticky img {
@@ -684,7 +684,7 @@ header {
   padding: 100px 0;
   width: 470px;
   min-height: 500px;
-  transition: opacity .4s ease-in-out;
+  transition: opacity .2s ease-in-out;
 }
 
 .stickyText:first-child {
@@ -769,19 +769,19 @@ header {
   width: 268px;
   height: 416.5px;
   background-image: url('./assets/spider1-zone5.webp');
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .container-spider-Normal{
   width: 416.5px;
   height: 457.5px;
   background-image: url('./assets/spider2-zone5.webp');
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 .container-spider-Black {
   width: 313.5px;
   height: 398.5px;
   background-image: url('./assets/spider3-zone5.webp');
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 
