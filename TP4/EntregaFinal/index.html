@@ -10,8 +10,20 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <main>
+  <body>    
+    <script src="./js/loader.js"></script>
+    <div id="loader">
+      <h1>CARGANDO</h1>
+      <div class="loading-bar-container">
+        <img src="./assets/loading-face.webp"/>
+        <div class="loading-bar-spider"></div>
+        <img src="./assets/loading-face.webp"/>
+      </div>
+      <div class="spiderman-loader-container">
+        <div class="spiderman-loader"></div>
+      </div>
+    </div>
+    <main id="main-body">
       <nav class="menu-header" id="menu-header-options">
         <a
           href="https://www.sega.com/"
@@ -307,7 +319,7 @@
       <section class="zone-5-container">
         <div class="zone-5" id="comprar">
           <div class="zone-5-text">
-            <h2>”un gran poder conlleva una gran responsabilidad”</h2>
+            <h2 class="title">”un gran poder conlleva una gran responsabilidad”</h2>
             <button class="button button-text">COMPRAR AHORA</button>
           </div>
         </div>
@@ -410,6 +422,7 @@
           </div>
           <img
             class="social-media"
+            id="last-image"
             src="./assets/zone-6-7/footer-social-media-logos.webp"
           />
         </div>

@@ -1,3 +1,130 @@
+.body-loading{
+  overflow: hidden !important;
+  position: relative !important;
+}
+.hide-loading{
+  z-index: -100;
+}
+
+#loader{
+  height: 100vh;
+  width: 100vw;
+  background-color: #242424;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.spiderman-loader-container{
+  position: relative;
+  display: flex;  
+  flex-wrap: wrap;
+  gap: 24px;
+  box-sizing: border-box;
+  padding: 20px 0;
+  justify-content: center;
+  overflow: hidden;
+}
+.spiderman-loader{
+  background: url('./assets/loader-sheet.webp') repeat-x;
+  background-position-x: -11px;
+  height: 43px;
+  width: 30px;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  animation: loading 3s steps(6) infinite;
+}
+.loading-bar-container{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.loading-bar-container img{
+  max-height: 100px;
+  width: auto;
+  animation: rotate 2000ms ease-in-out infinite;
+}
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.loading-bar-spider{
+  width: 100%;
+  padding: 0 16px;
+  height: 50px;
+  border: 8px solid #2B3784;
+  border-radius: 500px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+@media only screen and (min-width: 768px) {
+  .loading-bar-spider{
+    width: 50%;
+    padding: 0;
+  }
+}
+.loading-bar-spider::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #B11313;
+  transform-origin: left;
+  animation: fillBar 4500ms cubic-bezier(0.95, 0.05, 0.795, 0.035) forwards;
+}
+@keyframes fillBar {
+    0%{
+      transform: scaleX(0);
+    }
+    100%{
+    transform: scaleX(1);
+    }
+}
+@keyframes loading {
+    0%{
+      background-position-x: -11px;
+      transform: translateY(0px);
+    }
+    100%{
+      background-position-x: -190px;
+      transform: translateY(-20px);
+    }
+}
+#loader h1{
+  box-sizing: border-box;
+  font-family: 'Lato';
+  color: #fff;
+  letter-spacing: 3px;
+  animation: let 2000ms ease-in-out infinite;
+}
+@keyframes let {
+    0%{
+      letter-spacing: 0px;
+    }
+    50%{
+      letter-spacing: 4px;
+    }
+    100%{
+      letter-spacing: 0px;
+    }
+}
 @font-face {
   font-family: Lato;
   font-weight: 600;
@@ -1026,3 +1153,4 @@ MENU HEADER KEYFRAME ANIMATIONS
     transform: translateY(800px);
   }
 }
+
