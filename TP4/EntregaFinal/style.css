@@ -518,7 +518,7 @@ header {
   z-index: 997;
 }
 #target-card-1-zone-3:hover{
-  transform: perspective(800px) translate3d(60%, 0, -50px) rotateX(15deg) rotateY(-10deg) skew(-1deg, 2deg);
+  transform: perspective(800px) translate3d(20%, 0, -50px) rotateX(15deg) rotateY(-10deg) skew(-1deg, 2deg);
 }
 #target-card-2-zone-3{
   rotate: -26deg;
@@ -528,7 +528,7 @@ header {
   transition: transform 400ms ease-in-out;
 }
 #target-card-2-zone-3:hover{
-  transform: perspective(900px) translate3d(60%, 10%, 00px) rotateX(5deg) rotateY(-15deg) skew(-1deg, 2deg);
+  transform: perspective(900px) translate3d(20%, 10%, 20px) rotate(15deg) rotateZ(8deg) skew(2deg, 2deg);
 }
 #target-card-3-zone-3{
   rotate: -36deg;
@@ -538,7 +538,7 @@ header {
   transition: transform 400ms ease-in-out;
 }
 #target-card-3-zone-3:hover{
-  transform: perspective(700px) translate3d(60%, 20%, -50px) rotateX(10deg) rotateY(-30deg) skew(-7deg, 10deg);
+  transform: perspective(900px) translate3d(20%, 10%, 20px) rotate(20deg) rotateZ(8deg) skew(2deg, 2deg);
 }
 
 .zone-3-container {
