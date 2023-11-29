@@ -168,14 +168,12 @@ window.onload = () => {
     }
     function applyHoverStyles(selectedElement) {
       imagesZone5.forEach(item => {
-        console.log(item);
         if (item !== selectedElement) {
           item.style.filter = 'blur(5px)';
           item.style.transform = 'scale(0.8)';
         } else {
           item.style.transform = 'scale(1.3)';
           item.style.filter = 'none';
-          console.log(item.id);
           if(item?.id === 'spider-white'){
             zone5Container.classList.add('white-selected');
             zone5ImageContainer.classList.add('white-selected');
