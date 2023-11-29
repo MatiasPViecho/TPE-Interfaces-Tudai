@@ -193,7 +193,7 @@ window.onload = () => {
             zone5ImageContainer.classList.add('black-selected');
             zone5Container.classList.remove('red-selected');
             zone5ImageContainer.classList.remove('red-selected');
-            zone5Container.classList.remove('white-selected');
+           zone5Container.classList.remove('white-selected');
             zone5ImageContainer.classList.remove('white-selected');
           }
         }

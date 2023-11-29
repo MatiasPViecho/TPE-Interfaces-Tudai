@@ -781,7 +781,8 @@ header {
 }
 .zone-5-images.white-selected{
   background-color: rgba(255, 0, 167, 0.04);
-  clip-path: polygon(0px 15%, 100% 0px, 100% 100%, 0 90.0%)
+  clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
+  z-index: 9;
 }
 .zone-5-white-bg.white-selected::after, .zone-5-white-bg.white-selected::before{
   background: #C92B94;
@@ -789,7 +790,8 @@ header {
 }
 .zone-5-images.red-selected{
   background-color: rgba(37, 82, 200, 0.04);
-  clip-path: polygon(0px 15%, 100% 0px, 100% 100%, 0 90.0%)
+  clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
+  z-index: 9;
 }
 .zone-5-white-bg.red-selected::after, .zone-5-white-bg.red-selected::before{
   background: rgba(37, 82, 200, 0.61);
@@ -797,7 +799,8 @@ header {
 }
 .zone-5-images.black-selected{
   background-color: rgba(0, 0, 0, 0.1);
-  clip-path: polygon(0px 15%, 100% 0px, 100% 100%, 0 90.0%)
+  clip-path:polygon(0px 22%, 100% 0%, 100% 93%, 0px 83%);
+  z-index: 9;
 }
 .zone-5-white-bg.black-selected::after, .zone-5-white-bg.black-selected::before{
   background: rgba(48, 76, 113, 1);
@@ -809,12 +812,13 @@ header {
   height: 161px;
   clip-path: polygon(0 15%, 100% 0, 100% 40%, 0 100%);
   top: 0;
+  z-index: 10;
 }
 .zone-5-white-bg::after{
-  
+  z-index: 10;
   width: 100%;
   position: absolute;
-  clip-Path: polygon(0 84%, 100% 95%, 100% 100%, 0 100%);
+  clip-path: polygon(0 81%, 100% 93%, 100% 100%, 0 86%);
   width: 100%;
   height: 100%;
   bottom: 0;
