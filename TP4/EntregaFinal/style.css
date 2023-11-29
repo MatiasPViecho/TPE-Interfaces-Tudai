@@ -773,7 +773,7 @@ header {
 .zone-5-white-bg{
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: #F5F5F5;
   clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
 .zone-5-images{
