@@ -550,7 +550,7 @@ header {
 }
 .zone-3-black {
   height: 600px;
-  padding-top: 175px;
+  padding-top: 10%;
   display: flex;
   flex-direction: column;
   gap: 55px;
