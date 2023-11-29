@@ -22,11 +22,13 @@ addEventListener('DOMContentLoaded', () => {
 
 
 function setInitialAnimations() {
-    const spiderLeft = document.querySelector(".scene-one-spider-left");
-    const spiderMiddle = document.querySelector(".scene-one-spider-middle");
-    const spiderRight = document.querySelector(".scene-one-spider-right");
-
-    spiderLeft.classList.add("animate");
-    spiderMiddle.classList.add("animate");
-    spiderRight.classList.add("animate");
+    const elements = [ 
+        document.querySelector(".scene-one-spider-left"),
+        document.querySelector(".scene-one-spider-middle"),
+        document.querySelector(".scene-one-spider-right"),
+        document.querySelector(".scene-one-buildings-left"),
+        document.querySelector(".scene-one-buildings-middle"),
+        document.querySelector(".scene-one-buildings-right"),
+    ];
+    elements.forEach(element => element.classList.add("animate"));
 }

@@ -1145,18 +1145,24 @@ MENU HEADER KEYFRAME ANIMATIONS
   }
 }
 .scene-one-spider-right.animate {
-  animation: animateSpiderRight 800ms ease-in-out;
+  animation: animateSpiderRight 1800ms ease-in-out;
 }
 .scene-one-spider-middle.animate {
-  animation: animateSpiderMiddle 1000ms ease-in-out;
+  animation: animateSpiderMiddle 2000ms ease-in-out;
 }
 .scene-one-spider-left.animate {
-  animation: animateSpiderLeft 1100ms ease-in-out;
+  animation: animateSpiderLeft 2100ms ease-in-out;
+}
+.scene-one-buildings-left.animate, .scene-one-buildings-middle.animate, .scene-one-buildings-right.animate {
+  animation: animateBuilding 700ms ease-in-out;
 }
 
 @keyframes animateSpiderLeft {
   0% {
-    transform: translate(200%, -130%) scale(.5);
+    transform: translate(200%, -140%) scale(.5);
+  }
+  30% {
+    transform: translate(200%, -140%) scale(.5);
   }
   100% {
     transform: none;
@@ -1166,15 +1172,30 @@ MENU HEADER KEYFRAME ANIMATIONS
   0% {
     transform: translateX(200%) scale(.5);
   }
+  40% {
+    transform: translateX(200%) scale(.5);
+  }
   100% {
     transform: none;
   }
 }
 @keyframes animateSpiderMiddle {
+
   0% {
+    transform: translateX(-200%) scale(.5);
+  }
+  20% {
     transform: translateX(-200%) scale(.5);
   }
   100% {
     translate: -50.75%
+  }
+}
+@keyframes animateBuilding {
+  0% {
+    transform: translateY(200%) scale(.5);
+  }
+  100% {
+    tranform: none;
   }
 }
