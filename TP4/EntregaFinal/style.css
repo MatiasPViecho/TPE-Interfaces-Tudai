@@ -172,7 +172,23 @@ header {
   height: 103px;
   z-index: 999;
 }
-
+#header-container{
+  transition: all 200ms ease-in-out;
+}
+#header-container.small {
+  height: 80px;
+}
+#header-container .button{
+  padding: 16px 0;
+  height: unset;
+    transition: all 200ms ease-in-out;
+}
+#header-container.small .button{
+  font-size: 16px;
+  height: unset;
+  padding: 12px 0;
+  margin-top: -12px;
+}
 .menu-button {
   filter: drop-shadow(4px 5px 0px #02187e);
   width: 42px;
@@ -233,7 +249,7 @@ header {
   transition: all 1s;
 }
 .logo.logo-menu {
-  top: 17px;
+  top: 8px;
   height: 68px;
   transform: none;
 }

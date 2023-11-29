@@ -25,12 +25,15 @@ window.onload = () => {
   const zone2Third = document.querySelector('#zone-2-card-3');
   const zone2Cards = document.querySelector('.zone-2-cards');
   const liElements = zone2Cards.querySelectorAll('li');
+  const header = document.querySelector('#header-container')
   window.addEventListener("scroll", (event) => {
     const scrollY = window.scrollY;
     if (scrollY > 0) {
       imgLogo.classList.add("logo-menu");
+      header.classList.add('small')
     } else {
       imgLogo.classList.remove("logo-menu");
+      header.classList.remove('small')
     }
     zone1Parallax();
     zone1Goblin();
