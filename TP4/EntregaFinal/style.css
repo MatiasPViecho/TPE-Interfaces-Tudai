@@ -817,7 +817,8 @@ header {
 }
 @media only screen and (min-width: 1000px) {
   .zone-6-text-container {
-    padding: 0 250px;
+    max-width: 816px;
+    margin: 0 auto;
   }
 }
 .title {
@@ -894,8 +895,8 @@ header {
   position: absolute;
   width: 170px;
   height: 200px;
-  bottom: 18.5%;
-  right: 10%;
+  bottom: 18.2vw;
+  right: 12vw;
   background-size: 1930px 1632px;
   transform: rotateY(180deg);
   animation: spiderman-animate 1s steps(1) infinite;
